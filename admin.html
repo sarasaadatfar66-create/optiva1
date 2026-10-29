@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>پنل مدیریت جامع و کلینیک | اپتیوا نیشابور</title>
+  <meta name="description" content="پنل مدیریت جامع فروشگاه عینک و کلینیک تخصصی اپتومتری اپتیوا نیشابور. ویرایش تمامی بخش‌ها، ساعات کاری، محصولات و نوبت‌ها."/>
+  
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e && e.message && (e.message.includes('WebSocket') || e.message.includes('vite') || e.message.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(e) {
+      var r = (e && e.reason) ? (e.reason.message || String(e.reason)) : '';
+      if (r && (r.includes('WebSocket') || r.includes('vite') || r.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00152c",
+            "primary-container": "#142a43",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#7d92af",
+            secondary: "#735b30",
+            "secondary-container": "#fcdba6",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#271900",
+            "secondary-fixed": "#ffdeaa",
+            "secondary-fixed-dim": "#e2c28f",
+            surface: "#f9f9fe",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f3f3f9",
+            "surface-container": "#ededf3",
+            "surface-container-high": "#e8e8ed",
+            "surface-container-highest": "#e2e2e8",
+            "on-surface": "#1a1c20",
+            "on-surface-variant": "#44474d",
+            outline: "#74777e",
+            "outline-variant": "#c4c6ce",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#002951"
+          },
+          fontFamily: {
+            sans: ["Vazirmatn", "Inter", "sans-serif"],
+            display: ["Plus Jakarta Sans", "Vazirmatn", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased min-h-screen">
+
+  <!-- Desktop Sidebar Navigation -->
+  <aside class="fixed right-0 top-0 h-full w-64 bg-primary-container text-on-primary z-50 hidden lg:flex flex-col justify-between p-5 border-l border-primary/30 shadow-xl">
+    <div class="flex flex-col gap-6">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 px-2">
+        <div class="w-10 h-10 rounded-xl bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-md">
+          <span class="material-symbols-outlined text-[22px]">eyeglasses</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-surface-bright leading-none font-display" id="sidebar-brand-name">اپتیوا</span>
+          <span class="text-[10px] text-secondary-fixed-dim font-medium tracking-wide">مدیریت جامع و بالینی</span>
+        </div>
+      </a>
+
+      <!-- Menu links (Tabs) -->
+      <nav class="flex flex-col gap-1.5 text-xs font-medium">
+        <button onclick="switchAdminSection('dashboard')" id="nav-tab-dashboard" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 bg-tertiary-container text-surface-bright font-bold rounded-xl shadow-xs transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">dashboard</span>
+          <span>داشبورد و آمار لحظه‌ای</span>
+        </button>
+
+        <button onclick="switchAdminSection('general')" id="nav-tab-general" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">storefront</span>
+          <span>اطلاعات پایه و هویت برند</span>
+        </button>
+
+        <button onclick="switchAdminSection('hours')" id="nav-tab-hours" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">schedule</span>
+          <span>ساعات کاری و تقویم نیشابور</span>
+        </button>
+
+        <button onclick="switchAdminSection('products')" id="nav-tab-products" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+          <span>انبار فریم‌ها و کاتالوگ</span>
+        </button>
+
+        <button onclick="switchAdminSection('appointments')" id="nav-tab-appointments" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+          <div class="flex items-center justify-between flex-1">
+            <span>نوبت‌ها و زمان‌بندی</span>
+            <span id="sidebar-appts-badge" class="px-1.5 py-0.2 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">۰</span>
+          </div>
+        </button>
+
+        <button onclick="switchAdminSection('reviews')" id="nav-tab-reviews" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">rate_review</span>
+          <div class="flex items-center justify-between flex-1">
+            <span>مدیریت نظرات مراجعین</span>
+            <span id="sidebar-reviews-badge" class="px-1.5 py-0.2 rounded-full bg-amber-500 text-white text-[10px] font-bold">۰</span>
+          </div>
+        </button>
+
+        <button onclick="switchAdminSection('images')" id="nav-tab-images" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">photo_library</span>
+          <span>مدیریت تصاویر سایت</span>
+        </button>
+
+        <button onclick="switchAdminSection('instagram')" id="nav-tab-instagram" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+          <span>مدیریت اینستاگرام و پست‌ها</span>
+        </button>
+
+        <button onclick="switchAdminSection('services')" id="nav-tab-services" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">medical_services</span>
+          <span>تعرفه خدمت معاینه</span>
+        </button>
+
+        <button onclick="switchAdminSection('announcement')" id="nav-tab-announcement" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">campaign</span>
+          <span>نوار اعلان بالای سایت</span>
+        </button>
+
+        <button onclick="switchAdminSection('security')" id="nav-tab-security" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">lock_reset</span>
+          <span>تغییر کلمه عبور مدیر</span>
+        </button>
+
+        <button onclick="switchAdminSection('backup')" id="nav-tab-backup" class="admin-nav-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-on-primary-container hover:bg-tertiary-container/60 hover:text-surface-bright transition-all w-full text-right">
+          <span class="material-symbols-outlined text-[18px]">database</span>
+          <span>پشتیبان‌گیری و بازنشانی</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Back to Front Site -->
+    <div class="border-t border-primary/40 pt-4 flex items-center justify-between text-xs">
+      <a href="index.html" class="flex items-center gap-1.5 text-on-primary-container hover:text-secondary-fixed transition">
+        <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+        <span>مشاهده وب‌سایت</span>
+      </a>
+      <span class="text-[10px] text-secondary-fixed font-mono">OPTIVA v1.2</span>
+    </div>
+  </aside>
+
+  <!-- Main View Area -->
+  <div class="lg:pr-64 min-h-screen flex flex-col">
+    
+    <!-- Top Header Bar -->
+    <header class="h-16 bg-surface/90 backdrop-blur-xl shadow-xs border-b border-surface-container flex items-center justify-between px-4 lg:px-8 sticky top-0 z-40">
+      <div class="flex items-center gap-3">
+        <!-- Mobile menu toggle -->
+        <button onclick="toggleAdminMobileDrawer()" class="lg:hidden p-2 text-primary hover:bg-surface-container rounded-lg">
+          <span class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
+        <span class="text-xs font-bold text-primary font-display" id="admin-header-title">پنل مدیریت جامع اپتیوا نیشابور</span>
+        <span class="text-surface-container hidden sm:inline">|</span>
+        <span class="text-[11px] text-on-surface-variant hidden md:inline" id="header-address-summary">نیشابور، فردوسی شمالی ۱۲</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition">
+          <span class="material-symbols-outlined text-[16px]">visibility</span>
+          <span>پیش‌نمایش سایت</span>
+        </a>
+
+        <button onclick="publishAllChanges()" class="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold shadow-xs transition">
+          <span class="material-symbols-outlined text-[16px]">publish</span>
+          <span>انتشار سراسری تغییرات</span>
+        </button>
+
+        <button onclick="handleAdminLogout()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-error/10 hover:bg-error hover:text-white text-error text-xs font-bold transition" title="خروج از پنل مدیریت">
+          <span class="material-symbols-outlined text-[16px]">logout</span>
+          <span class="hidden sm:inline">خروج</span>
+        </button>
+
+        <div class="flex items-center gap-2 pr-2 border-r border-surface-container">
+          <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-bold text-xs ring-1 ring-secondary/50">
+            <span class="material-symbols-outlined text-[18px]">person</span>
+          </div>
+          <div class="hidden xl:flex flex-col text-right">
+            <span class="text-xs font-bold text-primary leading-tight" id="header-doctor-name">اپتومتریست عاطفه صادقی</span>
+            <span class="text-[10px] text-on-surface-variant">اپتومتریست و مدیر کلینیک</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="admin-mobile-drawer" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden flex-col">
+      <div class="bg-primary-container text-on-primary w-72 h-full p-5 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-primary/30">
+            <span class="font-bold text-sm text-surface-bright">منوی پنل مدیریت</span>
+            <button onclick="toggleAdminMobileDrawer()" class="p-1 hover:bg-white/10 rounded-lg">
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <nav class="flex flex-col gap-1 text-xs">
+            <button onclick="switchAdminSection('dashboard'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۱. داشبورد و آمار لحظه‌ای</button>
+            <button onclick="switchAdminSection('general'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۲. اطلاعات پایه، برند و روبیکا</button>
+            <button onclick="switchAdminSection('hours'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۳. ساعات کاری و تقویم نیشابور</button>
+            <button onclick="switchAdminSection('products'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۴. انبار فریم‌ها و کاتالوگ</button>
+            <button onclick="switchAdminSection('appointments'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۵. نوبت‌های معاینه و اسلات‌ها</button>
+            <button onclick="switchAdminSection('reviews'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۶. مدیریت و تایید نظرات مراجعین</button>
+            <button onclick="switchAdminSection('images'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۷. مدیریت تصاویر سایت</button>
+            <button onclick="switchAdminSection('instagram'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۸. مدیریت اینستاگرام و پست‌ها</button>
+            <button onclick="switchAdminSection('services'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۹. تعرفه خدمت معاینه</button>
+            <button onclick="switchAdminSection('announcement'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۱۰. نوار اعلان بالای سایت</button>
+            <button onclick="switchAdminSection('security'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۱۱. تغییر کلمه عبور مدیر</button>
+            <button onclick="switchAdminSection('backup'); toggleAdminMobileDrawer();" class="p-2.5 text-right rounded-lg hover:bg-white/10">۱۲. پشتیبان‌گیری و بازنشانی</button>
+          </nav>
+        </div>
+        <div class="pt-4 border-t border-primary/30">
+          <a href="index.html" class="block text-center text-xs py-2 rounded-lg bg-secondary text-on-secondary font-bold">بازگشت به سایت اصلی</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="p-4 lg:p-8 flex-1 flex flex-col gap-6 max-w-7xl w-full mx-auto">
+      
+      <!-- Top Global Banner -->
+      <div class="w-full bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-sm border border-surface-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-md flex-shrink-0">
+            <span class="material-symbols-outlined text-[22px] text-secondary-fixed">tune</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="font-bold text-base text-primary">ویرایش کامل و زنده تمامی بخش‌های اپتیوا</h1>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">تغییرات آنی</span>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-0.5">هر تغییری در این بخش بلافاصله در حافظه ذخیره شده و در تمام صفحات (فروشگاه، نوبت‌دهی، سبد خرید، تلگرام) اعمال می‌گردد.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="saveAllCurrentInputs()" class="px-4 py-2 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">save</span>
+            <span>ذخیره تغییرات این صفحه</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: DASHBOARD & OVERVIEW -->
+      <!-- ========================================================================= -->
+      <section id="section-dashboard" class="admin-content-section space-y-6">
+        <!-- KPI Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container flex flex-col justify-between">
+            <div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+              <span>تعداد فریم‌های کاتالوگ</span>
+              <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[18px]">eyeglasses</span>
+              </div>
+            </div>
+            <div class="my-3">
+              <span class="text-3xl font-extrabold text-primary font-headline-sm" id="kpi-products-count">۰</span>
+              <p class="text-xs text-on-surface-variant mt-1">فریم و عدسی فعال در فروشگاه</p>
+            </div>
+            <button onclick="switchAdminSection('products')" class="text-xs text-secondary font-bold flex items-center gap-1 hover:underline pt-2 border-t border-surface-container">
+              <span>مدیریت و افزودن فریم</span>
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container flex flex-col justify-between">
+            <div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+              <span>نوبت‌های اپتومتری منتظر تماس</span>
+              <div class="w-8 h-8 rounded-lg bg-secondary-container/60 flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
+              </div>
+            </div>
+            <div class="my-3">
+              <span class="text-3xl font-extrabold text-secondary font-headline-sm" id="kpi-pending-appts">۰</span>
+              <p class="text-xs text-on-surface-variant mt-1">مراجعین ثبت‌شده از طریق سایت</p>
+            </div>
+            <button onclick="switchAdminSection('appointments')" class="text-xs text-secondary font-bold flex items-center gap-1 hover:underline pt-2 border-t border-surface-container">
+              <span>کارتابل تماس و نوبت‌ها</span>
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container flex flex-col justify-between">
+            <div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+              <span>تنها خدمت مصوب کلینیک</span>
+              <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[18px]">medical_services</span>
+              </div>
+            </div>
+            <div class="my-3">
+              <span class="text-2xl font-extrabold text-primary font-headline-sm" id="kpi-service-fee">۲۴۰٬۰۰۰ تومان</span>
+              <p class="text-xs text-secondary font-bold mt-1">معاینه تخصصی اپتومتری</p>
+            </div>
+            <button onclick="switchAdminSection('services')" class="text-xs text-secondary font-bold flex items-center gap-1 hover:underline pt-2 border-t border-surface-container">
+              <span>مشاهده و ویرایش تعرفه</span>
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container flex flex-col justify-between">
+            <div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+              <span>وضعیت پذیرش کلینیک نیشابور</span>
+              <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-emerald-600">
+                <span class="material-symbols-outlined text-[18px]">verified</span>
+              </div>
+            </div>
+            <div class="my-3">
+              <span class="text-lg font-bold text-primary block leading-tight">هماهنگی تلفنی ضروری</span>
+              <p class="text-xs text-secondary font-medium mt-1">شماره تماس: ۰۹۰۴۰۱۴۸۸۲۴</p>
+            </div>
+            <button onclick="switchAdminSection('hours')" class="text-xs text-secondary font-bold flex items-center gap-1 hover:underline pt-2 border-t border-surface-container">
+              <span>تنظیم شیفت‌ها و تعطیلات</span>
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Access Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Recent Appointments Widget -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">calendar_today</span>
+                <h3 class="text-sm font-bold text-primary">آخرین مراجعین ثبت‌شده در سایت</h3>
+              </div>
+              <button onclick="switchAdminSection('appointments')" class="text-xs text-secondary font-bold hover:underline">مشاهده همه</button>
+            </div>
+            <div id="dashboard-recent-appts" class="space-y-2">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Store Status Summary Widget -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">info</span>
+                <h3 class="text-sm font-bold text-primary">خلاصه تنظیمات جاری وب‌سایت</h3>
+              </div>
+              <button onclick="switchAdminSection('general')" class="text-xs text-secondary font-bold hover:underline">ویرایش مشخصات</button>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-xl">
+                <span class="text-on-surface-variant">نام برند:</span>
+                <strong class="text-primary font-bold" id="dash-summary-brand">اپتیوا | OPTIVA VISION</strong>
+              </div>
+              <div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-xl">
+                <span class="text-on-surface-variant">نشانی بوتیک نیشابور:</span>
+                <span class="text-primary font-medium truncate max-w-[240px]" id="dash-summary-address">-</span>
+              </div>
+              <div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-xl">
+                <span class="text-on-surface-variant">تلفن اصلی هماهنگی:</span>
+                <span class="text-secondary font-bold font-mono" id="dash-summary-phone">09040148824</span>
+              </div>
+              <div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-xl">
+                <span class="text-on-surface-variant">نام کاربری تلگرام (ثبت سفارش):</span>
+                <span class="text-primary font-bold font-mono" id="dash-summary-telegram">@optiva_vision</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: GENERAL STORE & BRAND INFO -->
+      <!-- ========================================================================= -->
+      <section id="section-general" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">storefront</span>
+                <span>ویرایش اطلاعات پایه، هویت برند و اطلاعات تماس نیشابور</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">این اطلاعات در هدر، فوتر، صفحات درباره ما و تماس با ما، و پیش‌فاکتور تلگرام نمایش داده می‌شود.</p>
+            </div>
+            <button onclick="saveGeneralSettings()" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>ذخیره مشخصات برند</span>
+            </button>
+          </div>
+
+          <form id="form-general-settings" onsubmit="event.preventDefault(); saveGeneralSettings();" class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">نام برند (فارسی):</label>
+              <input type="text" id="cfg-brand-fa" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-medium focus:outline-secondary text-xs" required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">نام برند (انگلیسی):</label>
+              <input type="text" id="cfg-brand-en" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-medium focus:outline-secondary text-xs" dir="ltr" required>
+            </div>
+
+            <div class="md:col-span-2 space-y-1.5">
+              <label class="font-bold text-primary block">نشانی دقیق بوتیک و کلینیک در نیشابور:</label>
+              <input type="text" id="cfg-address" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-medium focus:outline-secondary text-xs" required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">شماره تلفن هماهنگی (جهت لینک تماس tel):</label>
+              <input type="text" id="cfg-phone" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">نمایش شماره به فارسی (جهت هدر و متن‌ها):</label>
+              <input type="text" id="cfg-phone-formatted" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">آیدی اینستاگرام (بدون @):</label>
+              <input type="text" id="cfg-instagram" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+            </div>
+
+            <!-- Rubika Integration Card -->
+            <div class="md:col-span-2 p-4 rounded-2xl bg-surface-container-low border-2 border-secondary/30 space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-lg bg-secondary-container text-secondary flex items-center justify-center font-bold">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-primary">تنظیمات درگاه ارتباط و خرید روبیکا</h3>
+                    <p class="text-[11px] text-on-surface-variant">کلیه دکمه‌های خرید و ثبت سفارش سایت به این کانال/لینک متصل می‌شوند.</p>
+                  </div>
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" id="cfg-rubika-enabled" class="w-4 h-4 rounded text-secondary focus:ring-secondary" checked>
+                  <span class="text-xs font-bold text-primary">فعال بودن لینک مستقیم</span>
+                </label>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">لینک کانال یا صفحه چت روبیکا (HTTPS معتبر):</label>
+                <input type="url" id="cfg-rubika-link" class="w-full p-3 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" placeholder="https://rubika.ir/optiva_vision">
+                <span class="text-[10px] text-on-surface-variant block">دامنه‌های مجاز: rubika.ir یا web.rubika.ir • در صورت خالی بودن یا غیرفعال بودن، مدال تماس ۰۹۰۴۰۱۴۸۸۲۴ نمایش داده می‌شود.</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">نام اپتومتریست و مدیر بالینی:</label>
+              <input type="text" id="cfg-optometrist-name" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" required>
+            </div>
+
+            <div class="md:col-span-2 space-y-1.5">
+              <label class="font-bold text-primary block">عنوان و شماره نظام پزشکی اپتومتریست:</label>
+              <input type="text" id="cfg-optometrist-title" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" required>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: OPERATING HOURS & CLINIC SCHEDULE -->
+      <!-- ========================================================================= -->
+      <section id="section-hours" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">schedule</span>
+                <span>مدیریت و ویرایش ساعات کاری بوتیک و تقویم کلینیک نیشابور</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">تغییر ساعات حضور در فروشگاه و تنظیم پیام شفاف هماهنگی معاینات چشم</p>
+            </div>
+            <button onclick="saveHoursSettings()" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>ذخیره تغییرات ساعات</span>
+            </button>
+          </div>
+
+          <form id="form-hours-settings" onsubmit="event.preventDefault(); saveHoursSettings();" class="space-y-5 text-xs">
+            
+            <!-- Store Hours Card -->
+            <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container space-y-4">
+              <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                <span class="material-symbols-outlined text-secondary">storefront</span>
+                <span>ساعات کاری بوتیک و فروشگاه عینک فیزیکی</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="space-y-1.5">
+                  <label class="font-semibold text-primary block">روزهای کاری بوتیک:</label>
+                  <input type="text" id="cfg-store-days" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-medium focus:outline-secondary text-xs" required>
+                </div>
+                <div class="space-y-1.5">
+                  <label class="font-semibold text-primary block">شیفت صبح بوتیک:</label>
+                  <input type="text" id="cfg-store-morning" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+                </div>
+                <div class="space-y-1.5">
+                  <label class="font-semibold text-primary block">شیفت عصر بوتیک:</label>
+                  <input type="text" id="cfg-store-evening" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+                </div>
+                <div class="md:col-span-3 space-y-1.5">
+                  <label class="font-semibold text-primary block">روزهای تعطیل رسمی فروشگاه:</label>
+                  <input type="text" id="cfg-store-closed" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clinic Scheduling Policy Card -->
+            <div class="p-4 rounded-xl bg-secondary-fixed/30 border border-secondary/20 space-y-4">
+              <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                <span class="material-symbols-outlined text-secondary">medical_services</span>
+                <span>سیاست شفافیت نوبت‌دهی کلینیک اپتومتری</span>
+              </div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">
+                برای جلوگیری از اتلاف وقت مراجعین و تداخل با عمل‌ها و معاینات تخصصی، ساعت فرضی در سایت درج نمی‌شود و نوبت‌ها تلفنی هماهنگ می‌شوند.
+              </p>
+              <div class="space-y-1.5">
+                <label class="font-semibold text-primary block">متن اعلامیه هماهنگی کلینیک:</label>
+                <textarea id="cfg-clinic-policy" rows="3" class="w-full p-3 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed"></textarea>
+              </div>
+            </div>
+
+            <!-- Emergency / Special Closure Toggle -->
+            <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-error">notification_important</span>
+                  <span class="font-bold text-primary text-sm">اعلام وضعیت یا تعطیلی موقت کلینیک</span>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="cfg-emergency-active" class="sr-only peer">
+                  <div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-error"></div>
+                </label>
+              </div>
+              <div class="space-y-1.5">
+                <label class="font-semibold text-on-surface-variant block">متن اعلان تعطیلی یا وضعیت خاص (در صورت فعال بودن نمایش داده می‌شود):</label>
+                <input type="text" id="cfg-emergency-text" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: PRODUCTS & INVENTORY CRUD -->
+      <!-- ========================================================================= -->
+      <section id="section-products" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">inventory_2</span>
+                <span>مدیریت کامل فریم‌ها، لنزها و انبار نیشابور</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">افزودن فریم جدید، ویرایش قیمت‌ها، تغییر مشخصات، تست مجازی و وضعیت موجودی</p>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <button onclick="openProductEditModal(null)" class="px-4 py-2.5 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                <span>افزودن فریم جدید</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Filters and Live Search -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="relative flex-1 max-w-sm">
+              <input type="text" id="admin-product-search" oninput="filterAdminProductsTable()" placeholder="جستجوی نام، کد کالا، متریال یا قیمت..." class="w-full pl-8 pr-9 py-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary">
+              <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant">search</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-on-surface-variant font-medium">فیلتر دسته:</span>
+              <select id="admin-product-cat-filter" onchange="filterAdminProductsTable()" class="p-2 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs">
+                <option value="all">همه دسته‌ها</option>
+                <option value="optical">عینک طبی</option>
+                <option value="sunglasses">عینک آفتابی</option>
+                <option value="contact-lenses">لنز تماسی</option>
+                <option value="accessories">لوازم جانبی</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="overflow-x-auto rounded-xl border border-surface-container">
+            <table class="w-full text-right text-xs">
+              <thead>
+                <tr class="bg-surface-container text-on-surface-variant font-bold">
+                  <th class="py-3 px-3">تصویر</th>
+                  <th class="py-3 px-3">کد کالا</th>
+                  <th class="py-3 px-3">عنوان فریم (فارسی / انگلیسی)</th>
+                  <th class="py-3 px-3">دسته‌بندی و متریال</th>
+                  <th class="py-3 px-3">قیمت (تومان)</th>
+                  <th class="py-3 px-3">موجودی نیشابور</th>
+                  <th class="py-3 px-3 text-center">عملیات</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-table-body" class="divide-y divide-surface-container">
+                <!-- Products injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: APPOINTMENTS & REAL SLOTS MANAGEMENT -->
+      <!-- ========================================================================= -->
+      <section id="section-appointments" class="admin-content-section hidden space-y-6">
+        
+        <!-- Slots Management Card -->
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-container">
+            <div>
+              <h3 class="text-sm font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-[20px]">more_time</span>
+                <span>مدیریت بازه‌های زمانی آزاد جهت نوبت‌دهی (اسلات‌ها)</span>
+              </h3>
+              <p class="text-[11px] text-on-surface-variant mt-0.5">اسلات‌های فعال برای مراجعین در فرم رزرو نمایش داده می‌شوند. رزرو هر اسلات بلافاصله از تداخل جلوگیری می‌کند.</p>
+            </div>
+            <button onclick="openAddSlotModal()" class="px-3.5 py-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center gap-1 shadow-xs">
+              <span class="material-symbols-outlined text-[16px]">add</span>
+              <span>افزودن زمان جدید</span>
+            </button>
+          </div>
+
+          <!-- Slots Pills Grid -->
+          <div id="admin-slots-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 pt-1 text-xs">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- Booked Appointments Table Card -->
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">calendar_month</span>
+                <span>کارتابل نوبت‌های واقعی مراجعین کلینیک</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">تمام درخواست‌های ثبت‌شده، وضعیت تأیید یا لغو و سوابق تماس در این بخش به صورت زنده ذخیره می‌شوند.</p>
+            </div>
+            
+            <button onclick="openAppointmentModal(null)" class="px-4 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">add</span>
+              <span>افزودن نوبت دستی (تلفنی/حضوری)</span>
+            </button>
+          </div>
+
+          <!-- Filter & Search -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="relative flex-1 max-w-sm">
+              <input type="text" id="admin-appt-search" oninput="filterAdminAppointmentsTable()" placeholder="جستجوی نام مراجع، شماره تلفن یا کد رهگیری..." class="w-full pl-8 pr-9 py-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary">
+              <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant">search</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-on-surface-variant font-medium">فیلتر وضعیت:</span>
+              <select id="admin-appt-status-filter" onchange="filterAdminAppointmentsTable()" class="p-2 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs">
+                <option value="all">همه وضعیت‌ها</option>
+                <option value="new">در انتظار بررسی</option>
+                <option value="confirmed">تأییدشده و نهایی</option>
+                <option value="completed">انجام‌شده</option>
+                <option value="cancelled">لغو شده</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Appointments Table -->
+          <div class="overflow-x-auto rounded-xl border border-surface-container">
+            <table class="w-full text-right text-xs">
+              <thead>
+                <tr class="bg-surface-container text-on-surface-variant font-bold">
+                  <th class="py-3 px-3">کد رهگیری</th>
+                  <th class="py-3 px-3">نام مراجعه‌کننده</th>
+                  <th class="py-3 px-3">شماره تماس</th>
+                  <th class="py-3 px-3">خدمت</th>
+                  <th class="py-3 px-3">زمان نوبت</th>
+                  <th class="py-3 px-3">وضعیت نوبت</th>
+                  <th class="py-3 px-3">یادداشت منشی</th>
+                  <th class="py-3 px-3 text-center">اقدامات</th>
+                </tr>
+              </thead>
+              <tbody id="admin-appts-table-body" class="divide-y divide-surface-container">
+                <!-- Appointments injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 6: MANAGEABLE SITE IMAGES (BOTH URL/IMAGE & DESCRIPTION EDITABLE) -->
+      <!-- ========================================================================= -->
+      <section id="section-images" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">photo_library</span>
+                <span>مدیریت تصاویر و توضیحات سایت</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">ویرایش و اصلاح همزمان آدرس تصویر و متن توضیحات/کپشن برای تمامی بخش‌های اصلی سایت</p>
+            </div>
+            <span class="text-[11px] text-secondary font-bold bg-secondary-fixed/40 px-3 py-1 rounded-full">امکان تغییر همزمان فایل تصویر و متن توضیحات</span>
+          </div>
+
+          <!-- Images Grid (5 Managed Site Image Slots) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-site-images-grid">
+            
+            <!-- Image 1: Hero Banner (Index Page) -->
+            <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <strong class="text-xs font-bold text-primary">۱. بنر و فریم هیرو (صفحه اصلی)</strong>
+                  <span class="text-[10px] text-on-surface-variant font-mono">hero_banner</span>
+                </div>
+                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                  <img id="img-preview-hero-banner" src="/assets/images/hero-banner.jpg" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                  <input type="text" id="cfg-img-url-hero_banner" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">توضیحات و کاربرد تصویر:</label>
+                  <textarea id="cfg-img-desc-hero_banner" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="توضیحات تصویر..."></textarea>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-surface-container">
+                <input type="file" id="file-input-hero-banner" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleImageFileSelect(event, 'hero_banner', 'img-preview-hero-banner', 'cfg-img-url-hero_banner')">
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="document.getElementById('file-input-hero-banner').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                    <span class="material-symbols-outlined text-[15px]">upload</span>
+                    <span>آپلود فایل</span>
+                  </button>
+                  <button type="button" onclick="saveSiteImageRecord('hero_banner')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                    <span class="material-symbols-outlined text-[15px]">save</span>
+                    <span>ذخیره اصلاحات</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image 2: Clinic Suite (About Page) -->
+            <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <strong class="text-xs font-bold text-primary">۲. سوئیت کلینیکال و تجهیزات معاینه</strong>
+                  <span class="text-[10px] text-on-surface-variant font-mono">clinic_main</span>
+                </div>
+                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                  <img id="img-preview-clinic-main" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLFzmNsby8GKr2-IqihRE1zfPLjYSRYW_RdBK9DAodzZHGOmXEdSQ1N6p8yvIFgVaVgxLXHGN7JM-C5uil0KbmrmkcSMTi6HvkG8M-IbmXuF3Tdu3yk0aWHRJXJbNTGgMg2cX_1vVNU7l-tloj7enXTkz5xvqTJnaQ4_yphiwJglAOO3AYeaOeJ_92w1sfMjdP9dr04GX49pjYb3hi2uR_96rGJWp7w5ghg3zQN-W4VfmqBy6mjHbE" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                  <input type="text" id="cfg-img-url-clinic_main" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">توضیحات و کاربرد تصویر:</label>
+                  <textarea id="cfg-img-desc-clinic_main" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="توضیحات تصویر..."></textarea>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-surface-container">
+                <input type="file" id="file-input-clinic-main" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleImageFileSelect(event, 'clinic_main', 'img-preview-clinic-main', 'cfg-img-url-clinic_main')">
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="document.getElementById('file-input-clinic-main').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                    <span class="material-symbols-outlined text-[15px]">upload</span>
+                    <span>آپلود فایل</span>
+                  </button>
+                  <button type="button" onclick="saveSiteImageRecord('clinic_main')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                    <span class="material-symbols-outlined text-[15px]">save</span>
+                    <span>ذخیره اصلاحات</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image 3: Doctor & Optometrist Photo (About Page) -->
+            <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <strong class="text-xs font-bold text-primary">۳. تصویر اپتومتریست و پرسنل</strong>
+                  <span class="text-[10px] text-on-surface-variant font-mono">doctor_photo</span>
+                </div>
+                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                  <img id="img-preview-doctor-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2YXmH23j0dCB2VVJxwWNHnmCxJqSWNM2WBxGQW_14LCw9m-FcyJHR9VkK-8U1NRlkHQNpxjK2pMpYGzjiXwfq-1PHFhya6T5EGcrxckK8QPzgs1Y0cYKEblt5HJgqUqr4gEdePfzobVd2kTD9IrHFFh64e7Givdwl3q88XFKG4ItesfClxoDc2VJ8VqfsF8ytz4t6TQs_sqPFzRKmk4K_5dmHOE1qg9AhLHSuQzYi5LGQJ7a5uxoH" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                  <input type="text" id="cfg-img-url-doctor_photo" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">توضیحات و کاربرد تصویر:</label>
+                  <textarea id="cfg-img-desc-doctor_photo" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="توضیحات تصویر..."></textarea>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-surface-container">
+                <input type="file" id="file-input-doctor-photo" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleImageFileSelect(event, 'doctor_photo', 'img-preview-doctor-photo', 'cfg-img-url-doctor_photo')">
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="document.getElementById('file-input-doctor-photo').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                    <span class="material-symbols-outlined text-[15px]">upload</span>
+                    <span>آپلود فایل</span>
+                  </button>
+                  <button type="button" onclick="saveSiteImageRecord('doctor_photo')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                    <span class="material-symbols-outlined text-[15px]">save</span>
+                    <span>ذخیره اصلاحات</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image 4: Service Exam (Services / Booking Page) -->
+            <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <strong class="text-xs font-bold text-primary">۴. تصویر خدمت بالینی معاینه</strong>
+                  <span class="text-[10px] text-on-surface-variant font-mono">service_exam</span>
+                </div>
+                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                  <img id="img-preview-service-exam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2YXmH23j0dCB2VVJxwWNHnmCxJqSWNM2WBxGQW_14LCw9m-FcyJHR9VkK-8U1NRlkHQNpxjK2pMpYGzjiXwfq-1PHFhya6T5EGcrxckK8QPzgs1Y0cYKEblt5HJgqUqr4gEdePfzobVd2kTD9IrHFFh64e7Givdwl3q88XFKG4ItesfClxoDc2VJ8VqfsF8ytz4t6TQs_sqPFzRKmk4K_5dmHOE1qg9AhLHSuQzYi5LGQJ7a5uxoH" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                  <input type="text" id="cfg-img-url-service_exam" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">توضیحات و کاربرد تصویر:</label>
+                  <textarea id="cfg-img-desc-service_exam" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="توضیحات تصویر..."></textarea>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-surface-container">
+                <input type="file" id="file-input-service-exam" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleImageFileSelect(event, 'service_exam', 'img-preview-service-exam', 'cfg-img-url-service_exam')">
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="document.getElementById('file-input-service-exam').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                    <span class="material-symbols-outlined text-[15px]">upload</span>
+                    <span>آپلود فایل</span>
+                  </button>
+                  <button type="button" onclick="saveSiteImageRecord('service_exam')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                    <span class="material-symbols-outlined text-[15px]">save</span>
+                    <span>ذخیره اصلاحات</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image 5: Boutique Showcase (Index Page Gallery) -->
+            <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <strong class="text-xs font-bold text-primary">۵. ویترین و دکوراسیون بوتیک نیشابور</strong>
+                  <span class="text-[10px] text-on-surface-variant font-mono">boutique_showcase</span>
+                </div>
+                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                  <img id="img-preview-boutique-showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhUNG9NCUEDJDcQmRh0P6tbdreoqQmUFh7XUkOlZTqzvJsKPFaBfJw7FMzZsyu0P8ZmWNfRj_38l_BFzf9PlrZPv5cZDtWxJZ7lmt1yZ41rCYM7ErBrEHkS1-YTIc6U3ISqxIXrsGh-d1W51YrEeUz5UJcbzBGiJ5kA6-9tVShtwcS2o99nVhFLNhzClJGvg4H_Iw5dkl-9-Jglh7oFBONuK43qYpZeQ-7tnKNXm-KvRdW_fegtLcP" alt="" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                  <input type="text" id="cfg-img-url-boutique_showcase" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-[11px] font-bold text-primary block">توضیحات و کاربرد تصویر:</label>
+                  <textarea id="cfg-img-desc-boutique_showcase" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="توضیحات تصویر..."></textarea>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-surface-container">
+                <input type="file" id="file-input-boutique-showcase" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleImageFileSelect(event, 'boutique_showcase', 'img-preview-boutique-showcase', 'cfg-img-url-boutique_showcase')">
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="document.getElementById('file-input-boutique-showcase').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                    <span class="material-symbols-outlined text-[15px]">upload</span>
+                    <span>آپلود فایل</span>
+                  </button>
+                  <button type="button" onclick="saveSiteImageRecord('boutique_showcase')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                    <span class="material-symbols-outlined text-[15px]">save</span>
+                    <span>ذخیره اصلاحات</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION: INSTAGRAM FEED & LINK MANAGEMENT -->
+      <!-- ========================================================================= -->
+      <section id="section-instagram" class="admin-content-section hidden space-y-6">
+        
+        <!-- Instagram Link Settings Card -->
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">link</span>
+                <span>لینک صفحه رسمی اینستاگرام</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">مطابق دستور، هیچ عدد، آمار یا تعداد فالووری در سایت نمایش داده نمی‌شود و تنها دکمه و پیوند ورود به صفحه اینستاگرام قرار دارد.</p>
+            </div>
+            <button onclick="saveInstagramPageUrl()" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>ذخیره لینک اینستاگرام</span>
+            </button>
+          </div>
+
+          <div class="max-w-2xl space-y-2 text-xs">
+            <label class="font-bold text-primary block">آدرس کامل صفحه اینستاگرام (Instagram URL):</label>
+            <div class="flex items-center gap-2">
+              <input type="url" id="cfg-instagram-page-url" value="https://instagram.com/optiva_vision" class="flex-1 p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" placeholder="https://instagram.com/optiva_vision">
+              <a id="preview-instagram-link-btn" href="https://instagram.com/optiva_vision" target="_blank" class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-bold text-xs flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                <span>تست لینک</span>
+              </a>
+            </div>
+            <p class="text-[11px] text-on-surface-variant">این لینک در تمامی دکمه‌های «مشاهده در اینستاگرام» در صفحه اصلی و فوتر سایت اعمال خواهد شد.</p>
+          </div>
+        </div>
+
+        <!-- 6 Instagram Managed Posts -->
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h3 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">photo_camera</span>
+                <span>مدیریت تصویر و متن ۶ پست بخش اینستاگرام</span>
+              </h3>
+              <p class="text-xs text-on-surface-variant mt-1">تصویر و متن کپشن هر یک از ۶ پست اینستاگرام موجود در صفحه اصلی به طور مستقل قابل تغییر و ذخیره است.</p>
+            </div>
+            <span class="text-[11px] text-secondary font-bold bg-secondary-fixed/40 px-3 py-1 rounded-full">۶ پست گالری اینستاگرام</span>
+          </div>
+
+          <!-- 6 Post Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-instagram-posts-container">
+            <!-- Rendered by JS or default slots -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 7: CLINICAL SERVICE & TARIFF (SINGLE SERVICE معاینه) -->
+      <!-- ========================================================================= -->
+      <section id="section-services" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">medical_services</span>
+                <span>تعرفه و مشخصات تنها خدمت کلینیک: معاینه</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">مطابق دستورالعمل رسمی، در کل سایت صرفاً یک خدمت (معاینه با مبلغ ۲۴۰٬۰۰۰ تومان) ارائه می‌شود.</p>
+            </div>
+            <button onclick="saveClinicalServiceSettings()" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>ذخیره تغییرات تعرفه</span>
+            </button>
+          </div>
+
+          <!-- Single Service Form -->
+          <div class="max-w-3xl p-6 rounded-2xl bg-surface-container-low border-2 border-secondary/20 space-y-4 text-xs">
+            <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+              <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-secondary-container text-secondary flex items-center justify-center font-bold">
+                  <span class="material-symbols-outlined text-[24px]">visibility</span>
+                </div>
+                <div>
+                  <strong class="text-sm font-bold text-primary">معاینه تخصصی اپتومتری و سنجش بینایی</strong>
+                  <span class="text-[11px] text-secondary font-bold block">تعرفه قطعی در کل سیستم</span>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">خدمت فعال</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">نام خدمت (غیرقابل تغییر):</label>
+                <input type="text" id="cfg-service-name" value="معاینه" readonly class="w-full p-2.5 rounded-xl bg-surface-container-highest border border-surface-container text-primary font-bold text-xs cursor-not-allowed">
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">مبلغ به تومان (عدد):</label>
+                <input type="number" id="cfg-service-fee" value="240000" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">مبلغ به حروف:</label>
+                <input type="text" id="cfg-service-fee-words" value="دویست و چهل هزار تومان" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary" required>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">مدت زمان اختصاصی معاینه:</label>
+                <input type="text" id="cfg-service-duration" value="۳۰ دقیقه" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary">
+              </div>
+
+              <div class="md:col-span-2 space-y-1.5">
+                <label class="font-bold text-primary block">شرح کامل خدمت بالینی:</label>
+                <textarea id="cfg-service-desc" rows="3" class="w-full p-2.5 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs leading-relaxed focus:outline-secondary">سنجش کامل حدت بینایی و رفرکشن چشم، تعیین دقیق نمره چشم، اندازه‌گیری فاصله مردمکی (PD) و اصلاح عیوب انکساری دوربینی، نزدیک‌بینی و آستیگماتیسم.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 8: ANNOUNCEMENT TICKER BANNER -->
+      <!-- ========================================================================= -->
+      <section id="section-announcement" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">campaign</span>
+                <span>ویرایش نوار اعلان و پیام ویژه بالای وب‌سایت</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">این نوار در بالاترین قسمت سایت قبل از منوی اصلی به مراجعین نمایش داده می‌شود.</p>
+            </div>
+            <button onclick="saveAnnouncementSettings()" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>ذخیره نوار اعلان</span>
+            </button>
+          </div>
+
+          <form id="form-announcement-settings" onsubmit="event.preventDefault(); saveAnnouncementSettings();" class="space-y-4 text-xs">
+            <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container flex items-center justify-between">
+              <div>
+                <span class="font-bold text-primary block">نمایش نوار اعلان در سایت</span>
+                <span class="text-[11px] text-on-surface-variant">در صورت غیرفعال بودن، نوار مخفی خواهد شد.</span>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="cfg-announcement-active" class="sr-only peer">
+                <div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+              </label>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">متن اعلان ویژه:</label>
+              <input type="text" id="cfg-announcement-text" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary font-medium focus:outline-secondary text-xs" required>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">متن دکمه لینک (مثلاً: مشاهده فریم‌ها):</label>
+                <input type="text" id="cfg-announcement-link-text" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary">
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="font-bold text-primary block">آدرس صفحه مقصد (مثلاً: products.html):</label>
+                <input type="text" id="cfg-announcement-link" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" dir="ltr">
+              </div>
+            </div>
+
+            <!-- Preview Box -->
+            <div class="space-y-2 pt-2">
+              <span class="font-bold text-primary block">پیش‌نمایش زنده نوار:</span>
+              <div id="announcement-preview-box" class="bg-primary-container text-on-primary text-xs px-4 py-2.5 rounded-xl flex items-center justify-between gap-3 shadow-inner">
+                <span id="announcement-preview-text">تخفیف ویژه سفارش فریم تیتانیوم با کد کوپن OPTIVA2024</span>
+                <span class="px-3 py-1 rounded-lg bg-secondary text-on-secondary font-bold text-[10px]" id="announcement-preview-btn">مشاهده فریم‌ها</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION: REVIEWS MODERATION & MANAGEMENT -->
+      <!-- ========================================================================= -->
+      <section id="section-reviews" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">rate_review</span>
+                <span>مدیریت و تایید نظرات مراجعین کلینیک</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+                دیدگاه‌های ثبت‌شده در سایت ابتدا در وضعیت «در انتظار بررسی» قرار می‌گیرند و پس از تایید شما، در وب‌سایت اصلی منتشر خواهند شد.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="renderAdminReviews()" class="px-3.5 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center gap-1.5 shadow-2xs">
+                <span class="material-symbols-outlined text-[16px]">refresh</span>
+                <span>به‌روزرسانی</span>
+              </button>
+              <button onclick="openAdminAddReviewModal()" class="px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <span class="material-symbols-outlined text-[16px]">add</span>
+                <span>افزودن نظر جدید</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Status Filters & Search Bar -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-container-low p-4 rounded-xl border border-surface-container">
+            <div class="flex flex-wrap items-center gap-2" id="admin-reviews-filter-pills">
+              <button type="button" onclick="filterAdminReviews('all')" id="rf-all" class="review-filter-btn px-3.5 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-bold transition shadow-2xs">
+                همه نظرات (<span id="count-rf-all">۰</span>)
+              </button>
+              <button type="button" onclick="filterAdminReviews('pending')" id="rf-pending" class="review-filter-btn px-3.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-primary text-xs font-medium transition">
+                در انتظار تایید (<span id="count-rf-pending" class="text-amber-600 font-bold">۰</span>)
+              </button>
+              <button type="button" onclick="filterAdminReviews('approved')" id="rf-approved" class="review-filter-btn px-3.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-primary text-xs font-medium transition">
+                تایید شده و منتشر در سایت (<span id="count-rf-approved" class="text-emerald-600 font-bold">۰</span>)
+              </button>
+            </div>
+
+            <div class="relative w-full md:w-64">
+              <span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+              <input type="text" id="admin-reviews-search" oninput="renderAdminReviews()" placeholder="جستجو بر اساس نام یا متن..." class="w-full pr-9 pl-3 py-2 rounded-xl bg-surface-container-lowest border border-surface-container text-xs text-primary focus:outline-none focus:ring-1 focus:ring-secondary" />
+            </div>
+          </div>
+
+          <!-- Reviews Cards List -->
+          <div id="admin-reviews-list" class="space-y-4">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 9: BACKUP, RESTORE & FACTORY RESET -->
+      <!-- ========================================================================= -->
+      <section id="section-backup" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="pb-4 border-b border-surface-container">
+            <h2 class="text-base font-bold text-primary flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary">database</span>
+              <span>پشتیبان‌گیری، درون‌ریزی و بازنشانی داده‌های وب‌سایت</span>
+            </h2>
+            <p class="text-xs text-on-surface-variant mt-1">شما می‌توانید تمامی تنظیمات، محصولات افزوده شده، کدهای تخفیف و نوبت‌ها را در یک فایل JSON دانلود کنید یا بازگردانید.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Backup Card -->
+            <div class="p-5 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px] text-secondary-fixed">file_download</span>
+                </div>
+                <h3 class="font-bold text-sm text-primary">دانلود فایل پشتیبان (Export)</h3>
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  یک نسخه کامل از دیتابیس کاتالوگ، ساعات کاری و نوبت‌ها را به صورت فایل استاندارد JSON در رایانه ذخیره می‌کند.
+                </p>
+              </div>
+              <button onclick="downloadBackupJSON()" class="w-full py-2.5 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition flex items-center justify-center gap-1.5 shadow-sm">
+                <span class="material-symbols-outlined text-[16px]">download</span>
+                <span>دریافت فایل JSON دیتابیس</span>
+              </button>
+            </div>
+
+            <!-- Import Card -->
+            <div class="p-5 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-secondary-container text-secondary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px]">file_upload</span>
+                </div>
+                <h3 class="font-bold text-sm text-primary">بازیابی فایل پشتیبان (Import)</h3>
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  فایل JSON قبلی را بارگذاری کنید تا تمامی تنظیمات و محصولات پیشین شما فوراً بازگردانی شوند.
+                </p>
+              </div>
+              <div>
+                <input type="file" id="backup-file-input" accept=".json" class="hidden" onchange="handleBackupFileUpload(event)">
+                <button onclick="document.getElementById('backup-file-input').click()" class="w-full py-2.5 rounded-xl bg-secondary text-on-secondary text-xs font-bold hover:bg-secondary-fixed-dim transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <span class="material-symbols-outlined text-[16px]">upload</span>
+                  <span>انتخاب و بارگذاری فایل JSON</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Factory Reset Card -->
+            <div class="p-5 rounded-2xl bg-red-50/60 border border-error/20 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-error/10 text-error flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px]">restart_alt</span>
+                </div>
+                <h3 class="font-bold text-sm text-error">بازنشانی به تنظیمات کارخانه</h3>
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  تمامی تغییرات اعمال‌شده در مرورگر پاک شده و داده‌های اولیه اورجینال اپتیوا نیشابور جایگزین می‌گردند.
+                </p>
+              </div>
+              <button onclick="confirmFactoryReset()" class="w-full py-2.5 rounded-xl bg-error text-white text-xs font-bold hover:bg-red-700 transition flex items-center justify-center gap-1.5 shadow-sm">
+                <span class="material-symbols-outlined text-[16px]">delete_forever</span>
+                <span>بازنشانی به داده‌های اولیه</span>
+              </button>
+            </div>
+          </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 10: SECURITY & ADMIN PASSWORD CHANGE -->
+      <!-- ========================================================================= -->
+      <section id="section-security" class="admin-content-section hidden space-y-6">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+            <div>
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">lock_reset</span>
+                <span>تغییر کلمه عبور ورود به پنل مدیریت</span>
+              </h2>
+              <p class="text-xs text-on-surface-variant mt-1">جهت حفظ امنیت کلینیک، می‌توانید در هر زمان کلمه عبور مدیریت را به رمز دلخواه خود تغییر دهید.</p>
+            </div>
+            <span class="text-[11px] text-emerald-800 font-bold bg-emerald-100 px-3 py-1 rounded-full">رمزنگاری ایمن PBKDF2 با سالت اختصاصی</span>
+          </div>
+
+          <!-- Password Change Form -->
+          <form id="form-change-password" onsubmit="event.preventDefault(); changeAdminPasswordAction();" class="max-w-xl space-y-4 text-xs">
+            
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">کلمه عبور فعلی مدیریت:</label>
+              <input type="password" id="admin-cur-password" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" placeholder="رمز فعلی..." required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">کلمه عبور جدید:</label>
+              <input type="password" id="admin-new-password" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" placeholder="حداقل ۴ کاراکتر..." minlength="4" required>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="font-bold text-primary block">تکرار کلمه عبور جدید:</label>
+              <input type="password" id="admin-confirm-password" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" placeholder="تکرار رمز جدید..." minlength="4" required>
+            </div>
+
+            <div id="password-change-feedback" class="p-3 rounded-xl bg-surface-container-low border border-surface-container text-on-surface-variant text-[11px] leading-relaxed hidden">
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" id="btn-save-password" class="px-6 py-2.5 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">key</span>
+                <span>ثبت و ذخیره کلمه عبور جدید</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODALS -->
+  <!-- ========================================================================= -->
+
+  <!-- Product Add / Edit Modal -->
+  <div id="modal-product-editor" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-surface-container-lowest rounded-2xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto space-y-5">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[22px]">eyeglasses</span>
+          <h3 class="font-bold text-base text-primary" id="modal-product-title">افزودن فریم جدید به کاتالوگ</h3>
+        </div>
+        <button onclick="closeProductEditModal()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="form-product-editor" onsubmit="event.preventDefault(); saveProductFromModal();" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <input type="hidden" id="prod-edit-is-new" value="true">
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">کد یکتای فریم (ID):</label>
+          <input type="text" id="prod-id" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">دسته‌بندی محصول:</label>
+          <select id="prod-category" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs" required>
+            <option value="optical">عینک طبی (Optical)</option>
+            <option value="sunglasses">عینک آفتابی (Sunglasses)</option>
+            <option value="contact-lenses">لنز تماسی (Contact Lenses)</option>
+            <option value="accessories">لوازم جانبی و مراقبت</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">عنوان فارسی فریم:</label>
+          <input type="text" id="prod-fa-name" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" required>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">نام انگلیسی مدل:</label>
+          <input type="text" id="prod-name" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" dir="ltr" required>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">متریال ساخت (فارسی):</label>
+          <input type="text" id="prod-material-name" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" placeholder="مثال: تیتانیوم ژاپن" required>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">قیمت به تومان (عدد):</label>
+          <input type="number" id="prod-price" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+        </div>
+
+        <div class="md:col-span-2 space-y-1">
+          <label class="font-bold text-primary block">آدرس تصویر محصول (URL):</label>
+          <input type="url" id="prod-image" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" required>
+          <div class="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] text-on-surface-variant">
+            <span>انتخاب سریع تصاویر موجود:</span>
+            <button type="button" onclick="setProductPresetImage(1)" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high">تیتانیوم</button>
+            <button type="button" onclick="setProductPresetImage(2)" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high">آورا</button>
+            <button type="button" onclick="setProductPresetImage(3)" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high">آفتابی گلد</button>
+            <button type="button" onclick="setProductPresetImage(4)" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high">هاوانا</button>
+            <button type="button" onclick="setProductPresetImage(5)" class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high">بدون فریم</button>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">وزن فریم:</label>
+          <input type="text" id="prod-weight" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs" placeholder="12 g" dir="ltr">
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">ابعاد (عرض عدسی ▢ پل ▢ دسته):</label>
+          <div class="grid grid-cols-3 gap-1">
+            <input type="text" id="prod-lens-w" placeholder="51 mm" class="p-2 rounded-lg bg-surface-container-low text-center text-xs">
+            <input type="text" id="prod-bridge-w" placeholder="19 mm" class="p-2 rounded-lg bg-surface-container-low text-center text-xs">
+            <input type="text" id="prod-temple-l" placeholder="145 mm" class="p-2 rounded-lg bg-surface-container-low text-center text-xs">
+          </div>
+        </div>
+
+        <div class="md:col-span-2 space-y-1">
+          <label class="font-bold text-primary block">توضیحات معرفی فریم:</label>
+          <textarea id="prod-description" rows="2" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed"></textarea>
+        </div>
+
+        <div class="flex items-center gap-4 md:col-span-2 pt-2">
+          <label class="flex items-center gap-2 cursor-pointer font-bold text-primary">
+            <input type="checkbox" id="prod-in-stock" class="w-4 h-4 rounded text-secondary focus:ring-secondary">
+            <span>موجود در بوتیک نیشابور</span>
+          </label>
+        </div>
+
+        <div class="md:col-span-2 flex items-center justify-end gap-2 pt-4 border-t border-surface-container">
+          <button type="button" onclick="closeProductEditModal()" class="px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-bold text-xs">انصراف</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary font-bold text-xs shadow-sm">ذخیره مشخصات فریم</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- ADMIN AUTH GATEKEEPER MODAL -->
+  <!-- ========================================================================= -->
+  <div id="admin-login-modal" class="fixed inset-0 z-50 bg-primary/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-surface-container space-y-6">
+      <div class="text-center space-y-2">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-secondary/15 text-secondary flex items-center justify-center">
+          <span class="material-symbols-outlined text-[32px]">lock</span>
+        </div>
+        <h2 class="text-lg font-bold text-primary">ورود به پنل مدیریت کلینیک اپتیوا</h2>
+        <p class="text-xs text-on-surface-variant">لطفاً جهت دسترسی به کارتابل نوبت‌ها، تنظیمات و تصاویر وارد شوید</p>
+      </div>
+
+      <form id="admin-login-form" onsubmit="event.preventDefault(); handleAdminLogin();" class="space-y-4 text-xs">
+        <div class="space-y-1.5">
+          <label class="font-bold text-primary block">نام کاربری مدیریت:</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-on-surface-variant">person</span>
+            <input type="text" id="admin-login-username" value="admin" required class="w-full pr-10 pl-3 py-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary" dir="ltr" placeholder="admin">
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-bold text-primary block">کلمه عبور:</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-on-surface-variant">key</span>
+            <input type="password" id="admin-login-password" value="admin1234" required class="w-full pr-10 pl-3 py-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs focus:outline-secondary" dir="ltr" placeholder="••••••••">
+          </div>
+          <span class="text-[10px] text-on-surface-variant">رمز عبور پیش‌فرض: admin1234</span>
+        </div>
+
+        <div id="admin-login-error" class="hidden p-3 rounded-xl bg-error/10 border border-error/20 text-error text-xs"></div>
+
+        <button type="submit" id="admin-login-submit-btn" class="w-full py-3 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary font-bold text-xs transition flex items-center justify-center gap-2 shadow-md">
+          <span class="material-symbols-outlined text-[18px]">login</span>
+          <span>ورود امن به پنل</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLOT ADD MODAL -->
+  <!-- ========================================================================= -->
+  <div id="modal-slot-editor" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-5 sm:p-6 shadow-2xl relative my-auto space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+        <h3 class="font-bold text-base text-primary flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary">schedule</span>
+          <span>افزودن زمان جدید نوبت معاینه</span>
+        </h3>
+        <button onclick="closeSlotModal()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="form-slot-editor" onsubmit="event.preventDefault(); saveNewSlot();" class="space-y-4 text-xs">
+        <div class="space-y-1.5">
+          <label class="font-bold text-primary block">روز هفته:</label>
+          <select id="new-slot-day" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs" required>
+            <option value="شنبه">شنبه</option>
+            <option value="یکشنبه">یکشنبه</option>
+            <option value="دوشنبه">دوشنبه</option>
+            <option value="سه‌شنبه">سه‌شنبه</option>
+            <option value="چهارشنبه">چهارشنبه</option>
+            <option value="پنجشنبه">پنجشنبه</option>
+          </select>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-bold text-primary block">ساعت نوبت (مثلاً 10:00 یا 17:30):</label>
+          <input type="text" id="new-slot-time" placeholder="10:00" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary font-mono text-xs focus:outline-secondary text-center" dir="ltr" required>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-surface-container">
+          <button type="button" onclick="closeSlotModal()" class="px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-bold">انصراف</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary font-bold">ثبت زمان نوبت</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Appointment Edit Status Modal -->
+  <div id="modal-appt-editor" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative my-auto space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+        <h3 class="font-bold text-base text-primary flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary">edit_calendar</span>
+          <span id="modal-appt-title">ویرایش وضعیت نوبت مراجعه‌کننده</span>
+        </h3>
+        <button onclick="closeAppointmentModal()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="form-appt-editor" onsubmit="event.preventDefault(); saveAppointmentStatus();" class="space-y-3 text-xs">
+        <input type="hidden" id="appt-id">
+
+        <div class="p-3 rounded-xl bg-surface-container-low border border-surface-container space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-[11px]">کد رهگیری:</span>
+            <span id="appt-view-tracking" class="font-mono font-bold text-secondary text-xs" dir="ltr">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-[11px]">مراجعه‌کننده:</span>
+            <span id="appt-view-name" class="font-bold text-primary text-xs">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-[11px]">شماره تماس:</span>
+            <span id="appt-view-phone" class="font-mono font-bold text-primary text-xs" dir="ltr">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-[11px]">خدمت انتخابی:</span>
+            <span class="font-bold text-primary text-xs">معاینه (۲۴۰٬۰۰۰ تومان)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-[11px]">زمان رزرو:</span>
+            <span id="appt-view-time" class="font-bold text-primary text-xs">-</span>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">تغییر وضعیت نوبت:</label>
+          <select id="appt-status" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs font-bold">
+            <option value="pending">در انتظار بررسی (Pending)</option>
+            <option value="confirmed">تأیید نهایی (Confirmed)</option>
+            <option value="rejected">رد شده (Rejected)</option>
+            <option value="cancelled">لغو شده (Cancelled)</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-primary block">یادداشت مدیر یا منشی کلینیک:</label>
+          <textarea id="appt-notes" rows="2" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs leading-relaxed focus:outline-secondary" placeholder="توضیحات و نتایج هماهنگی با بیمار..."></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-surface-container">
+          <button type="button" onclick="closeAppointmentModal()" class="px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-bold">انصراف</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-primary text-on-primary font-bold">ذخیره وضعیت</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Admin Add Review -->
+  <div id="modal-admin-add-review" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 shadow-2xl relative space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+        <h3 class="font-bold text-base text-primary flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary">rate_review</span>
+          <span>افزودن دیدگاه یا رضایت‌نامه جدید</span>
+        </h3>
+        <button onclick="closeAdminAddReviewModal()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="form-admin-add-review" onsubmit="event.preventDefault(); saveAdminNewReview();" class="space-y-3.5 text-xs text-right">
+        <div>
+          <label class="font-bold text-primary block mb-1">نام و نام خانوادگی مراجع:</label>
+          <input type="text" id="admin-rev-name" required placeholder="مثال: دکتر فرزاد کاظمی" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-primary block mb-1">نوع خدمت دریافتی:</label>
+            <input type="text" id="admin-rev-service" value="معاینه تخصصی اپتومتری" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs" />
+          </div>
+          <div>
+            <label class="font-bold text-primary block mb-1">امتیاز (از ۵):</label>
+            <select id="admin-rev-rating" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs font-bold">
+              <option value="5">۵ ستاره (عالی)</option>
+              <option value="4">۴ ستاره (بسیار خوب)</option>
+              <option value="3">۳ ستاره (متوسط)</option>
+              <option value="2">۲ ستاره (ضعیف)</option>
+              <option value="1">۱ ستاره (خیلی ضعیف)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="font-bold text-primary block mb-1">متن دیدگاه:</label>
+          <textarea id="admin-rev-comment" rows="3" required placeholder="متن رضایت یا تجربه مراجع..." class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs leading-relaxed"></textarea>
+        </div>
+
+        <div>
+          <label class="font-bold text-primary block mb-1">وضعیت انتشار:</label>
+          <select id="admin-rev-status" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container text-primary text-xs font-bold">
+            <option value="approved">تایید شده و انتشار فوری در وب‌سایت</option>
+            <option value="pending">در انتظار تایید (پیش‌نویس)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-surface-container">
+          <button type="button" onclick="closeAdminAddReviewModal()" class="px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-bold">انصراف</button>
+          <button type="submit" id="btn-save-admin-rev" class="px-5 py-2 rounded-xl bg-primary text-on-primary font-bold">ذخیره و ثبت</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+  <script>
+    /**
+     * ========================================================================
+     * OPTIVA ADMIN WORKSPACE ENGINE - Full-Stack Secure API Integration
+     * ========================================================================
+     */
+
+    let currentSection = 'dashboard';
+    const TOKEN_KEY = 'optiva_admin_token';
+
+    function getAuthToken() {
+      return localStorage.getItem(TOKEN_KEY) || '';
+    }
+
+    function setAuthToken(token) {
+      if (token) localStorage.setItem(TOKEN_KEY, token);
+      else localStorage.removeItem(TOKEN_KEY);
+    }
+
+    // Helper for authorized API requests
+    async function authFetch(url, options = {}) {
+      const token = getAuthToken();
+      const headers = Object.assign({}, options.headers || {});
+      if (token) {
+        headers['Authorization'] = 'Bearer ' + token;
+      }
+      if (options.body && typeof options.body === 'string' && !headers['Content-Type']) {
+        headers['Content-Type'] = 'application/json';
+      }
+
+      const res = await fetch(url, Object.assign({}, options, { headers }));
+      if (res.status === 401) {
+        setAuthToken('');
+        showAdminLoginModal();
+        throw new Error('نشست منقضی شده است. لطفاً مجدداً وارد شوید.');
+      }
+      return res;
+    }
+
+    // Auth gatekeeper controls
+    function showAdminLoginModal() {
+      const modal = document.getElementById('admin-login-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function hideAdminLoginModal() {
+      const modal = document.getElementById('admin-login-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    async function checkAdminAuth() {
+      const token = getAuthToken();
+      if (!token) {
+        showAdminLoginModal();
+        return false;
+      }
+      try {
+        const res = await fetch('/api/auth/me', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.ok) {
+          hideAdminLoginModal();
+          return true;
+        } else {
+          setAuthToken('');
+          showAdminLoginModal();
+          return false;
+        }
+      } catch (err) {
+        showAdminLoginModal();
+        return false;
+      }
+    }
+
+    async function handleAdminLogin() {
+      const usernameInput = document.getElementById('admin-login-username');
+      const passwordInput = document.getElementById('admin-login-password');
+      const errBox = document.getElementById('admin-login-error');
+      const submitBtn = document.getElementById('admin-login-submit-btn');
+
+      const username = usernameInput ? usernameInput.value.trim() : '';
+      const password = passwordInput ? passwordInput.value : '';
+
+      if (errBox) {
+        errBox.classList.add('hidden');
+        errBox.textContent = '';
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>در حال احراز هویت...</span>';
+      }
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'ورود ناموفق بود.');
+        }
+
+        setAuthToken(data.token);
+        hideAdminLoginModal();
+        showToast('ورود مدیر با موفقیت انجام شد', 'success');
+        await loadAllAdminData();
+      } catch (err) {
+        if (errBox) {
+          errBox.classList.remove('hidden');
+          errBox.textContent = err.message || 'خطا در ارتباط با سرور.';
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">login</span><span>ورود امن به پنل</span>';
+        }
+      }
+    }
+
+    async function handleAdminLogout() {
+      try {
+        await authFetch('/api/auth/logout', { method: 'POST' });
+      } catch (e) {}
+      setAuthToken('');
+      showAdminLoginModal();
+      showToast('از حساب مدیریت خارج شدید', 'info');
+    }
+
+    function switchAdminSection(sectionId) {
+      currentSection = sectionId;
+
+      // Hide all sections
+      document.querySelectorAll('.admin-content-section').forEach(sec => sec.classList.add('hidden'));
+
+      // Show target
+      const target = document.getElementById('section-' + sectionId);
+      if (target) target.classList.remove('hidden');
+
+      // Update sidebar nav items
+      document.querySelectorAll('.admin-nav-item').forEach(btn => {
+        btn.classList.remove('bg-tertiary-container', 'text-surface-bright', 'font-bold');
+        btn.classList.add('text-on-primary-container');
+      });
+      const activeBtn = document.getElementById('nav-tab-' + sectionId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-tertiary-container', 'text-surface-bright', 'font-bold');
+        activeBtn.classList.remove('text-on-primary-container');
+      }
+
+      // Title update
+      const titles = {
+        dashboard: 'داشبورد و آمار لحظه‌ای کلینیک و بوتیک',
+        general: 'ویرایش اطلاعات پایه، ارتباط روبیکا و تلفن کلینیک',
+        hours: 'مدیریت ساعات کاری و تقویم نیشابور',
+        products: 'مدیریت کامل فریم‌ها و کاتالوگ فروشگاه',
+        appointments: 'کارتابل نوبت‌های معاینه و مدیریت زمان‌ها',
+        reviews: 'مدیریت و تایید نظرات مراجعین کلینیک',
+        images: 'مدیریت تصاویر و توضیحات سایت',
+        instagram: 'مدیریت پیوند و تصاویر ۶ پست اینستاگرام',
+        services: 'تعرفه خدمت معاینه (۲۴۰٬۰۰۰ تومان)',
+        announcement: 'مدیریت نوار اعلان و پیام ویژه بالای سایت',
+        security: 'تغییر کلمه عبور ورود به پنل مدیریت',
+        backup: 'پشتیبان‌گیری و بازنشانی داده‌ها'
+      };
+      const headerTitle = document.getElementById('admin-header-title');
+      if (headerTitle) headerTitle.textContent = titles[sectionId] || 'پنل مدیریت جامع اپتیوا';
+
+      // Refresh data on switch
+      if (sectionId === 'dashboard') refreshDashboardKPIs();
+      if (sectionId === 'products') renderAdminProductsTable();
+      if (sectionId === 'appointments') {
+        renderAdminAppointmentsTable();
+        renderAdminSlots();
+      }
+      if (sectionId === 'reviews') renderAdminReviews();
+      if (sectionId === 'images') loadSiteImagesPreviews();
+      if (sectionId === 'instagram') loadInstagramPostsAdmin();
+    }
+
+    function toggleAdminMobileDrawer() {
+      const drawer = document.getElementById('admin-mobile-drawer');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        drawer.classList.toggle('flex');
+      }
+    }
+
+    // 1. Load Settings into inputs
+    async function loadGeneralSettingsToInputs() {
+      try {
+        const res = await fetch('/api/config');
+        if (!res.ok) return;
+        const data = await res.json();
+        const cfg = data.settings || {};
+
+        if (document.getElementById('cfg-brand-fa')) document.getElementById('cfg-brand-fa').value = 'اپتیوا';
+        if (document.getElementById('cfg-brand-en')) document.getElementById('cfg-brand-en').value = 'OPTIVA VISION';
+        if (document.getElementById('cfg-address')) document.getElementById('cfg-address').value = cfg.address || 'نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم';
+        if (document.getElementById('cfg-phone')) document.getElementById('cfg-phone').value = cfg.phone || '09040148824';
+        if (document.getElementById('cfg-phone-formatted')) document.getElementById('cfg-phone-formatted').value = cfg.phoneFormatted || '۰۹۰۴۰۱۴۸۸۲۴';
+        if (document.getElementById('cfg-rubika-link')) document.getElementById('cfg-rubika-link').value = cfg.rubikaLink || '';
+        if (document.getElementById('cfg-rubika-enabled')) document.getElementById('cfg-rubika-enabled').checked = (cfg.rubikaLink && cfg.rubikaLink.trim() !== '');
+        if (document.getElementById('cfg-instagram-page-url')) document.getElementById('cfg-instagram-page-url').value = cfg.instagramUrl || 'https://instagram.com/optiva_vision';
+        if (document.getElementById('preview-instagram-link-btn')) document.getElementById('preview-instagram-link-btn').href = cfg.instagramUrl || 'https://instagram.com/optiva_vision';
+        if (document.getElementById('cfg-optometrist-name')) document.getElementById('cfg-optometrist-name').value = cfg.doctorName || 'اپتومتریست عاطفه صادقی';
+        if (document.getElementById('cfg-optometrist-title')) document.getElementById('cfg-optometrist-title').value = cfg.doctorTitle || 'اپتومتریست و متخصص سنجش بینایی (نظام پزشکی: ب-۲۸۴۱)';
+
+        if (document.getElementById('cfg-service-fee')) document.getElementById('cfg-service-fee').value = cfg.serviceFee || 240000;
+        if (document.getElementById('cfg-service-fee-words')) document.getElementById('cfg-service-fee-words').value = cfg.serviceFeeWords || 'دویست و چهل هزار تومان';
+
+        const hdrDoc = document.getElementById('header-doctor-name');
+        if (hdrDoc) hdrDoc.textContent = cfg.doctorName || 'اپتومتریست عاطفه صادقی';
+        const hdrAddr = document.getElementById('header-address-summary');
+        if (hdrAddr) hdrAddr.textContent = cfg.address || 'نیشابور، فردوسی شمالی ۱۲';
+      } catch (err) {
+        console.error('Error loading config:', err);
+      }
+    }
+
+    async function saveGeneralSettings() {
+      const rubikaLink = (document.getElementById('cfg-rubika-link')?.value || '').trim();
+      const phone = (document.getElementById('cfg-phone')?.value || '09040148824').trim();
+      const phoneFormatted = (document.getElementById('cfg-phone-formatted')?.value || '۰۹۰۴۰۱۴۸۸۲۴').trim();
+      const address = (document.getElementById('cfg-address')?.value || '').trim();
+      const doctorName = (document.getElementById('cfg-optometrist-name')?.value || '').trim();
+      const doctorTitle = (document.getElementById('cfg-optometrist-title')?.value || '').trim();
+
+      try {
+        const res = await authFetch('/api/admin/settings', {
+          method: 'PUT',
+          body: JSON.stringify({ rubikaLink, phone, phoneFormatted, address, doctorName, doctorTitle })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره تنظیمات');
+        showToast('اطلاعات پایه و ارتباطی با موفقیت در سرور ذخیره گردید', 'success');
+        await loadGeneralSettingsToInputs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    async function saveRubikaSettings() {
+      const isEnabled = document.getElementById('cfg-rubika-enabled')?.checked;
+      let rubikaLink = (document.getElementById('cfg-rubika-link')?.value || '').trim();
+      if (!isEnabled) {
+        rubikaLink = '';
+      }
+
+      try {
+        const res = await authFetch('/api/admin/settings', {
+          method: 'PUT',
+          body: JSON.stringify({ rubikaLink })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره روبیکا');
+        showToast('تنظیمات لینک روبیکا با موفقیت به‌روزرسانی شد', 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    // 2. Clinical Service (Strict Single Service معاینه)
+    async function saveClinicalServiceSettings() {
+      const feeInput = document.getElementById('cfg-service-fee');
+      const feeVal = Number(feeInput ? feeInput.value : 240000);
+
+      if (isNaN(feeVal) || feeVal <= 0) {
+        showToast('مبلغ تعرفه باید یک عدد معتبر به تومان باشد', 'error');
+        return;
+      }
+
+      try {
+        const res = await authFetch('/api/admin/settings', {
+          method: 'PUT',
+          body: JSON.stringify({ serviceFee: feeVal })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره تعرفه');
+        showToast(`تعرفه خدمت معاینه به ${feeVal.toLocaleString('fa-IR')} تومان به‌روزرسانی گردید`, 'success');
+        await refreshDashboardKPIs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    // 3. Appointments Management (Backend Real-time)
+    let cachedAppointments = [];
+
+    async function renderAdminAppointmentsTable() {
+      const tbody = document.getElementById('admin-appts-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-on-surface-variant">در حال بارگذاری نوبت‌های بالینی...</td></tr>`;
+
+      try {
+        const res = await authFetch('/api/admin/appointments');
+        if (!res.ok) throw new Error('خطا در دریافت لیست نوبت‌ها');
+        cachedAppointments = await res.json();
+
+        const q = (document.getElementById('admin-appt-search')?.value || '').toLowerCase().trim();
+        const statusFilter = document.getElementById('admin-appt-status-filter')?.value || 'all';
+
+        const filtered = cachedAppointments.filter(a => {
+          if (statusFilter !== 'all' && a.status !== statusFilter) return false;
+          if (q) {
+            const match = (a.clientName && a.clientName.toLowerCase().includes(q)) ||
+                          (a.clientPhone && a.clientPhone.includes(q)) ||
+                          (a.trackingCode && a.trackingCode.toLowerCase().includes(q));
+            if (!match) return false;
+          }
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-on-surface-variant">هیچ نوبتی مطابق با فیلتر یافت نشد.</td></tr>`;
+          return;
+        }
+
+        const statusMap = {
+          pending: '<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-[10px]">در انتظار بررسی</span>',
+          confirmed: '<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">تأیید شده</span>',
+          rejected: '<span class="px-2.5 py-1 rounded-full bg-red-100 text-red-800 font-bold text-[10px]">رد شده</span>',
+          cancelled: '<span class="px-2.5 py-1 rounded-full bg-surface-container text-outline font-bold text-[10px]">لغو شده</span>'
+        };
+
+        tbody.innerHTML = filtered.map(a => `
+          <tr class="hover:bg-surface-container-low transition">
+            <td class="py-3 px-3">
+              <strong class="text-primary block text-xs">${a.clientName}</strong>
+              <span class="text-[10px] text-secondary font-mono font-bold" dir="ltr">${a.trackingCode}</span>
+            </td>
+            <td class="py-3 px-3 font-mono font-bold text-primary" dir="ltr">${a.clientPhone}</td>
+            <td class="py-3 px-3 text-on-surface">
+              <span class="font-bold text-xs">${a.service}</span>
+              <span class="text-[10px] text-on-surface-variant block">${(a.fee || 240000).toLocaleString('fa-IR')} تومان</span>
+            </td>
+            <td class="py-3 px-3 text-primary font-medium text-xs">
+              <span>${a.day}</span> • <span class="font-mono text-secondary font-bold" dir="ltr">${a.time}</span>
+            </td>
+            <td class="py-3 px-3">${statusMap[a.status] || a.status}</td>
+            <td class="py-3 px-3 text-[11px] text-on-surface-variant max-w-[180px] truncate">${a.adminNotes || '-'}</td>
+            <td class="py-3 px-3 text-center">
+              <div class="flex items-center justify-center gap-1">
+                <a href="tel:${a.clientPhone}" class="p-1.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim transition" title="تماس تلفنی">
+                  <span class="material-symbols-outlined text-[16px]">call</span>
+                </a>
+                <button onclick="openAppointmentModal('${a.id}')" class="p-1.5 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition" title="تغییر وضعیت">
+                  <span class="material-symbols-outlined text-[16px]">edit</span>
+                </button>
+                <button onclick="deleteAppointment('${a.id}')" class="p-1.5 rounded-lg bg-surface-container text-error hover:bg-red-600 hover:text-white transition" title="حذف نوبت">
+                  <span class="material-symbols-outlined text-[16px]">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-error">${err.message}</td></tr>`;
+      }
+    }
+
+    function filterAdminAppointmentsTable() {
+      renderAdminAppointmentsTable();
+    }
+
+    function openAppointmentModal(id) {
+      const a = cachedAppointments.find(item => item.id === id);
+      if (!a) return;
+
+      document.getElementById('appt-id').value = a.id;
+      document.getElementById('appt-view-tracking').textContent = a.trackingCode;
+      document.getElementById('appt-view-name').textContent = a.clientName;
+      document.getElementById('appt-view-phone').textContent = a.clientPhone;
+      document.getElementById('appt-view-time').textContent = `${a.day} ساعت ${a.time}`;
+      document.getElementById('appt-status').value = a.status || 'pending';
+      document.getElementById('appt-notes').value = a.adminNotes || '';
+
+      document.getElementById('modal-appt-editor').classList.remove('hidden');
+      document.getElementById('modal-appt-editor').classList.add('flex');
+    }
+
+    function closeAppointmentModal() {
+      document.getElementById('modal-appt-editor').classList.add('hidden');
+      document.getElementById('modal-appt-editor').classList.remove('flex');
+    }
+
+    async function saveAppointmentStatus() {
+      const id = document.getElementById('appt-id').value;
+      const status = document.getElementById('appt-status').value;
+      const adminNotes = document.getElementById('appt-notes').value.trim();
+
+      try {
+        const res = await authFetch(`/api/admin/appointments/${id}/status`, {
+          method: 'PUT',
+          body: JSON.stringify({ status, adminNotes })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در به‌روزرسانی نوبت');
+
+        closeAppointmentModal();
+        showToast('وضعیت نوبت مراجعه‌کننده با موفقیت ذخیره گردید', 'success');
+        await renderAdminAppointmentsTable();
+        await renderAdminSlots();
+        await refreshDashboardKPIs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    async function deleteAppointment(id) {
+      if (!confirm('آیا از حذف این نوبت از کارتابل کلینیک اطمینان دارید؟ زمان آن آزاد خواهد شد.')) return;
+
+      try {
+        const res = await authFetch(`/api/admin/appointments/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در حذف نوبت');
+
+        showToast('نوبت با موفقیت از سیستم حذف گردید', 'info');
+        await renderAdminAppointmentsTable();
+        await renderAdminSlots();
+        await refreshDashboardKPIs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    // 4. Slots Management
+    let cachedSlots = [];
+
+    async function renderAdminSlots() {
+      const container = document.getElementById('admin-slots-list');
+      if (!container) return;
+
+      try {
+        const res = await authFetch('/api/admin/slots');
+        if (!res.ok) return;
+        cachedSlots = await res.json();
+
+        if (cachedSlots.length === 0) {
+          container.innerHTML = '<p class="text-xs text-on-surface-variant col-span-full py-4 text-center">هیچ بازه زمانی تعریف نشده است. جهت نوبت‌دهی مراجعه‌کنندگان، بازه جدید ایجاد کنید.</p>';
+          return;
+        }
+
+        container.innerHTML = cachedSlots.map(s => `
+          <div class="p-3 rounded-xl border ${s.isBooked ? 'bg-surface-container-high/60 border-surface-container text-on-surface-variant' : 'bg-surface-container-lowest border-secondary/30 text-primary'} flex items-center justify-between text-xs transition">
+            <div>
+              <span class="font-bold">${s.day}</span>
+              <span class="font-mono text-secondary font-bold mr-1.5" dir="ltr">${s.time}</span>
+              ${s.isBooked ? '<span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded mr-1">رزرو شده</span>' : '<span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded mr-1">خالی</span>'}
+            </div>
+            <button onclick="deleteSlot('${s.id}')" class="p-1 rounded-lg hover:bg-error/10 text-error transition" title="حذف این بازه">
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error rendering slots:', err);
+      }
+    }
+
+    function openSlotModal() {
+      const modal = document.getElementById('modal-slot-editor');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeSlotModal() {
+      const modal = document.getElementById('modal-slot-editor');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    async function saveNewSlot() {
+      const day = document.getElementById('new-slot-day')?.value;
+      const time = document.getElementById('new-slot-time')?.value;
+
+      if (!day || !time) {
+        showToast('لطفاً روز و ساعت را مشخص نمایید', 'error');
+        return;
+      }
+
+      try {
+        const res = await authFetch('/api/admin/slots', {
+          method: 'POST',
+          body: JSON.stringify({ day, time })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ایجاد بازه زمانی');
+
+        closeSlotModal();
+        showToast('زمان نوبت با موفقیت افزوده شد', 'success');
+        await renderAdminSlots();
+        await refreshDashboardKPIs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    async function deleteSlot(id) {
+      if (!confirm('آیا از حذف این بازه زمانی اطمینان دارید؟')) return;
+
+      try {
+        const res = await authFetch(`/api/admin/slots/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در حذف بازه زمانی');
+
+        showToast('بازه زمانی حذف گردید', 'info');
+        await renderAdminSlots();
+        await refreshDashboardKPIs();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    // 5. Site Images Upload & Management (URL + Description Editable)
+    async function loadSiteImagesPreviews() {
+      try {
+        const res = await authFetch('/api/admin/images');
+        if (!res.ok) return;
+        const images = await res.json();
+
+        const keys = ['hero_banner', 'clinic_main', 'doctor_photo', 'service_exam', 'boutique_showcase'];
+        keys.forEach(key => {
+          const rec = images[key];
+          const url = typeof rec === 'string' ? rec : (rec && rec.url) ? rec.url : '';
+          const desc = typeof rec === 'object' && rec && rec.description !== undefined ? rec.description : '';
+
+          const previewEl = document.getElementById(`img-preview-${key}`);
+          if (previewEl && url) previewEl.src = url;
+
+          const urlInput = document.getElementById(`cfg-img-url-${key}`);
+          if (urlInput) urlInput.value = url;
+
+          const descInput = document.getElementById(`cfg-img-desc-${key}`);
+          if (descInput) descInput.value = desc;
+        });
+      } catch (err) {
+        console.error('Error loading image previews:', err);
+      }
+    }
+
+    async function saveSiteImageRecord(key) {
+      const urlInput = document.getElementById(`cfg-img-url-${key}`);
+      const descInput = document.getElementById(`cfg-img-desc-${key}`);
+
+      const url = urlInput ? urlInput.value.trim() : '';
+      const description = descInput ? descInput.value.trim() : '';
+
+      if (!url) {
+        showToast('لطفاً آدرس تصویر یا فایلی را برای تصویر وارد نمایید', 'error');
+        return;
+      }
+
+      try {
+        const res = await authFetch(`/api/admin/images/${key}`, {
+          method: 'PUT',
+          body: JSON.stringify({ url, description })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره تصویر و توضیحات');
+
+        const previewEl = document.getElementById(`img-preview-${key}`);
+        if (previewEl) previewEl.src = url;
+
+        showToast('تصویر و توضیحات با موفقیت ذخیره و در سایت اعمال شد', 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    function handleImageFileSelect(event, key, previewImgId, urlInputId) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const allowed = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!allowed.includes(file.type)) {
+        showToast('فقط فایل‌های JPEG, PNG و WebP مجاز هستند', 'error');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('حجم فایل تصویر نباید از ۵ مگابایت بیشتر باشد', 'error');
+        return;
+      }
+
+      const descInput = document.getElementById(`cfg-img-desc-${key}`);
+      const currentDesc = descInput ? descInput.value.trim() : '';
+
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        const base64Data = e.target.result;
+
+        showToast('در حال آپلود و ذخیره تصویر روی سرور...', 'info');
+
+        try {
+          const res = await authFetch('/api/admin/images/upload', {
+            method: 'POST',
+            body: JSON.stringify({
+              key,
+              base64Data,
+              mimeType: file.type,
+              description: currentDesc
+            })
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'خطا در آپلود تصویر');
+
+          const previewEl = document.getElementById(previewImgId);
+          if (previewEl) {
+            previewEl.src = data.imageUrl;
+          }
+          const urlInput = document.getElementById(urlInputId);
+          if (urlInput) {
+            urlInput.value = data.imageUrl;
+          }
+
+          showToast('تصویر با موفقیت آپلود و در سایت جایگزین شد', 'success');
+        } catch (err) {
+          showToast(err.message, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5b. Instagram Settings & Posts Management
+    async function saveInstagramPageUrl() {
+      const urlInput = document.getElementById('cfg-instagram-page-url');
+      const instagramUrl = urlInput ? urlInput.value.trim() : '';
+
+      if (!instagramUrl) {
+        showToast('لطفاً آدرس معتبر صفحه اینستاگرام را وارد نمایید', 'error');
+        return;
+      }
+
+      try {
+        const res = await authFetch('/api/admin/settings', {
+          method: 'PUT',
+          body: JSON.stringify({ instagramUrl })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره آدرس اینستاگرام');
+
+        const previewBtn = document.getElementById('preview-instagram-link-btn');
+        if (previewBtn) previewBtn.href = instagramUrl;
+
+        showToast('لینک صفحه اینستاگرام با موفقیت در سیستم به‌روزرسانی شد', 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    let cachedInstagramPosts = [];
+
+    async function loadInstagramPostsAdmin() {
+      const container = document.getElementById('admin-instagram-posts-container');
+      if (!container) return;
+
+      container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-on-surface-variant">در حال دریافت پست‌های اینستاگرام...</div>`;
+
+      try {
+        const res = await authFetch('/api/admin/instagram-posts');
+        if (!res.ok) throw new Error('خطا در دریافت لیست پست‌های اینستاگرام');
+        cachedInstagramPosts = await res.json();
+
+        if (cachedInstagramPosts.length === 0) {
+          container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-on-surface-variant">هیچ پستی یافت نشد.</div>`;
+          return;
+        }
+
+        container.innerHTML = cachedInstagramPosts.map((post, idx) => `
+          <div class="p-4 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col justify-between space-y-3.5" id="admin-ig-card-${post.id}">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-primary flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                  <span>پست ${idx + 1} اینستاگرام</span>
+                </span>
+                <span class="text-[10px] text-on-surface-variant font-mono" dir="ltr">${post.id}</span>
+              </div>
+
+              <!-- Image Thumbnail Preview -->
+              <div class="w-full aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-surface-container relative">
+                <img id="admin-ig-preview-${post.id}" src="${post.image}" alt="${post.caption || ''}" class="w-full h-full object-cover">
+              </div>
+
+              <!-- Image URL Input -->
+              <div class="space-y-1">
+                <label class="text-[11px] font-bold text-primary block">آدرس تصویر (URL):</label>
+                <input type="text" id="admin-ig-url-${post.id}" value="${post.image}" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary font-mono text-[11px] focus:outline-secondary" dir="ltr">
+              </div>
+
+              <!-- Caption Text Input -->
+              <div class="space-y-1">
+                <label class="text-[11px] font-bold text-primary block">متن / توضیحات کپشن پست:</label>
+                <textarea id="admin-ig-caption-${post.id}" rows="2" class="w-full p-2 rounded-xl bg-surface-container-lowest border border-surface-container text-primary text-xs focus:outline-secondary leading-relaxed" placeholder="کپشن تصویر اینستاگرام...">${post.caption || ''}</textarea>
+              </div>
+            </div>
+
+            <!-- Upload & Save Actions -->
+            <div class="pt-2 border-t border-surface-container space-y-2">
+              <input type="file" id="admin-ig-file-${post.id}" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleInstagramPostFileUpload(event, '${post.id}')">
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="document.getElementById('admin-ig-file-${post.id}').click()" class="py-2 px-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-xs font-bold transition flex items-center justify-center gap-1 border border-surface-container">
+                  <span class="material-symbols-outlined text-[15px]">upload</span>
+                  <span>آپلود تصویر</span>
+                </button>
+                <button type="button" onclick="saveInstagramPost('${post.id}')" class="py-2 px-2 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs">
+                  <span class="material-symbols-outlined text-[15px]">save</span>
+                  <span>ذخیره تغییرات</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-error">${err.message}</div>`;
+      }
+    }
+
+    async function saveInstagramPost(id) {
+      const urlInput = document.getElementById(`admin-ig-url-${id}`);
+      const captionInput = document.getElementById(`admin-ig-caption-${id}`);
+
+      const image = urlInput ? urlInput.value.trim() : '';
+      const caption = captionInput ? captionInput.value.trim() : '';
+
+      if (!image) {
+        showToast('آدرس تصویر پست نباید خالی باشد', 'error');
+        return;
+      }
+
+      try {
+        const res = await authFetch(`/api/admin/instagram-posts/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ image, caption })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ذخیره پست');
+
+        const previewEl = document.getElementById(`admin-ig-preview-${id}`);
+        if (previewEl) previewEl.src = image;
+
+        showToast('تصویر و متن پست اینستاگرام با موفقیت به‌روزرسانی شد', 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    function handleInstagramPostFileUpload(event, id) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const allowed = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!allowed.includes(file.type)) {
+        showToast('فقط فایل‌های JPEG, PNG و WebP مجاز هستند', 'error');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('حجم فایل تصویر نباید از ۵ مگابایت بیشتر باشد', 'error');
+        return;
+      }
+
+      const captionInput = document.getElementById(`admin-ig-caption-${id}`);
+      const caption = captionInput ? captionInput.value.trim() : '';
+
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        const base64Data = e.target.result;
+        showToast('در حال آپلود تصویر پست اینستاگرام...', 'info');
+
+        try {
+          const res = await authFetch('/api/admin/instagram-posts/upload', {
+            method: 'POST',
+            body: JSON.stringify({
+              id,
+              base64Data,
+              mimeType: file.type,
+              caption
+            })
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'خطا در آپلود تصویر پست');
+
+          const previewEl = document.getElementById(`admin-ig-preview-${id}`);
+          if (previewEl) previewEl.src = data.imageUrl;
+
+          const urlInput = document.getElementById(`admin-ig-url-${id}`);
+          if (urlInput) urlInput.value = data.imageUrl;
+
+          showToast('تصویر پست اینستاگرام با موفقیت آپلود و ذخیره گردید', 'success');
+        } catch (err) {
+          showToast(err.message, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5c. Change Admin Password
+    async function changeAdminPasswordAction() {
+      const curInput = document.getElementById('admin-cur-password');
+      const newInput = document.getElementById('admin-new-password');
+      const confInput = document.getElementById('admin-confirm-password');
+      const feedback = document.getElementById('password-change-feedback');
+      const saveBtn = document.getElementById('btn-save-password');
+
+      const currentPassword = curInput ? curInput.value : '';
+      const newPassword = newInput ? newInput.value : '';
+      const confirmPassword = confInput ? confInput.value : '';
+
+      if (feedback) {
+        feedback.classList.add('hidden');
+        feedback.textContent = '';
+      }
+
+      if (!currentPassword || !newPassword) {
+        showToast('لطفاً رمز عبور فعلی و جدید را وارد فرمایید', 'error');
+        return;
+      }
+
+      if (newPassword.length < 4) {
+        showToast('کلمه عبور جدید باید حداقل دارای ۴ کاراکتر باشد', 'error');
+        return;
+      }
+
+      if (newPassword !== confirmPassword) {
+        showToast('تکرار کلمه عبور جدید با کلمه عبور همخوانی ندارد', 'error');
+        return;
+      }
+
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span><span>در حال ثبت رمز جدید...</span>';
+      }
+
+      try {
+        const res = await authFetch('/api/admin/change-password', {
+          method: 'POST',
+          body: JSON.stringify({ currentPassword, newPassword })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در تغییر کلمه عبور');
+
+        if (data.token) {
+          setAuthToken(data.token);
+        }
+
+        if (curInput) curInput.value = '';
+        if (newInput) newInput.value = '';
+        if (confInput) confInput.value = '';
+
+        if (feedback) {
+          feedback.classList.remove('hidden', 'text-error', 'bg-red-50');
+          feedback.classList.add('text-emerald-800', 'bg-emerald-50', 'border-emerald-200');
+          feedback.innerHTML = `<span class="material-symbols-outlined text-[16px] text-emerald-600 align-middle mr-1">check_circle</span><strong>کلمه عبور مدیریت با موفقیت تغییر یافت.</strong> نشست شما فعال مانده و برای ورودهای آتی از رمز جدید استفاده فرمایید.`;
+        }
+
+        showToast('کلمه عبور مدیریت با موفقیت تغییر کرد', 'success');
+      } catch (err) {
+        if (feedback) {
+          feedback.classList.remove('hidden', 'text-emerald-800', 'bg-emerald-50');
+          feedback.classList.add('text-error', 'bg-red-50', 'border-error/20');
+          feedback.textContent = err.message || 'خطا در تغییر کلمه عبور.';
+        }
+        showToast(err.message, 'error');
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">key</span><span>ثبت و ذخیره کلمه عبور جدید</span>';
+        }
+      }
+    }
+
+    // 6. Products Catalog Management
+    function renderAdminProductsTable() {
+      const tbody = document.getElementById('admin-products-table-body');
+      if (!tbody) return;
+      const products = getOptivaProducts();
+      const q = (document.getElementById('admin-product-search')?.value || '').toLowerCase().trim();
+      const cat = document.getElementById('admin-product-cat-filter')?.value || 'all';
+
+      const filtered = products.filter(p => {
+        if (cat !== 'all' && p.category !== cat) return false;
+        if (q) {
+          const match = (p.faName && p.faName.toLowerCase().includes(q)) || p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-on-surface-variant">هیچ کالایی مطابق با فیلتر یافت نشد.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(p => `
+        <tr class="hover:bg-surface-container-low transition">
+          <td class="py-3 px-3">
+            <div class="w-12 h-12 rounded-lg bg-surface-container-lowest p-1 border border-surface-container flex items-center justify-center">
+              <img src="${p.image}" alt="" class="max-w-full max-h-full object-contain">
+            </div>
+          </td>
+          <td class="py-3 px-3 font-mono font-bold text-primary" dir="ltr">${p.id}</td>
+          <td class="py-3 px-3">
+            <strong class="text-primary block">${p.faName || p.name}</strong>
+            <span class="text-[10px] text-on-surface-variant font-mono" dir="ltr">${p.name}</span>
+          </td>
+          <td class="py-3 px-3">
+            <span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-bold text-[10px]">${p.categoryName || p.category}</span>
+            <span class="text-[10px] text-on-surface-variant mr-1">${p.materialName || p.material}</span>
+          </td>
+          <td class="py-3 px-3 font-bold font-headline-sm text-primary">
+            ${(p.price || 0).toLocaleString('fa-IR')}
+          </td>
+          <td class="py-3 px-3">
+            <button onclick="toggleProductStock('${p.id}')" class="px-2 py-1 rounded-full text-[10px] font-bold ${p.inStockNishabur !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">
+              ${p.inStockNishabur !== false ? 'موجود در نیشابور' : 'عدم موجودی'}
+            </button>
+          </td>
+          <td class="py-3 px-3 text-center">
+            <div class="flex items-center justify-center gap-1">
+              <button onclick="openProductEditModal('${p.id}')" class="p-1.5 rounded-lg bg-surface-container text-primary hover:bg-secondary hover:text-white transition" title="ویرایش">
+                <span class="material-symbols-outlined text-[16px]">edit</span>
+              </button>
+              <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-surface-container text-error hover:bg-red-600 hover:text-white transition" title="حذف">
+                <span class="material-symbols-outlined text-[16px]">delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterAdminProductsTable() {
+      renderAdminProductsTable();
+    }
+
+    function toggleProductStock(id) {
+      const list = getOptivaProducts();
+      const p = list.find(item => item.id === id);
+      if (p) {
+        p.inStockNishabur = !(p.inStockNishabur !== false);
+        saveOptivaProducts(list);
+        renderAdminProductsTable();
+        showToast(`وضعیت موجودی فریم «${p.faName || p.name}» تغییر یافت`, 'info');
+      }
+    }
+
+    function deleteProduct(id) {
+      if (!confirm(`آیا از حذف محصول با کد ${id} از کاتالوگ اطمینان دارید؟`)) return;
+      let list = getOptivaProducts();
+      list = list.filter(p => p.id !== id);
+      saveOptivaProducts(list);
+      renderAdminProductsTable();
+      refreshDashboardKPIs();
+      showToast('فریم با موفقیت از سیستم حذف گردید', 'success');
+    }
+
+    function openProductEditModal(id) {
+      const isNew = !id;
+      document.getElementById('prod-edit-is-new').value = isNew ? 'true' : 'false';
+      document.getElementById('modal-product-title').textContent = isNew ? 'افزودن فریم جدید به کاتالوگ' : `ویرایش فریم ${id}`;
+
+      if (isNew) {
+        document.getElementById('prod-id').value = 'OPT-' + Math.floor(100 + Math.random() * 900);
+        document.getElementById('prod-id').readOnly = false;
+        document.getElementById('prod-category').value = 'optical';
+        document.getElementById('prod-fa-name').value = '';
+        document.getElementById('prod-name').value = '';
+        document.getElementById('prod-material-name').value = 'تیتانیوم ژاپن';
+        document.getElementById('prod-price').value = 8500000;
+        document.getElementById('prod-image').value = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDKY5CsiBn2nhoD_XiCa1XyQsrAb8a5EKADDjTkGNWvgdY9qFsBM3AyfGCJhF4KRCTi_7WRD7zx_CyINIUD24QHWRJC6vC5EhBXpNVpKjuvIiyqvGY4P2z5GJkxyz5TTeyBIS6LFIEtwpZdLO6OyzuRnQ3nBQhFj3hEN0X0P7SKDfHjfAr_bpOn2JvkkjBcnbECHiYJPFjkPy4qa9me4kbfM4si609e5Ppv6cTpyqFd_MR9FMQODw2';
+        document.getElementById('prod-weight').value = '12 g';
+        document.getElementById('prod-lens-w').value = '51 mm';
+        document.getElementById('prod-bridge-w').value = '19 mm';
+        document.getElementById('prod-temple-l').value = '145 mm';
+        document.getElementById('prod-description').value = '';
+        document.getElementById('prod-in-stock').checked = true;
+      } else {
+        const list = getOptivaProducts();
+        const p = list.find(item => item.id === id);
+        if (!p) return;
+        document.getElementById('prod-id').value = p.id;
+        document.getElementById('prod-id').readOnly = true;
+        document.getElementById('prod-category').value = p.category;
+        document.getElementById('prod-fa-name').value = p.faName || p.name;
+        document.getElementById('prod-name').value = p.name;
+        document.getElementById('prod-material-name').value = p.materialName || p.material;
+        document.getElementById('prod-price').value = p.price;
+        document.getElementById('prod-image').value = p.image;
+        document.getElementById('prod-weight').value = p.weight || '12 g';
+        document.getElementById('prod-lens-w').value = p.lensWidth || '51 mm';
+        document.getElementById('prod-bridge-w').value = p.bridgeWidth || '19 mm';
+        document.getElementById('prod-temple-l').value = p.templeLength || '145 mm';
+        document.getElementById('prod-description').value = p.description || '';
+        document.getElementById('prod-in-stock').checked = p.inStockNishabur !== false;
+      }
+
+      document.getElementById('modal-product-editor').classList.remove('hidden');
+      document.getElementById('modal-product-editor').classList.add('flex');
+    }
+
+    function closeProductEditModal() {
+      document.getElementById('modal-product-editor').classList.add('hidden');
+      document.getElementById('modal-product-editor').classList.remove('flex');
+    }
+
+    function setProductPresetImage(num) {
+      const presets = [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBDKY5CsiBn2nhoD_XiCa1XyQsrAb8a5EKADDjTkGNWvgdY9qFsBM3AyfGCJhF4KRCTi_7WRD7zx_CyINIUD24QHWRJC6vC5EhBXpNVpKjuvIiyqvGY4P2z5GJkxyz5TTeyBIS6LFIEtwpZdLO6OyzuRnQ3nBQhFj3hEN0X0P7SKDfHjfAr_bpOn2JvkkjBcnbECHiYJPFjkPy4qa9me4kbfM4si609e5Ppv6cTpyqFd_MR9FMQODw2',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuA_FGd3SC1-Pm0rzt7JVf6U3HpDT1GmTx0ckQUEILXtM8U1njYtyc4nUrDGf72XO3AYfNBJ8qcG1jnZnMnasjCaf1AjUkfbFlVNY5owB7Banf-X06b853mWNUToucSIxSPv_Q2Rq0SHZDd0NJ4oZM5W40et2cABoQ-u9WDsncCqB2aeXXvrNY8K4CmsGDeMv32y6c53pjojJOIQKYsPDqnMOQ3E2bG3hK7M9UuB7h33xV8iqtU2mVO7',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBhUNG9NCUEDJDcQmRh0P6tbdreoqQmUFh7XUkOlZTqzvJsKPFaBfJw7FMzZsyu0P8ZmWNfRj_38l_BFzf9PlrZPv5cZDtWxJZ7lmt1yZ41rCYM7ErBrEHkS1-YTIc6U3ISqxIXrsGh-d1W51YrEeUz5UJcbzBGiJ5kA6-9tVShtwcS2o99nVhFLNhzClJGvg4H_Iw5dkl-9-Jglh7oFBONuK43qYpZeQ-7tnKNXm-KvRdW_fegtLcP',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCOBCgB5AlYLgmoHHnteorp_ViTHCxvJ2_JzKyp0Ii8CWRPD7GHrELn0OluZVpvdu7FFOkmC0wMEbR1lL8rIqLiUHm0xQGzjo8uEEGXp59-ozHjxG_3-eJzN3m3C9MATX0yNHql35Wbc0z0Bd_vS4bNNfJUw3R5YoykXfnginmREKTsQDXxUYT3cosJSyc5rdv2qYSNhZeX8PFxrYITaYxlCbQGvTmyOG7zR-QZyKkpOCjM76K9C3rK',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD-FqhomcViNicT2VNxlwZjEcd8Xlzp8lYNsKaw1CBpnsRGgBVKmJX8tvYjKuqnGmta5H2otRyZn0lFzB-9LR9SgjHjQhEozlts7XXtMKEfn5aC2YR2qabjnSfzDNpO8uZJcTU3mstveB4ODHjeU5N1gTeUdq-BdJmBOwkDPRZ5XPOttiX-nBOAFXvZ0ubkhydkKvKR1BGXoCJvFxcygNsdAeRNzJi97n4Jg1fxsvYDuBNRIgBlByg8'
+      ];
+      const imgInput = document.getElementById('prod-image');
+      if (imgInput && presets[num - 1]) imgInput.value = presets[num - 1];
+    }
+
+    function saveProductFromModal() {
+      const isNew = document.getElementById('prod-edit-is-new').value === 'true';
+      const id = document.getElementById('prod-id').value.trim();
+      const priceNum = parseInt(document.getElementById('prod-price').value, 10) || 0;
+
+      const pData = {
+        id: id,
+        name: document.getElementById('prod-name').value.trim(),
+        faName: document.getElementById('prod-fa-name').value.trim(),
+        category: document.getElementById('prod-category').value,
+        categoryName: document.getElementById('prod-category').options[document.getElementById('prod-category').selectedIndex].text.split('(')[0].trim(),
+        material: 'custom',
+        materialName: document.getElementById('prod-material-name').value.trim(),
+        price: priceNum,
+        formattedPrice: priceNum.toLocaleString('fa-IR'),
+        weight: document.getElementById('prod-weight').value.trim(),
+        lensWidth: document.getElementById('prod-lens-w').value.trim(),
+        bridgeWidth: document.getElementById('prod-bridge-w').value.trim(),
+        templeLength: document.getElementById('prod-temple-l').value.trim(),
+        image: document.getElementById('prod-image').value.trim(),
+        description: document.getElementById('prod-description').value.trim(),
+        inStockNishabur: document.getElementById('prod-in-stock').checked,
+        colors: [
+          { name: 'مشکی مات استاندارد', hex: '#142A43' },
+          { name: 'طلایی شامپاینی', hex: '#D4AF37' }
+        ]
+      };
+
+      const list = getOptivaProducts();
+      if (isNew) {
+        list.unshift(pData);
+      } else {
+        const idx = list.findIndex(item => item.id === id);
+        if (idx !== -1) list[idx] = Object.assign(list[idx], pData);
+      }
+
+      saveOptivaProducts(list);
+      closeProductEditModal();
+      renderAdminProductsTable();
+      refreshDashboardKPIs();
+      showToast(`فریم «${pData.faName}» با موفقیت ذخیره شد`, 'success');
+    }
+
+    // 7. Refresh Dashboard KPIs
+    async function refreshDashboardKPIs() {
+      const products = getOptivaProducts();
+      const pCountEl = document.getElementById('kpi-products-count');
+      if (pCountEl) pCountEl.textContent = products.length.toLocaleString('fa-IR');
+
+      try {
+        const [cfgRes, apptsRes] = await Promise.all([
+          fetch('/api/config'),
+          authFetch('/api/admin/appointments').catch(() => null)
+        ]);
+
+        if (cfgRes.ok) {
+          const cfgData = await cfgRes.json();
+          const cfg = cfgData.settings || {};
+          const feeEl = document.getElementById('kpi-service-fee-val');
+          if (feeEl) feeEl.textContent = (cfg.serviceFee || 240000).toLocaleString('fa-IR');
+
+          const dashAddr = document.getElementById('dash-summary-address');
+          if (dashAddr) dashAddr.textContent = cfg.address || 'نیشابور، فردوسی شمالی ۱۲';
+          const dashPhone = document.getElementById('dash-summary-phone');
+          if (dashPhone) dashPhone.textContent = cfg.phoneFormatted || cfg.phone || '۰۹۰۴۰۱۴۸۸۲۴';
+          const dashRubika = document.getElementById('dash-summary-rubika');
+          if (dashRubika) dashRubika.textContent = cfg.rubikaLink || 'غیرفعال';
+        }
+
+        if (apptsRes && apptsRes.ok) {
+          const appts = await apptsRes.json();
+          const pendingCount = appts.filter(a => a.status === 'pending').length;
+          const apptCountEl = document.getElementById('kpi-pending-appts');
+          if (apptCountEl) apptCountEl.textContent = pendingCount.toLocaleString('fa-IR');
+
+          const sideBadge = document.getElementById('sidebar-appts-badge');
+          if (sideBadge) sideBadge.textContent = pendingCount.toLocaleString('fa-IR');
+
+          const recentContainer = document.getElementById('dashboard-recent-appts');
+          if (recentContainer) {
+            if (appts.length === 0) {
+              recentContainer.innerHTML = '<p class="text-xs text-on-surface-variant py-2">هیچ نوبتی ثبت نشده است.</p>';
+            } else {
+              recentContainer.innerHTML = appts.slice(0, 4).map(a => `
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-xs border border-surface-container">
+                  <div>
+                    <strong class="text-primary block">${a.clientName}</strong>
+                    <span class="text-on-surface-variant text-[11px]">${a.service} • ${a.day} ساعت ${a.time}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-mono text-secondary font-bold" dir="ltr">${a.clientPhone}</span>
+                    <a href="tel:${a.clientPhone}" class="p-1 rounded bg-secondary-fixed text-on-secondary-fixed">
+                      <span class="material-symbols-outlined text-[14px]">call</span>
+                    </a>
+                  </div>
+                </div>
+              `).join('');
+            }
+          }
+        }
+      } catch (e) {
+        console.error('Error refreshing KPIs:', e);
+      }
+    }
+
+    // 8. Backup & Restore (Full JSON Persistence)
+    async function downloadBackupJSON() {
+      try {
+        const res = await authFetch('/api/admin/backup');
+        if (!res.ok) throw new Error('خطا در دریافت پشتیبان از سرور');
+        const data = await res.json();
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `optiva_backup_${new Date().toISOString().slice(0, 10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+        showToast('فایل پشتیبان JSON با موفقیت دانلود شد', 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    }
+
+    function handleBackupFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          const res = await authFetch('/api/admin/restore', {
+            method: 'POST',
+            body: JSON.stringify(parsed)
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'خطا در بازیابی پشتیبان');
+
+          showToast('فایل پشتیبان با موفقیت روی سرور اعمال گردید', 'success');
+          await loadAllAdminData();
+        } catch (err) {
+          showToast(err.message || 'فایل نامعتبر است', 'error');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // =========================================================================
+    // REVIEWS MANAGEMENT (ADMIN WORKSPACE)
+    // =========================================================================
+    let cachedAdminReviews = [];
+    let currentAdminReviewsFilter = 'all';
+
+    async function loadAdminReviewsData() {
+      try {
+        const res = await authFetch('/api/admin/reviews');
+        if (res.ok) {
+          cachedAdminReviews = await res.json();
+          updateReviewsBadge();
+          return cachedAdminReviews;
+        }
+      } catch (e) {}
+
+      // Fallback to local storage or defaults
+      const local = JSON.parse(localStorage.getItem('optiva_reviews') || '[]');
+      if (local.length > 0) {
+        cachedAdminReviews = local;
+      } else {
+        cachedAdminReviews = [
+          {
+            id: 'rev-1',
+            name: 'مهندس علیرضا سلیمانی',
+            service: 'معاینه تخصصی اپتومتری و تعیین نمره',
+            rating: 5,
+            comment: 'دقت معاینه و توضیحات اپتومتریست بسیار دقیق و علمی بود. برای اولین بار نمره آستیگماتیسم من بدون ایجاد سردرد تنظیم شد. محیط کلینیک بسیار آرام و مدرن است.',
+            date: '۱۴۰۳/۰۸/۱۰',
+            status: 'approved'
+          },
+          {
+            id: 'rev-2',
+            name: 'دکتر مریم کمالی',
+            service: 'معاینه تخصصی چشم و فیتینگ فریم',
+            rating: 5,
+            comment: 'برخورد بسیار محترمانه کادر و اختصاص زمان کافی برای معاینه بالینی واقعاً ارزشمند بود. تجهیزات تشخیصی سطح بالا هستند و فریم‌های برند بسیار باکیفیتی موجود دارند.',
+            date: '۱۴۰۳/۰۸/۱۵',
+            status: 'approved'
+          },
+          {
+            id: 'rev-3',
+            name: 'سجاد رضایی',
+            service: 'تعیین نمره عینک طبی',
+            rating: 5,
+            comment: 'پذیرش با نوبت قبلی سبب شد هیچ معطلی نداشته باشم. وضوح دید با عدسی تجویزی بی‌نظیره و خستگی چشم حین کار با کامپیوتر کاملاً رفع شد.',
+            date: '۱۴۰۳/۰۸/۲۲',
+            status: 'approved'
+          },
+          {
+            id: 'rev-4',
+            name: 'زهرا ناصری',
+            service: 'معاینه تخصصی اپتومتری',
+            rating: 5,
+            comment: 'بسیار دقیق و باحوصله همه تست‌های بینایی سنجیده شد. راهنمایی‌های پزشک برای نگهداری از چشم و انتخاب عینک عالی بود. سپاس از مجموعه وزین اپتیوا.',
+            date: '۱۴۰۳/۰۸/۲۸',
+            status: 'approved'
+          }
+        ];
+      }
+      updateReviewsBadge();
+      return cachedAdminReviews;
+    }
+
+    function updateReviewsBadge() {
+      const pendingCount = cachedAdminReviews.filter(r => r.status === 'pending').length;
+      const badgeSide = document.getElementById('sidebar-reviews-badge');
+      if (badgeSide) badgeSide.textContent = pendingCount.toLocaleString('fa-IR');
+    }
+
+    function filterAdminReviews(status) {
+      currentAdminReviewsFilter = status;
+      document.querySelectorAll('.review-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'shadow-2xs');
+        btn.classList.add('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+      });
+      const activeBtn = document.getElementById('rf-' + status);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+        activeBtn.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'shadow-2xs');
+      }
+      renderAdminReviews();
+    }
+
+    async function renderAdminReviews() {
+      const listContainer = document.getElementById('admin-reviews-list');
+      if (!listContainer) return;
+
+      if (cachedAdminReviews.length === 0) {
+        await loadAdminReviewsData();
+      }
+
+      // Update counts
+      const pendingCount = cachedAdminReviews.filter(r => r.status === 'pending').length;
+      const approvedCount = cachedAdminReviews.filter(r => r.status === 'approved').length;
+      
+      updateReviewsBadge();
+
+      const countAll = document.getElementById('count-rf-all');
+      if (countAll) countAll.textContent = cachedAdminReviews.length.toLocaleString('fa-IR');
+
+      const countPending = document.getElementById('count-rf-pending');
+      if (countPending) countPending.textContent = pendingCount.toLocaleString('fa-IR');
+
+      const countApproved = document.getElementById('count-rf-approved');
+      if (countApproved) countApproved.textContent = approvedCount.toLocaleString('fa-IR');
+
+      const q = (document.getElementById('admin-reviews-search')?.value || '').toLowerCase().trim();
+
+      const filtered = cachedAdminReviews.filter(r => {
+        if (currentAdminReviewsFilter !== 'all' && r.status !== currentAdminReviewsFilter) return false;
+        if (q) {
+          const match = (r.name && r.name.toLowerCase().includes(q)) ||
+                        (r.comment && r.comment.toLowerCase().includes(q)) ||
+                        (r.service && r.service.toLowerCase().includes(q));
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="text-center py-12 bg-surface-container-low rounded-2xl border border-surface-container text-on-surface-variant text-xs">
+            <span class="material-symbols-outlined text-[36px] text-surface-container-high mb-2">rate_review</span>
+            <p>هیچ دیدگاهی در این بخش یافت نشد.</p>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map(r => {
+        const isApproved = r.status === 'approved';
+        const isPending = r.status === 'pending';
+
+        const stars = Array.from({ length: 5 }).map((_, i) => {
+          const filled = i < (Number(r.rating) || 5);
+          return `<span class="material-symbols-outlined text-[16px] ${filled ? 'text-amber-400 fill-current' : 'text-surface-container'}">star</span>`;
+        }).join('');
+
+        let badgeHtml = '';
+        if (isApproved) {
+          badgeHtml = `<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+            <span>تایید شده و منتشر در سایت</span>
+          </span>`;
+        } else if (isPending) {
+          badgeHtml = `<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold flex items-center gap-1 animate-pulse">
+            <span class="material-symbols-outlined text-[14px]">hourglass_empty</span>
+            <span>در انتظار تایید مدیریت</span>
+          </span>`;
+        } else {
+          badgeHtml = `<span class="px-3 py-1 rounded-full bg-red-100 text-red-800 text-[11px] font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">cancel</span>
+            <span>رد شده</span>
+          </span>`;
+        }
+
+        return `
+          <div class="bg-surface-container-low p-5 rounded-2xl border ${isPending ? 'border-amber-300 ring-1 ring-amber-200' : 'border-surface-container'} flex flex-col gap-3 transition">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-surface-container">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl ${isApproved ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'} flex items-center justify-center font-bold text-sm">
+                  <span class="material-symbols-outlined text-[20px]">${isApproved ? 'verified' : 'pending'}</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <strong class="text-primary text-sm">${r.name}</strong>
+                    <span class="text-[11px] text-secondary font-medium">(${r.service || 'معاینه تخصصی اپتومتری'})</span>
+                  </div>
+                  <div class="flex items-center gap-2 mt-0.5">
+                    <div class="flex items-center text-amber-400">${stars}</div>
+                    <span class="text-[10px] text-on-surface-variant font-mono">${r.date || ''}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                ${badgeHtml}
+              </div>
+            </div>
+
+            <!-- Review comment body -->
+            <div class="p-3.5 bg-surface-container-lowest rounded-xl border border-surface-container text-xs text-primary leading-relaxed">
+              «${r.comment}»
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-2 pt-1">
+              ${isPending ? `
+                <button onclick="setReviewStatus('${r.id}', 'approved')" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-xs">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                  <span>تایید و انتشار در سایت</span>
+                </button>
+                <button onclick="setReviewStatus('${r.id}', 'rejected')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-error font-bold text-xs transition flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[16px]">close</span>
+                  <span>رد نظر</span>
+                </button>
+              ` : isApproved ? `
+                <button onclick="setReviewStatus('${r.id}', 'pending')" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-xs">
+                  <span class="material-symbols-outlined text-[16px]">pause</span>
+                  <span>تعلیق انتشار (انتقال به در انتظار)</span>
+                </button>
+              ` : `
+                <button onclick="setReviewStatus('${r.id}', 'approved')" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-xs">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                  <span>تایید و انتشار مجدد</span>
+                </button>
+              `}
+
+              <button onclick="deleteReviewAdmin('${r.id}')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-red-50 text-error hover:text-red-700 font-bold text-xs transition flex items-center gap-1" title="حذف دائم">
+                <span class="material-symbols-outlined text-[16px]">delete</span>
+                <span>حذف</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function setReviewStatus(id, newStatus) {
+      try {
+        const res = await authFetch(`/api/admin/reviews/${id}/status`, {
+          method: 'PUT',
+          body: JSON.stringify({ status: newStatus })
+        });
+        if (!res.ok) throw new Error('خطا در تغییر وضعیت نظر');
+        
+        const rev = cachedAdminReviews.find(r => r.id === id);
+        if (rev) rev.status = newStatus;
+        localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+
+        showToast(newStatus === 'approved' ? 'دیدگاه با موفقیت تایید و در وب‌سایت منتشر شد' : 'وضعیت دیدگاه به‌روزرسانی شد', 'success');
+        await renderAdminReviews();
+      } catch (err) {
+        const rev = cachedAdminReviews.find(r => r.id === id);
+        if (rev) {
+          rev.status = newStatus;
+          localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+          showToast('وضعیت دیدگاه تغییر یافت', 'success');
+          await renderAdminReviews();
+        } else {
+          showToast(err.message, 'error');
+        }
+      }
+    }
+
+    async function deleteReviewAdmin(id) {
+      if (!confirm('آیا از حذف این نظر اطمینان دارید؟')) return;
+      try {
+        const res = await authFetch(`/api/admin/reviews/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('خطا در حذف نظر');
+        cachedAdminReviews = cachedAdminReviews.filter(r => r.id !== id);
+        localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+        showToast('دیدگاه با موفقیت حذف گردید', 'success');
+        await renderAdminReviews();
+      } catch (err) {
+        cachedAdminReviews = cachedAdminReviews.filter(r => r.id !== id);
+        localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+        showToast('دیدگاه حذف گردید', 'success');
+        await renderAdminReviews();
+      }
+    }
+
+    function openAdminAddReviewModal() {
+      const modal = document.getElementById('modal-admin-add-review');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.getElementById('form-admin-add-review').reset();
+      }
+    }
+
+    function closeAdminAddReviewModal() {
+      const modal = document.getElementById('modal-admin-add-review');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    async function saveAdminNewReview() {
+      const name = document.getElementById('admin-rev-name').value.trim();
+      const service = document.getElementById('admin-rev-service').value.trim();
+      const rating = parseInt(document.getElementById('admin-rev-rating').value, 10) || 5;
+      const comment = document.getElementById('admin-rev-comment').value.trim();
+      const status = document.getElementById('admin-rev-status').value;
+
+      if (!name || !comment) return;
+
+      const btn = document.getElementById('btn-save-admin-rev');
+      if (btn) btn.disabled = true;
+
+      try {
+        const res = await authFetch('/api/admin/reviews', {
+          method: 'POST',
+          body: JSON.stringify({ name, service, rating, comment, status })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'خطا در ثبت دیدگاه');
+
+        if (data.review) {
+          cachedAdminReviews.unshift(data.review);
+        } else {
+          cachedAdminReviews.unshift({
+            id: 'rev-' + Date.now(),
+            name, service, rating, comment, status,
+            date: 'هم‌اکنون'
+          });
+        }
+        localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+
+        closeAdminAddReviewModal();
+        showToast('دیدگاه با موفقیت افزوده شد', 'success');
+        await renderAdminReviews();
+      } catch (err) {
+        cachedAdminReviews.unshift({
+          id: 'rev-' + Date.now(),
+          name, service, rating, comment, status,
+          date: 'هم‌اکنون'
+        });
+        localStorage.setItem('optiva_reviews', JSON.stringify(cachedAdminReviews));
+        closeAdminAddReviewModal();
+        showToast('دیدگاه ذخیره گردید', 'success');
+        await renderAdminReviews();
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    async function loadAllAdminData() {
+      await loadGeneralSettingsToInputs();
+      renderAdminProductsTable();
+      await renderAdminAppointmentsTable();
+      await renderAdminSlots();
+      await loadAdminReviewsData();
+      await loadSiteImagesPreviews();
+      await loadInstagramPostsAdmin();
+      await refreshDashboardKPIs();
+    }
+
+    // Init on DOM ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      const isAuthenticated = await checkAdminAuth();
+      if (isAuthenticated) {
+        await loadAllAdminData();
+      }
+    });
+  </script>
+</body>
+</html>

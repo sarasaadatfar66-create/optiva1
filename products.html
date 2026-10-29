@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>فروشگاه و آرشیو فریم‌ها | اپتیوا نیشابور</title>
+  <meta name="description" content="کاتالوگ جامع عینک‌های طبی تیتانیومی، عینک‌های آفتابی پلاریزه و لنزهای تماسی اپتیوا. امکان تست سه‌بعدی و ثبت نسخه آنلاین."/>
+  
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e && e.message && (e.message.includes('WebSocket') || e.message.includes('vite') || e.message.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(e) {
+      var r = (e && e.reason) ? (e.reason.message || String(e.reason)) : '';
+      if (r && (r.includes('WebSocket') || r.includes('vite') || r.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00152c",
+            "primary-container": "#142a43",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#7d92af",
+            secondary: "#735b30",
+            "secondary-container": "#fcdba6",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#271900",
+            "secondary-fixed": "#ffdeaa",
+            "secondary-fixed-dim": "#e2c28f",
+            surface: "#f9f9fe",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f3f3f9",
+            "surface-container": "#ededf3",
+            "surface-container-high": "#e8e8ed",
+            "surface-container-highest": "#e2e2e8",
+            "on-surface": "#1a1c20",
+            "on-surface-variant": "#44474d",
+            outline: "#74777e",
+            "outline-variant": "#c4c6ce",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#002951"
+          },
+          fontFamily: {
+            sans: ["Vazirmatn", "Inter", "sans-serif"],
+            display: ["Plus Jakarta Sans", "Vazirmatn", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,42,67,0.06)] border-b border-surface-container">
+    <div class="bg-primary-container text-on-primary text-xs px-4 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2 border-b border-primary/20">
+      <div class="flex items-center gap-3">
+        <span>نشانی: نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم</span>
+        <span class="opacity-40">|</span>
+        <a href="tel:09040148824" class="hover:text-secondary-fixed transition-colors">تماس: ۰۹۰۴۰۱۴۸۸۲۴</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://instagram.com/optiva.vision" target="_blank" rel="noopener noreferrer" class="hover:text-secondary-fixed transition-colors flex items-center gap-1" dir="ltr">
+          <span class="material-symbols-outlined text-[15px]">photo_camera</span>
+          <span>@optiva.vision</span>
+        </a>
+        <span class="opacity-40">|</span>
+        <button onclick="handleRubikaAction('مشاوره و خرید')" class="hover:text-secondary-fixed transition-colors flex items-center gap-1 text-[11px]">
+          <span class="material-symbols-outlined text-[15px]">chat</span>
+          <span>ارتباط و خرید از طریق روبیکا</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="h-20 max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-8">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+            <span class="material-symbols-outlined text-[24px] text-secondary-fixed">eyeglasses</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-xl text-primary tracking-tight leading-none font-display">اپتیوا</span>
+            <span class="text-[10px] text-secondary tracking-widest uppercase font-semibold">OPTIVA VISION</span>
+          </div>
+        </a>
+
+        <nav class="hidden xl:flex items-center gap-6 font-medium text-sm">
+          <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">صفحه اصلی</a>
+          <a href="products.html" class="text-primary font-bold border-b-2 border-secondary pb-1">فروشگاه و آرشیو فریم</a>
+          <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">خدمات اپتومتری و کلینیک</a>
+          <a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">تماس و نوبت‌دهی</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="admin.html" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors text-xs font-semibold">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>پنل مدیریت</span>
+        </a>
+
+        <a href="products.html" aria-label="علاقه‌مندی‌ها" class="relative p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[22px]">favorite</span>
+          <span class="header-wishlist-badge absolute top-1 left-1 w-4 h-4 bg-secondary text-on-secondary rounded-full text-[10px] flex items-center justify-center font-bold">۲</span>
+        </a>
+
+        <a href="cart.html" aria-label="سبد خرید" class="relative p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+          <span class="header-cart-badge absolute top-1 left-1 w-4 h-4 bg-primary text-on-primary rounded-full text-[10px] flex items-center justify-center font-bold">۳</span>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="xl:hidden p-2 text-primary hover:bg-surface-container rounded-lg">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav-drawer" class="hidden xl:hidden bg-surface-container-lowest border-b border-surface-container px-6 py-4 flex-col gap-3">
+      <a href="index.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">صفحه اصلی</a>
+      <a href="products.html" class="py-2 text-primary font-bold border-b border-surface-container">فروشگاه عینک و لنز</a>
+      <a href="about.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">درباره و خدمات اپتومتری</a>
+      <a href="contact.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">تماس و نوبت‌دهی نیشابور</a>
+      <a href="cart.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container flex items-center justify-between">
+        <span>سبد خرید و نسخه</span>
+        <span class="header-cart-badge w-5 h-5 bg-primary text-on-primary rounded-full text-xs flex items-center justify-center font-bold">۳</span>
+      </a>
+      <a href="admin.html" class="py-2 text-secondary font-semibold flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>ورود به پنل مدیریت</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full pt-28 flex-1">
+    
+    <!-- Top Ambient Banner -->
+    <div class="w-full bg-surface-container py-2.5 px-4 lg:px-8 flex items-center justify-between text-on-surface-variant text-xs border-b border-surface-container">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+        <span>ضمانت اصالت صددرصدی فریم‌ها با تأییدیه نظام پزشکی اپتومتریست معتمد اپتیوا نیشابور</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4">
+        <span class="flex items-center gap-1.5 text-primary font-semibold">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          ارسال بیمه‌شده رایگان سفارش‌های تخصصی
+        </span>
+        <span class="opacity-30">|</span>
+        <span>سفارش با نسخه معتبر چشم‌پزشکی</span>
+      </div>
+    </div>
+
+    <!-- Catalog Header -->
+    <section class="max-w-7xl mx-auto w-full px-4 lg:px-8 pt-8 pb-4">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="flex items-center gap-2 text-secondary text-xs uppercase tracking-widest font-bold">
+            <span class="material-symbols-outlined text-[18px]">diamond</span>
+            <span>OPTIVA LUXURY EYEWEAR &amp; OPTOMETRY ARCHIVE</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-primary tracking-tight">مجموعه عینک‌ها و لنزهای تخصصی اپتیوا</h1>
+          <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+            فریم‌های دست‌چین شده با بالاترین استاندارد ارگونومی و عدسی‌های سفارشی بر پایه جدیدترین تکنولوژی تصحیح بینایی؛ طراحی شده برای زیبایی پایدار، نهایت سبکی و شفافیت دید کامل.
+          </p>
+        </div>
+
+        <!-- Quick Category Chips -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 flex-shrink-0" id="category-chips">
+          <button onclick="filterCategory('all')" class="cat-chip px-4 py-2 rounded-xl text-xs font-bold bg-primary text-on-primary transition-all">همه محصولات</button>
+          <button onclick="filterCategory('optical')" class="cat-chip px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all">طبی دست‌ساز</button>
+          <button onclick="filterCategory('sunglasses')" class="cat-chip px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all">آفتابی پلاریزه</button>
+          <button onclick="filterCategory('contact-lenses')" class="cat-chip px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all">لنزهای طبی و رنگی</button>
+        </div>
+      </div>
+
+      <!-- Active Filters & Search Toolbar -->
+      <div class="mt-8 p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-wrap items-center justify-between gap-4 border border-surface-container">
+        
+        <!-- Search Input -->
+        <div class="flex-1 min-w-[260px] max-w-md relative">
+          <input type="text" id="catalog-search" oninput="handleSearch(this.value)" placeholder="جستجو بر اساس نام فریم، مدل یا متریال..." class="w-full bg-surface-container-low px-4 py-2.5 pr-10 rounded-xl text-xs text-primary placeholder:text-outline border border-surface-container focus:bg-surface-container-lowest focus:border-secondary transition">
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant absolute right-3 top-2.5 pointer-events-none">search</span>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs text-on-surface-variant">
+          <span id="product-count-label">نمایش <strong class="text-primary font-bold">۹ فریم</strong> در این دسته‌بندی</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <!-- Sort Control -->
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-on-surface-variant whitespace-nowrap" for="catalog-sort">مرتب‌سازی:</label>
+            <div class="relative">
+              <select id="catalog-sort" onchange="handleSort(this.value)" class="appearance-none bg-surface-container-low text-primary text-xs font-semibold rounded-xl px-4 py-2 pl-8 focus:outline-none focus:bg-surface-container-high cursor-pointer border border-surface-container">
+                <option value="newest">جدیدترین کالکشن ۲۰۲۵</option>
+                <option value="price-asc">قیمت: کم به زیاد</option>
+                <option value="price-desc">قیمت: زیاد به کم</option>
+                <option value="weight">فوق سبک‌ترین (کمترین وزن)</option>
+              </select>
+              <span class="material-symbols-outlined text-[18px] text-on-surface-variant pointer-events-none absolute left-2 top-1/2 -translate-y-1/2">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Layout Switcher -->
+          <div class="flex items-center bg-surface-container-low p-1 rounded-xl border border-surface-container">
+            <button id="view-3-col" onclick="switchGridCols(3)" aria-label="نمایش ۳ ستونه" class="p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-xs transition-colors">
+              <span class="material-symbols-outlined text-[20px]">view_column</span>
+            </button>
+            <button id="view-4-col" onclick="switchGridCols(4)" aria-label="نمایش ۴ ستونه" class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Main Catalog Body (Sidebar + Products Grid) -->
+    <div class="max-w-7xl mx-auto w-full px-4 lg:px-8 pb-16 pt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sidebar Filters (Right in RTL) -->
+        <aside class="lg:col-span-3 space-y-6">
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm space-y-6 border border-surface-container">
+            
+            <div class="flex items-center justify-between pb-2 border-b border-surface-container">
+              <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                <span class="material-symbols-outlined text-secondary">tune</span>
+                <span>فیلترهای تخصصی</span>
+              </div>
+              <button onclick="resetAllFilters()" class="text-xs text-error hover:underline transition-all">حذف تمام فیلترها</button>
+            </div>
+
+            <!-- Category Filter Checkboxes -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold text-primary block">دسته‌بندی اپتیک</span>
+              <div class="space-y-1 text-xs">
+                <label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low cursor-pointer transition">
+                  <span class="flex items-center gap-2 text-on-surface">
+                    <input type="checkbox" checked onchange="filterCategory('optical')" class="accent-primary w-4 h-4 rounded">
+                    عینک‌های طبی استاندارد
+                  </span>
+                  <span class="text-on-surface-variant font-mono">۴۲</span>
+                </label>
+                <label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low cursor-pointer transition">
+                  <span class="flex items-center gap-2 text-on-surface">
+                    <input type="checkbox" checked onchange="filterCategory('sunglasses')" class="accent-primary w-4 h-4 rounded">
+                    عینک‌های آفتابی UV400
+                  </span>
+                  <span class="text-on-surface-variant font-mono">۲۸</span>
+                </label>
+                <label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low cursor-pointer transition">
+                  <span class="flex items-center gap-2 text-on-surface">
+                    <input type="checkbox" onchange="filterCategory('contact-lenses')" class="accent-primary w-4 h-4 rounded">
+                    لنزهای تماسی ماهانه
+                  </span>
+                  <span class="text-on-surface-variant font-mono">۹</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Material Filter -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold text-primary block">جنس و آلیاژ فریم</span>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <button onclick="filterMaterial('titanium')" class="material-filter-btn p-2 rounded-xl text-center bg-primary text-on-primary font-semibold transition">
+                  تیتانیوم خالص
+                </button>
+                <button onclick="filterMaterial('acetate')" class="material-filter-btn p-2 rounded-xl text-center bg-surface-container-low hover:bg-surface-container text-on-surface transition">
+                  استات ایتالیا
+                </button>
+                <button onclick="filterMaterial('steel')" class="material-filter-btn p-2 rounded-xl text-center bg-surface-container-low hover:bg-surface-container text-on-surface transition">
+                  استیل جراحی
+                </button>
+                <button onclick="filterMaterial('all')" class="material-filter-btn p-2 rounded-xl text-center bg-surface-container-low hover:bg-surface-container text-on-surface transition">
+                  همه متریال‌ها
+                </button>
+              </div>
+            </div>
+
+            <!-- Frame Shape Filter -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold text-primary block">فرم هندسی عینک</span>
+              <div class="space-y-1 text-xs">
+                <label class="flex items-center gap-2 text-on-surface cursor-pointer p-1 rounded hover:bg-surface-container-low">
+                  <input type="checkbox" checked onchange="filterShape('geometric')" class="accent-primary w-4 h-4 rounded">
+                  <span>چندضلعی و هشت‌ضلعی (Geometric)</span>
+                </label>
+                <label class="flex items-center gap-2 text-on-surface cursor-pointer p-1 rounded hover:bg-surface-container-low">
+                  <input type="checkbox" checked onchange="filterShape('round')" class="accent-primary w-4 h-4 rounded">
+                  <span>گرد و پانتو نوردیک (Round)</span>
+                </label>
+                <label class="flex items-center gap-2 text-on-surface cursor-pointer p-1 rounded hover:bg-surface-container-low">
+                  <input type="checkbox" checked onchange="filterShape('aviator')" class="accent-primary w-4 h-4 rounded">
+                  <span>خلبانی آیکونیک (Aviator)</span>
+                </label>
+                <label class="flex items-center gap-2 text-on-surface cursor-pointer p-1 rounded hover:bg-surface-container-low">
+                  <input type="checkbox" checked onchange="filterShape('cat-eye')" class="accent-primary w-4 h-4 rounded">
+                  <span>گربه‌ای آرتیسان (Cat-Eye)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="space-y-2 pt-2 border-t border-surface-container">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-primary">حداکثر بودجه:</span>
+                <span class="font-mono text-secondary font-bold" id="price-slider-val">۱۲,۰۰۰,۰۰۰ تومان</span>
+              </div>
+              <input type="range" min="1000000" max="15000000" step="500000" value="12000000" oninput="handlePriceRange(this.value)" class="w-full accent-secondary cursor-pointer">
+              <div class="flex justify-between text-[10px] text-on-surface-variant font-mono" dir="ltr">
+                <span>1,000,000 T</span>
+                <span>15,000,000 T</span>
+              </div>
+            </div>
+
+            <!-- Quick Clinic Contact Widget -->
+            <div class="p-4 rounded-xl bg-surface-container text-on-surface space-y-2 border border-surface-container">
+              <div class="flex items-center gap-2 text-primary text-xs font-bold">
+                <span class="material-symbols-outlined text-[20px] text-secondary">support_agent</span>
+                <span>مشاوره تخصصی انتخاب فریم</span>
+              </div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">
+                نمی‌دانید کدام فرم مناسب فرم چهره شماست؟ کارشناسان بینایی‌سنجی اپتیوا آماده راهنمایی هستند.
+              </p>
+              <a href="tel:09040148824" class="inline-flex items-center gap-1.5 text-secondary text-xs font-bold hover:underline">
+                <span class="material-symbols-outlined text-[16px]">call</span>
+                <span>تماس مستقیم: ۰۹۰۴۰۱۴۸۸۲۴</span>
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- Products Stream -->
+        <section class="lg:col-span-9 space-y-8">
+          
+          <!-- Product Cards Grid Container -->
+          <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <!-- Mid-Catalog Prescription Consultation Banner -->
+          <div class="relative overflow-hidden rounded-2xl bg-primary-container text-on-primary p-6 lg:p-8 shadow-xl border border-white/10">
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div class="md:col-span-8 space-y-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary text-on-secondary text-xs font-bold">
+                  <span class="material-symbols-outlined text-[16px]">visibility</span>
+                  خدمت تخصصی کلینیک بینایی‌سنجی اپتیوا
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold text-secondary-fixed leading-snug">
+                  عینک طبی با نسخه دقیق چشم شما؛ محاسبه اتوماتیک ضخامت عدسی
+                </h2>
+                <p class="text-xs sm:text-sm text-on-primary-container leading-relaxed">
+                  نسخه اپتومتری خود را آپلود کنید یا پارامترهای SPH، CYL و PD را وارد فرمایید تا اپتومتریست‌های اپتیوا بهترین ایندکس فشردگی (1.50 تا 1.74) و پوشش‌های ضد انعکاس BlueControl و UV را متناسب با فریم انتخابی شما پیشنهاد دهند.
+                </p>
+              </div>
+              <div class="md:col-span-4 flex flex-col sm:flex-row md:flex-col gap-3 justify-end">
+                <a href="cart.html" class="px-5 py-3 rounded-xl bg-secondary hover:bg-secondary-fixed-dim text-on-secondary text-xs font-bold text-center transition-all flex items-center justify-center gap-2 shadow-md">
+                  <span class="material-symbols-outlined text-[20px]">upload_file</span>
+                  <span>ثبت و بارگذاری نسخه پزشک</span>
+                </a>
+                <a href="tel:09040148824" class="px-5 py-3 rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-on-primary text-xs font-semibold text-center transition-all flex items-center justify-center gap-2">
+                  <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+                  <span>مشاوره رایگان تلفنی</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sizing Guide Banner -->
+          <div class="bg-surface-container-low p-6 rounded-2xl border border-surface-container">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-surface-container">
+              <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                <span class="material-symbols-outlined text-secondary">straighten</span>
+                <span>راهنمای سایزبندی فریم روی دسته‌ها</span>
+              </div>
+              <span class="text-xs text-secondary font-semibold">تطابق ارگونومیک</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-on-surface-variant">
+              <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container">
+                <strong class="text-primary block font-bold mb-1">عرض عدسی (Lens Width)</strong>
+                <span>عدد اول (مانند ۵۰mm) نشان‌دهنده پهنای دید افقی شیشه است.</span>
+              </div>
+              <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container">
+                <strong class="text-secondary block font-bold mb-1">پل بینی (Bridge Width)</strong>
+                <span>عدد دوم (مانند ۱۹mm) فاصله میان دو لنز روی تیغه بینی است.</span>
+              </div>
+              <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container">
+                <strong class="text-primary block font-bold mb-1">طول دسته (Temple Length)</strong>
+                <span>عدد سوم (مانند ۱۴۵mm) طول بازوی فریم تا انتهای گوش است.</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-primary-container text-on-primary mt-16">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold text-xl text-secondary-fixed tracking-tight font-display">اپتیوا | OPTIVA</span>
+          </div>
+          <p class="text-xs sm:text-sm text-on-primary-container leading-relaxed">
+            ارائه تخصصی عینک‌های طبی و آفتابی لوکس، لنزهای تماسی و خدمات پیشرفته اپتومتری نیشابور با بالاترین دقت کلینیکی و استانداردهای روز دنیا.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h3 class="text-sm font-bold text-secondary-fixed pb-2 border-b border-primary/40">ساعات کاری رسمی</h3>
+          <div class="space-y-3 text-xs">
+            <div class="bg-tertiary-container/50 p-3 rounded-xl">
+              <p class="font-bold text-surface-bright mb-1 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-secondary-fixed">store</span>
+                <span>واحد اپتومتری کلینیک تخصصی چشم نور</span>
+              </p>
+              <p class="text-on-primary-container">شنبه تا چهارشنبه: ۰۹:۰۰ تا ۱۴:۰۰ و ۱۷:۰۰ تا ۲۰:۰۰</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h3 class="text-sm font-bold text-secondary-fixed pb-2 border-b border-primary/40">اطلاعات تماس</h3>
+          <ul class="space-y-3 text-xs sm:text-sm text-on-primary-container">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed mt-0.5">location_on</span>
+              <span>نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed">call</span>
+              <a href="tel:09040148824" class="hover:text-secondary-fixed transition-colors" dir="ltr">09040148824</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h3 class="text-sm font-bold text-secondary-fixed pb-2 border-b border-primary/40">لینک‌های سریع</h3>
+          <div class="flex flex-col gap-2 text-xs sm:text-sm text-on-primary-container">
+            <a class="hover:text-secondary-fixed transition-colors" href="cart.html">سبد خرید و تنظیم نسخه</a>
+            <a class="hover:text-secondary-fixed transition-colors" href="about.html">خدمات کلینیک اپتومتری</a>
+            <a class="hover:text-secondary-fixed transition-colors" href="contact.html">فرم درخواست نوبت حضوری</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-primary/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-on-primary-container text-xs">
+        <p>© کلیه حقوق مادی و معنوی برای بوتیک و کلینیک اپتومتری اپتیوا (نیشابور) محفوظ است.</p>
+        <p class="font-mono" dir="ltr">OPTIVA Luxury Eyewear &amp; Clinical Vision</p>
+      </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-2">
+      <!-- Card: Optometrist Atefeh Sadeghi -->
+      <a href="index.html#services" class="flex items-center gap-2 bg-[#0f1e2e] hover:bg-[#182f47] text-white border border-amber-400/50 px-4 py-2.5 rounded-full shadow-2xl transition-all hover:scale-105" title="اپتومتریست عاطفه صادقی">
+        <span class="material-symbols-outlined text-[20px] text-amber-400">medical_services</span>
+        <span class="text-xs font-bold">اپتومتریست عاطفه صادقی</span>
+      </a>
+
+      <button onclick="handleRubikaAction('مشاوره و خرید فریم')" class="flex items-center gap-2 bg-secondary hover:bg-secondary-fixed-dim text-on-secondary px-4 py-2.5 rounded-full shadow-xl transition-all hover:scale-105" title="ارتباط و خرید از طریق روبیکا">
+        <span class="material-symbols-outlined text-[20px]">chat</span>
+        <span class="text-xs font-bold">ارتباط و خرید از طریق روبیکا</span>
+      </button>
+
+      <a href="tel:09040148824" class="flex items-center gap-2 bg-primary hover:bg-primary-container text-on-primary px-4 py-2.5 rounded-full shadow-lg transition-all hover:scale-105" title="تماس تلفنی مستقیم">
+        <span class="material-symbols-outlined text-[20px]">call</span>
+        <span class="text-xs font-bold">تماس: ۰۹۰۴۰۱۴۸۸۲۴</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+  <script>
+    let activeCategory = 'all';
+    let activeMaterial = 'all';
+    let activeShape = 'all';
+    let searchQuery = '';
+    let maxPrice = 12000000;
+    let tryOnOnly = false;
+    let currentCols = 3;
+
+    function renderCatalog() {
+      const container = document.getElementById('catalog-products-grid');
+      if (!container) return;
+
+      const catalogList = typeof getOptivaProducts === 'function' ? getOptivaProducts() : OPTIVA_PRODUCTS;
+      let filtered = catalogList.filter(p => {
+        // Category
+        if (activeCategory !== 'all' && p.category !== activeCategory) return false;
+        // Material
+        if (activeMaterial !== 'all' && p.material !== activeMaterial) return false;
+        // Price
+        if (p.price > maxPrice) return false;
+        // Search
+        if (searchQuery.trim()) {
+          const q = searchQuery.toLowerCase();
+          const matchName = (p.faName && p.faName.toLowerCase().includes(q)) || p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
+          if (!matchName) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('product-count-label').innerHTML = `نمایش <strong class="text-primary font-bold">${filtered.length.toLocaleString('fa-IR')} فریم</strong> مطابق فیلترها`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center bg-surface-container-lowest rounded-2xl p-8 border border-surface-container">
+            <span class="material-symbols-outlined text-[48px] text-secondary mb-3">search_off</span>
+            <h3 class="text-lg font-bold text-primary mb-1">هیچ کالایی با این فیلترها یافت نشد</h3>
+            <p class="text-xs text-on-surface-variant mb-4">می‌توانید فیلترها را حذف کرده یا بودجه را افزایش دهید.</p>
+            <button onclick="resetAllFilters()" class="px-5 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold">حذف تمام فیلترها</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => `
+        <div class="product-card group bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-surface-container flex flex-col justify-between">
+          <div class="relative w-full aspect-[4/3] bg-surface-container-low rounded-xl overflow-hidden flex items-center justify-center p-3 mb-4">
+            <img src="${p.image}" alt="${p.faName || p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openProductModal('${p.id}')">
+            
+            <div class="absolute top-2 right-2 flex flex-col gap-1 items-start">
+              <span class="px-2 py-0.5 rounded-md bg-primary text-on-primary text-[10px] font-semibold">${p.materialName}</span>
+            </div>
+
+            <div class="absolute bottom-2 inset-x-2 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button onclick="toggleWishlist('${p.id}')" data-wishlist-id="${p.id}" class="bg-surface-container-lowest/90 backdrop-blur-md text-primary hover:text-error p-2 rounded-full shadow-md transition" title="علاقه‌مندی">
+                <span class="material-symbols-outlined text-[18px]">favorite</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center justify-between text-on-surface-variant text-[11px] mb-1">
+                <span>وزن: ${p.weight}</span>
+                <span class="text-secondary font-medium font-mono">${p.lensWidth} ▢ ${p.bridgeWidth}</span>
+              </div>
+
+              <h3 onclick="openProductModal('${p.id}')" class="text-base font-bold text-primary group-hover:text-secondary transition-colors cursor-pointer">
+                ${p.faName || p.name}
+              </h3>
+              <p class="text-[11px] text-on-surface-variant font-mono mt-0.5" dir="ltr">${p.name}</p>
+            </div>
+
+            <div class="pt-4 mt-3 border-t border-surface-container flex items-center justify-between">
+              <div>
+                <span class="text-lg font-bold text-primary font-headline-sm">${p.formattedPrice}</span>
+                <span class="text-[11px] text-on-surface-variant mr-1">تومان</span>
+              </div>
+              <button onclick="openProductModal('${p.id}')" class="px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition flex items-center gap-1 shadow-sm">
+                <span>سفارش فریم</span>
+                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      updateWishlistUI();
+    }
+
+    function filterCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('#category-chips .cat-chip').forEach(btn => {
+        btn.className = 'cat-chip px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all';
+      });
+      event.target.className = 'cat-chip px-4 py-2 rounded-xl text-xs font-bold bg-primary text-on-primary transition-all';
+      renderCatalog();
+    }
+
+    function filterMaterial(mat) {
+      activeMaterial = mat;
+      document.querySelectorAll('.material-filter-btn').forEach(b => {
+        b.className = 'material-filter-btn p-2 rounded-xl text-center bg-surface-container-low hover:bg-surface-container text-on-surface transition text-xs';
+      });
+      event.target.className = 'material-filter-btn p-2 rounded-xl text-center bg-primary text-on-primary font-semibold transition text-xs';
+      renderCatalog();
+    }
+
+    function handlePriceRange(val) {
+      maxPrice = parseInt(val, 10);
+      document.getElementById('price-slider-val').textContent = maxPrice.toLocaleString('fa-IR') + ' تومان';
+      renderCatalog();
+    }
+
+    function toggleTryOnOnly(checked) {
+      tryOnOnly = checked;
+      renderCatalog();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderCatalog();
+    }
+
+    function handleSort(sortType) {
+      if (sortType === 'price-asc') {
+        OPTIVA_PRODUCTS.sort((a, b) => a.price - b.price);
+      } else if (sortType === 'price-desc') {
+        OPTIVA_PRODUCTS.sort((a, b) => b.price - a.price);
+      } else if (sortType === 'weight') {
+        OPTIVA_PRODUCTS.sort((a, b) => parseFloat(a.weight) - parseFloat(b.weight));
+      }
+      renderCatalog();
+    }
+
+    function resetAllFilters() {
+      activeCategory = 'all';
+      activeMaterial = 'all';
+      searchQuery = '';
+      maxPrice = 15000000;
+      const searchInput = document.getElementById('catalog-search');
+      if (searchInput) searchInput.value = '';
+      renderCatalog();
+      showToast('تمام فیلترها بازنشانی شدند', 'info');
+    }
+
+    function switchGridCols(cols) {
+      const grid = document.getElementById('catalog-products-grid');
+      const btn3 = document.getElementById('view-3-col');
+      const btn4 = document.getElementById('view-4-col');
+      if (!grid) return;
+
+      if (cols === 3) {
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6';
+        btn3.className = 'p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-xs transition-colors';
+        btn4.className = 'p-1.5 rounded-lg text-on-surface-variant hover:text-primary transition-colors';
+      } else {
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5';
+        btn4.className = 'p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-xs transition-colors';
+        btn3.className = 'p-1.5 rounded-lg text-on-surface-variant hover:text-primary transition-colors';
+      }
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        drawer.classList.toggle('flex');
+      }
+    }
+
+    // Check query params on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('cat');
+      if (catParam) {
+        activeCategory = catParam;
+      }
+      renderCatalog();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>اپتیوا | OPTIVA Vision Neyshabur - بوتیک عینک‌های لوکس و کلینیک اپتومتری</title>
+  <meta name="description" content="مرکز تخصصی عینک‌های طبی و آفتابی لوکس، لنزهای تماسی و کلینیک اپتومتری اپتیوا در نیشابور. فریم‌های دست‌ساز تیتانیوم، سنجش دقیق بینایی و نوبت‌دهی آنلاین."/>
+  
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e && e.message && (e.message.includes('WebSocket') || e.message.includes('vite') || e.message.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(e) {
+      var r = (e && e.reason) ? (e.reason.message || String(e.reason)) : '';
+      if (r && (r.includes('WebSocket') || r.includes('vite') || r.includes('transport'))) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return true;
+      }
+    }, true);
+  </script>
+  
+  <!-- Persian Fonts & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <!-- Three.js (3D Optical Universe Engine - Zero Build Step Needed) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Tailwind CSS via CDN (Zero Build Step Needed for GitHub Pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00152c",
+            "primary-container": "#142a43",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#7d92af",
+            secondary: "#735b30",
+            "secondary-container": "#fcdba6",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#271900",
+            "secondary-fixed": "#ffdeaa",
+            "secondary-fixed-dim": "#e2c28f",
+            surface: "#f9f9fe",
+            "surface-bright": "#f9f9fe",
+            "surface-dim": "#d9d9df",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f3f3f9",
+            "surface-container": "#ededf3",
+            "surface-container-high": "#e8e8ed",
+            "surface-container-highest": "#e2e2e8",
+            "on-surface": "#1a1c20",
+            "on-surface-variant": "#44474d",
+            outline: "#74777e",
+            "outline-variant": "#c4c6ce",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#002951"
+          },
+          fontFamily: {
+            sans: ["Vazirmatn", "Inter", "sans-serif"],
+            display: ["Plus Jakarta Sans", "Vazirmatn", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+
+  <!-- Top Notification / Status Ticker -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,42,67,0.06)] border-b border-surface-container">
+    <div class="bg-primary-container text-on-primary text-xs px-4 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2 border-b border-primary/20">
+      <div class="flex items-center gap-3">
+        <span>نشانی: نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم</span>
+        <span class="opacity-40">|</span>
+        <a href="tel:09040148824" class="hover:text-secondary-fixed transition-colors">تماس: ۰۹۰۴۰۱۴۸۸۲۴</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://instagram.com/optiva_vision" target="_blank" rel="noopener noreferrer" class="hover:text-secondary-fixed transition-colors flex items-center gap-1" dir="ltr">
+          <span class="material-symbols-outlined text-[15px]">photo_camera</span>
+          <span>@optiva_vision</span>
+        </a>
+        <span class="opacity-40">|</span>
+        <button onclick="handleRubikaAction('مشاوره و خرید')" class="hover:text-secondary-fixed transition-colors flex items-center gap-1 text-[11px]">
+          <span class="material-symbols-outlined text-[15px]">chat</span>
+          <span>ارتباط و خرید از طریق روبیکا</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="h-20 max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-8">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+            <span class="material-symbols-outlined text-[24px] text-secondary-fixed">eyeglasses</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-xl text-primary tracking-tight leading-none font-display">اپتیوا</span>
+            <span class="text-[10px] text-secondary tracking-widest uppercase font-semibold">OPTIVA VISION</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden xl:flex items-center gap-6 font-medium text-sm">
+          <a href="index.html" class="text-primary font-bold border-b-2 border-secondary pb-1">صفحه اصلی</a>
+          <a href="products.html" class="text-on-surface-variant hover:text-primary transition-colors">فروشگاه و آرشیو فریم</a>
+          <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">خدمات اپتومتری و کلینیک</a>
+          <a href="#instagram-showcase" class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[18px] text-secondary">photo_camera</span>
+            <span>اپتیوا در اینستاگرام</span>
+          </a>
+          <a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">تماس و نوبت‌دهی</a>
+        </nav>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="flex items-center gap-2">
+        <a href="admin.html" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors text-xs font-semibold">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>پنل مدیریت</span>
+        </a>
+
+        <a href="products.html" aria-label="جستجو" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[22px]">search</span>
+        </a>
+
+        <a href="products.html" aria-label="علاقه‌مندی‌ها" class="relative p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[22px]">favorite</span>
+          <span class="header-wishlist-badge absolute top-1 left-1 w-4 h-4 bg-secondary text-on-secondary rounded-full text-[10px] flex items-center justify-center font-bold">۲</span>
+        </a>
+
+        <a href="cart.html" aria-label="سبد خرید" class="relative p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+          <span class="header-cart-badge absolute top-1 left-1 w-4 h-4 bg-primary text-on-primary rounded-full text-[10px] flex items-center justify-center font-bold">۳</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" class="xl:hidden p-2 text-primary hover:bg-surface-container rounded-lg" aria-label="منوی موبایل">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-nav-drawer" class="hidden xl:hidden bg-surface-container-lowest border-b border-surface-container px-6 py-4 flex-col gap-3 animate-fade-in">
+      <a href="index.html" class="py-2 text-primary font-bold border-b border-surface-container">صفحه اصلی</a>
+      <a href="products.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">فروشگاه عینک و لنز</a>
+      <a href="about.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">درباره و خدمات اپتومتری</a>
+      <a href="contact.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container">تماس و نوبت‌دهی نیشابور</a>
+      <a href="cart.html" class="py-2 text-on-surface-variant hover:text-primary border-b border-surface-container flex items-center justify-between">
+        <span>سبد خرید و نسخه</span>
+        <span class="header-cart-badge w-5 h-5 bg-primary text-on-primary rounded-full text-xs flex items-center justify-center font-bold">۳</span>
+      </a>
+      <a href="admin.html" class="py-2 text-secondary font-semibold flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>ورود به پنل مدیریت</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="w-full pt-28 flex-1">
+    
+    <!-- Top Announcement Strip -->
+    <section class="w-full bg-surface-container-high py-2 px-4 lg:px-8 border-b border-surface-container">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs text-on-surface-variant">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          <span class="text-primary font-bold">پذیرش بالینی اپتومتری نیشابور:</span>
+          <span>ساعات دقیق معاینه صرفاً با هماهنگی تلفنی با ۰۹۰۴۰۱۴۸۸۲۴ صورت می‌پذیرد.</span>
+        </div>
+        <div class="flex items-center gap-2 text-secondary font-medium">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>ارسال رایگان سراسری • ضمانت ۲۴ ماهه طلایی اپتیوا</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- ========================================================================= -->
+    <!-- HERO SECTION: 3D OPTICAL UNIVERSE & SCROLL-CONTROLLED CINEMATIC JOURNEY -->
+    <!-- ========================================================================= -->
+    <section id="hero-portal" class="relative w-full h-[420vh] sm:h-[460vh] bg-black select-none">
+      
+      <!-- Sticky Viewport Pin (Drives 3D Video & Three.js as User Scrolls) -->
+      <div id="hero-portal-sticky" class="sticky top-0 w-full h-screen h-[100dvh] overflow-hidden flex items-center justify-center bg-black">
+        
+        <!-- Complete 3D Cinematic Journey Video Layer (Scrubbed smoothly by scroll) -->
+        <video
+          id="hero-portal-video"
+          class="absolute inset-0 w-full h-full object-cover z-0 brightness-95 contrast-105 pointer-events-none will-change-transform"
+          muted
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          poster="./assets/images/hero-banner.jpg">
+          <source src="./assets/videos/hero-universe.mp4" type="video/mp4">
+          <source src="/assets/videos/hero-universe.mp4" type="video/mp4">
+          <source src="./public/assets/aistudio/Eye_entering_optical_universe_an______________20261023225434_d2c1f6c8.mp4" type="video/mp4">
+          <source src="/public/assets/aistudio/Eye_entering_optical_universe_an______________20261023225434_d2c1f6c8.mp4" type="video/mp4">
+          <source src="./hero-universe.mp4" type="video/mp4">
+          <source src="/hero-universe.mp4" type="video/mp4">
+        </video>
+
+        <!-- Three.js 3D Interactive Optical Layer (Floating Lenses & Cosmic Photons) -->
+        <canvas id="hero-3d-canvas" class="absolute inset-0 w-full h-full z-[2] pointer-events-auto cursor-grab active:cursor-grabbing"></canvas>
+
+        <!-- Atmospheric Multi-Layered Gradients & Depth Vignette -->
+        <div id="hero-overlay" class="absolute inset-0 z-[3] bg-gradient-to-t from-[#00152c] via-[#00152c]/45 to-[#00152c]/35 pointer-events-none transition-opacity duration-500"></div>
+        <div class="absolute inset-0 z-[4] bg-radial from-transparent via-[#00152c]/15 to-[#00152c]/85 pointer-events-none"></div>
+
+        <!-- Hero Content Stage (Smoothly fades as user dives into the eye) -->
+        <div id="hero-stage-1" class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center flex flex-col items-center justify-center gap-6 transition-all duration-300 pointer-events-auto">
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.25] drop-shadow-2xl">
+            واحد اپتومتری کلینیک تخصصی چشم نور
+          </h1>
+
+          <!-- Scroll Cue -->
+          <div class="flex flex-col items-center gap-2 text-[#ffdeaa] text-xs sm:text-sm font-semibold opacity-95 hover:opacity-100 transition-opacity cursor-pointer pt-2 drop-shadow-lg" onclick="scrollIntoSite()">
+            <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs sm:text-sm text-cyan-200 border border-white/20 shadow-lg">
+              <span class="material-symbols-outlined text-[16px]">mouse</span>
+              <span>برای ورود به سایت، اسکرول کنید.</span>
+            </div>
+            <span class="material-symbols-outlined text-[24px] animate-bounce">keyboard_double_arrow_down</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- SECTION 2: CLINIC QUICK ACCESS (Address / Booking / Rubika / Starfield)  -->
+    <!-- ========================================================================= -->
+    <section id="clinic-quick-access" class="relative w-full py-16 px-4 sm:px-6 bg-[#162232] border-y border-white/10 select-none overflow-hidden" 
+      style="background-image: radial-gradient(1.5px 1.5px at 24px 32px, rgba(255,255,255,0.9), transparent), radial-gradient(1px 1px at 85px 75px, rgba(253,224,71,0.85), transparent), radial-gradient(1.8px 1.8px at 150px 130px, rgba(255,255,255,0.95), transparent), radial-gradient(1px 1px at 230px 45px, rgba(224,242,254,0.8), transparent), radial-gradient(2px 2px at 320px 95px, rgba(253,224,71,0.9), transparent), radial-gradient(1.2px 1.2px at 410px 165px, rgba(255,255,255,0.85), transparent), radial-gradient(1.5px 1.5px at 490px 65px, rgba(255,255,255,0.9), transparent); background-size: 520px 210px;">
+      
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center justify-center gap-6 relative z-10">
+        
+        <!-- Clickable Address & Neshan Navigation Pill -->
+        <a href="https://neshan.org/maps/places/search/%D9%86%DB%8C%D8%B4%D8%A7%D8%A8%D9%88%D8%B1%D8%8C%20%D9%81%D8%B1%D8%AF%D9%88%D8%B3%DB%8C%20%D8%B4%D9%85%D8%A7%D9%84%DB%8C%20%DB%B1%DB%B2%D8%8C%20%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86%20%D9%85%D8%A7%D9%87%20%D9%88%20%D8%B3%D8%AA%D8%A7%D8%B1%D9%87" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           title="مشاهده آدرس و مسیریابی در نقشه نشان"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-[#d4af37] hover:text-amber-300 text-xs sm:text-sm font-semibold transition-all hover:scale-105 shadow-md">
+          <span class="material-symbols-outlined text-[18px]">location_on</span>
+          <span>نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم</span>
+          <span class="text-[11px] text-white/80 bg-white/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span>مسیریابی نشان</span>
+            <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+          </span>
+        </a>
+
+        <!-- Welcome Heading -->
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-md">
+          به اپتیوا خوش آمدید
+        </h2>
+
+        <!-- Action Buttons (Rubika / Call Booking / Collection) -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2 w-full">
+          
+          <!-- Rubika Official Chat Button -->
+          <button onclick="handleHeroRubikaClick()" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0f1e2e] hover:bg-[#162d45] text-white text-xs sm:text-sm font-bold border border-white/15 shadow-md transition-all hover:scale-105 cursor-pointer">
+            <span class="material-symbols-outlined text-[18px] text-amber-400">chat</span>
+            <span>ارتباط در روبیکا</span>
+          </button>
+
+          <!-- Examination Booking Button (Calls 09040148824 / Checks Holiday) -->
+          <button onclick="handleHeroBookingClick()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-[#0f1e2e] text-xs sm:text-sm font-black shadow-lg transition-all hover:scale-105 cursor-pointer">
+            <span class="material-symbols-outlined text-[20px] text-[#0f1e2e]">calendar_month</span>
+            <span>رزرو نوبت معاینه (۲۴۰٬۰۰۰ تومان)</span>
+          </button>
+
+          <!-- View Frame Collection -->
+          <a href="#site-content" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#765427] hover:bg-[#8b632e] text-white text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-105">
+            <span class="material-symbols-outlined text-[18px]">eyeglasses</span>
+            <span>مشاهده کالکشن فریم‌ها</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Curated Product Categories (5 Cards) -->
+    <section id="site-content" class="w-full py-16 bg-surface-container-low border-y border-surface-container">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="mb-10">
+          <span class="text-xs text-secondary uppercase font-bold tracking-wider">دسته‌بندی‌های تخصصی</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-primary mt-1">آرشیو جامع عینک و لنز</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Category 1 -->
+          <a href="products.html?cat=optical" class="group flex flex-col bg-surface-container-lowest p-5 rounded-2xl hover:shadow-lg transition-all border border-surface-container">
+            <div class="w-full aspect-[4/3] rounded-xl bg-surface-container overflow-hidden mb-4">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="عینک طبی دست‌ساز" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDggYC30bkKeJReBkMPNfzcTx7Gvp1hphXNp2Z4REvqAxgDuGAhCAKod6_dSph-f2mHCWNEm6dwpljpPgNfU-B9prI3rurmPWBHDIGkCivN77KRAdFjGkE04_3qHMGYyVR3iOtbcKV5sjDXq_1DkNpKR3c0rVON1FHoE6Jfma6ar4WUbttHUhZfKI6MxB2qVeqqn-sXzoxLyloqA-b9meo9WMfAGS6H5kxKAG1DGbCIntcOxWcPvadF"/>
+            </div>
+            <span class="text-[11px] text-secondary font-bold">تطابق نمره دقیق</span>
+            <h3 class="text-base font-bold text-primary mt-1">عینک طبی</h3>
+            <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">فریم‌های ارگونومیک طبی سازگار با انواع عدسی تک‌دید و بلوکنترل.</p>
+            <div class="mt-4 pt-3 border-t border-surface-container flex items-center text-primary text-xs font-semibold group-hover:text-secondary transition-colors">
+              <span>مشاهده کالکشن</span>
+              <span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+            </div>
+          </a>
+
+          <!-- Category 2 -->
+          <a href="products.html?cat=sunglasses" class="group flex flex-col bg-surface-container-lowest p-5 rounded-2xl hover:shadow-lg transition-all border border-surface-container">
+            <div class="w-full aspect-[4/3] rounded-xl bg-surface-container overflow-hidden mb-4">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="عینک آفتابی پلاریزه" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxEWizJhTJ-XkTNPtU706bGQZ4uSoopmao4oGVWQkiNpE2sshbixBp51E6PTRgsBDGIYPT3B-Fti5N5vsILFljbYCFdE3IKR_22IvrwLlAAYqSImthcg0g9jP03aJup3SZ-bre8oNIs0TuQkDu_4gE6pqi9oGTPlEx5mOUg4LG82Kw1FAATq5TdttjvphEMkAl2PtRa9X4GoSstK8NqtfKDeVl3PdiIaNAvkm2ovNiN2pInemMZJAe"/>
+            </div>
+            <span class="text-[11px] text-secondary font-bold">یووی ۴۰۰ و پلاریزه</span>
+            <h3 class="text-base font-bold text-primary mt-1">عینک آفتابی</h3>
+            <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">حفاظت کامل عدسی در برابر اشعه‌های مضر با امضای برندهای لوکس.</p>
+            <div class="mt-4 pt-3 border-t border-surface-container flex items-center text-primary text-xs font-semibold group-hover:text-secondary transition-colors">
+              <span>مشاهده کالکشن</span>
+              <span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+            </div>
+          </a>
+
+          <!-- Category 3 -->
+          <a href="products.html?cat=contact-lenses" class="group flex flex-col bg-surface-container-lowest p-5 rounded-2xl hover:shadow-lg transition-all border border-surface-container">
+            <div class="w-full aspect-[4/3] rounded-xl bg-surface-container overflow-hidden mb-4">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="لنزهای تماسی طبی و زیبایی" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4OfmUEQYgtDHcmByOHaV3-fskpaQHGCPKKhpWyv60mfbAp3PuyvhRlZ1EtTHxtxtBjhdEbfd1bK35pKBNZaTYnvSMAXWv5GKgFdo7ex65Ufp7ndY0sfUk6r-AS3ZdDoBlvhF2Ajy-lMaajnShiyDHZN5V6Ywu-y3ZTzeBYajQOoKGr8N69zdwOb2ExTYdwDkPXZ-ffNF1kzP7pGz2qamQLjTlgmJGUJ5WL04ZRsd-Dunx10SL19rD"/>
+            </div>
+            <span class="text-[11px] text-secondary font-bold">سیلیکون هایدروژل</span>
+            <h3 class="text-base font-bold text-primary mt-1">لنزهای تماسی</h3>
+            <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">لنزهای روزانه و ماهانه طبی، آستیگمات و زیبایی با نفوذپذیری اکسیژن بالا.</p>
+            <div class="mt-4 pt-3 border-t border-surface-container flex items-center text-primary text-xs font-semibold group-hover:text-secondary transition-colors">
+              <span>مشاهده کالکشن</span>
+              <span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+            </div>
+          </a>
+
+          <!-- Category 4 -->
+          <a href="products.html?cat=progressives" class="group flex flex-col bg-surface-container-lowest p-5 rounded-2xl hover:shadow-lg transition-all border border-surface-container">
+            <div class="w-full aspect-[4/3] rounded-xl bg-surface-container overflow-hidden mb-4">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="عدسی‌های تدریجی و پراگرسیو" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTSZ9Uaq2fefFEg2ZJJJEQXtlQPyjqn4pNqQnFHaB-t6ItFXpFaQf1IaUbKD9no_TD1ZCqrRi3YyfoTB0UEQJ8tpH3dC7p9wfdUrvJCeibQcbyM1vGSZJGDIxfjhrvGJjYTYeW1KrXrldYsKUK3-3JP_agPsWHEsMhxSoQxdxvz1HTO9ro2tNVhRO5-mfThRKLY6Oukgw7ixOWT848y-SIhpdN4Nxv5lG4B14uXffHt1_t3mPDpw27"/>
+            </div>
+            <span class="text-[11px] text-secondary font-bold">چندکانونی پیشرفته</span>
+            <h3 class="text-base font-bold text-primary mt-1">تدریجی و دوکانونی</h3>
+            <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">دید همزمان دور و نزدیک بدون خط دید محسوس با تراش دیجیتال فری‌فرم.</p>
+            <div class="mt-4 pt-3 border-t border-surface-container flex items-center text-primary text-xs font-semibold group-hover:text-secondary transition-colors">
+              <span>مشاهده کالکشن</span>
+              <span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+            </div>
+          </a>
+
+          <!-- Category 5 -->
+          <a href="products.html?cat=special" class="group flex flex-col bg-surface-container-lowest p-5 rounded-2xl hover:shadow-lg transition-all border border-surface-container">
+            <div class="w-full aspect-[4/3] rounded-xl bg-surface-container overflow-hidden mb-4">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="فریم‌های دست‌ساز خاص" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATWL6-gdeElspB-aRKsGcjhLHfDIm4UUkIkHvz5xLjysn0EscXfR0BIjoz8jFXHCwfrS-dlBaoWqvYKg1LFv4L5ImWBB9eR23NiS1F2ASGm1dr0NcokKumoSP-KyeDcDagMqq8gFif3TfngFdiLH7l2xObiyE7qGeGCK6Hlw9X2yCUiVN4JheBCAMfmdnLMF1Lqp4aLt5wG5XO5qBJN31GKyO-5qBvba2o9C7aiqEEJjlxalEG5hVC"/>
+            </div>
+            <span class="text-[11px] text-secondary font-bold">دست‌ساز و انحصاری</span>
+            <h3 class="text-base font-bold text-primary mt-1">فریم‌های خاص</h3>
+            <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">آرشیو تولید محدود از برترین کارگاه‌های فریم‌سازی اروپا و ژاپن.</p>
+            <div class="mt-4 pt-3 border-t border-surface-container flex items-center text-primary text-xs font-semibold group-hover:text-secondary transition-colors">
+              <span>مشاهده کالکشن</span>
+              <span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Showcase with Price Controls and Ordering -->
+    <section class="w-full py-16 bg-surface">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+          <div>
+            <div class="flex items-center gap-1.5 text-secondary text-xs mb-1 font-semibold">
+              <span class="material-symbols-outlined text-[16px]">stars</span>
+              <span>کالکشن فریم‌های لوکس و دست‌ساز اپتیوا</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-primary">ویترین فریم‌های منتخب</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="products.html" class="px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold shadow-sm hover:bg-primary-container transition flex items-center gap-1">
+              <span>مشاهده همه محصولات</span>
+              <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Product 1 -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col border border-surface-container">
+            <div class="relative w-full aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-3">
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-primary-container text-on-primary text-[10px] z-10 font-medium">تیتانیوم ژاپن</span>
+              <img class="w-full h-full object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openProductModal('OPT-904-NB')" alt="فریم طبی تیتانیومی دست‌ساز" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiBbCiEaM5LfCl5kA3_e9hACpIK0Vb0Gkr-1h5uw90NYg5uvyrMehfbOsMHcQY2Nw_ZrXelU63ZaWzZ5W5ZrrzfSm6_o0lTPkejsh6FizX8eaTZ3rEeuv9BCciLi4KLAXK9vjDeAP62h4Sgbvy-BxwfPUJTgA_94INPg-iDb9P7YVaZpRwP_p7OC5B_j_HrQ_XqIcTNHVMEnGIdOJBovpNwz7F-8y-oRFfToygfaxARxKr_lCYUdsv"/>
+            </div>
+            
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] text-secondary font-semibold">Optiva Heritage</span>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-slate-800 ring-1 ring-primary"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-amber-700"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-zinc-400"></span>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-primary mb-1 cursor-pointer hover:text-secondary transition" onclick="openProductModal('OPT-904-NB')">Optiva Pure Titanium</h3>
+            <p class="text-xs text-on-surface-variant line-clamp-1">فریم فوق‌سبک ۹ گرمی با آلیاژ هوافضا</p>
+
+            <div class="mt-4 pt-3 flex items-baseline justify-between border-t border-surface-container">
+              <div>
+                <span class="text-[11px] text-on-surface-variant">قیمت:</span>
+                <span class="text-lg font-bold text-primary mr-1">۴,۸۵۰,۰۰۰</span>
+                <span class="text-xs text-on-surface-variant">تومان</span>
+              </div>
+              <button onclick="toggleWishlist('OPT-904-NB')" data-wishlist-id="OPT-904-NB" class="text-on-surface-variant hover:text-error transition-colors p-1" title="افزودن به علاقه‌مندی">
+                <span class="material-symbols-outlined text-[20px]">favorite</span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mt-3">
+              <button onclick="openProductModal('OPT-904-NB')" class="flex items-center justify-center gap-1 py-2 px-2 bg-primary text-on-primary rounded-xl text-xs font-semibold hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+                <span>جزئیات فریم</span>
+              </button>
+              <button onclick="handleRubikaAction('سفارش فریم Pure Titanium')" class="flex items-center justify-center gap-1 py-2 px-2 bg-secondary text-on-secondary rounded-xl text-xs font-semibold hover:bg-secondary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+                <span>خرید در روبیکا</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col border border-surface-container">
+            <div class="relative w-full aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-3">
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-secondary text-on-secondary text-[10px] z-10 font-medium">استات ایتالیا</span>
+              <img class="w-full h-full object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openProductModal('OPT-AURELIA-GOLD')" alt="عینک آفتابی پلاریزه اورلیا" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA0-f3Rn4Za7Fi4UqJ1rtM5I8UWYAn7tKt3RrXQ8op64pd7ZqSH30TpE6hlv5rQpZ998mfA59u0J2GZEWjCBjN4g24iLV04YMFW0JPerNS64hjBKQbvXLEs-cwVanyc21z6ZAAeeb4htUlbEryvQMHTsGHbfogQCFZ8SoHRbF3nKUnE8R8MBIBoem3-mbboUSptTzP9lqofsbe8TxWMfQQNFocphOhzT9YMZHjTw8op6Z5P6mGIs7y"/>
+            </div>
+            
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] text-secondary font-semibold">Aurelia Series</span>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-amber-200 ring-1 ring-secondary"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-neutral-900"></span>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-primary mb-1 cursor-pointer hover:text-secondary transition" onclick="openProductModal('OPT-AURELIA-GOLD')">Aurelia Champagne</h3>
+            <p class="text-xs text-on-surface-variant line-clamp-1">پلاریزه کت‌تری، شید کهربایی شامپاینی</p>
+
+            <div class="mt-4 pt-3 flex items-baseline justify-between border-t border-surface-container">
+              <div>
+                <span class="text-[11px] text-on-surface-variant">قیمت:</span>
+                <span class="text-lg font-bold text-primary mr-1">۵,۹۰۰,۰۰۰</span>
+                <span class="text-xs text-on-surface-variant">تومان</span>
+              </div>
+              <button onclick="toggleWishlist('OPT-AURELIA-GOLD')" data-wishlist-id="OPT-AURELIA-GOLD" class="text-on-surface-variant hover:text-error transition-colors p-1" title="افزودن به علاقه‌مندی">
+                <span class="material-symbols-outlined text-[20px]">favorite</span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mt-3">
+              <button onclick="openProductModal('OPT-AURELIA-GOLD')" class="flex items-center justify-center gap-1 py-2 px-2 bg-primary text-on-primary rounded-xl text-xs font-semibold hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+                <span>جزئیات فریم</span>
+              </button>
+              <button onclick="handleRubikaAction('سفارش فریم Aurelia')" class="flex items-center justify-center gap-1 py-2 px-2 bg-secondary text-on-secondary rounded-xl text-xs font-semibold hover:bg-secondary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+                <span>خرید در روبیکا</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col border border-surface-container">
+            <div class="relative w-full aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-3">
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-surface-container-high text-primary text-[10px] z-10 font-medium">پک ۳ جفتی</span>
+              <img class="w-full h-full object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openProductModal('OPT-HYDROCLEAR-LENS')" alt="لنز سیلیکون هایدروژل ماهانه" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaff4rqOu9s3LY9EAXWylReiGpyYFEqG7Z4ww8tVDRvZyGEzSCh0BzV42cBobT9rcEmdsD_75Mmkx45ccG1Z0pQopHbaTQHkhRduXu6ERch-Dvyz82pjUo2VP5PCAkwZgK0qZM5-NLHIUkqAyBLizGSx7m75VR-B8NT_Q6LqwCBNnvII3sGgef8_IJRCmcyYq9uwV0Zo-rlRwDcIdmP2qQs_abjWBLilztqLCvQBegqGs4UPL4LViP"/>
+            </div>
+            
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] text-secondary font-semibold">Optiva HydraComfort</span>
+              <span class="text-[10px] bg-secondary-container/50 px-1.5 py-0.5 rounded text-on-secondary-fixed font-bold">Dk/t 140</span>
+            </div>
+
+            <h3 class="text-base font-bold text-primary mb-1 cursor-pointer hover:text-secondary transition" onclick="openProductModal('OPT-HYDROCLEAR-LENS')">لنز سیلیکون هایدروژل</h3>
+            <p class="text-xs text-on-surface-variant line-clamp-1">تنفس‌پذیری پیوسته ۳۰ روزه با رطوبت پایدار</p>
+
+            <div class="mt-4 pt-3 flex items-baseline justify-between border-t border-surface-container">
+              <div>
+                <span class="text-[11px] text-on-surface-variant">قیمت:</span>
+                <span class="text-lg font-bold text-primary mr-1">۱,۳۵۰,۰۰۰</span>
+                <span class="text-xs text-on-surface-variant">تومان</span>
+              </div>
+              <button onclick="toggleWishlist('OPT-HYDROCLEAR-LENS')" data-wishlist-id="OPT-HYDROCLEAR-LENS" class="text-on-surface-variant hover:text-error transition-colors p-1" title="افزودن به علاقه‌مندی">
+                <span class="material-symbols-outlined text-[20px]">favorite</span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mt-3">
+              <button onclick="openProductModal('OPT-HYDROCLEAR-LENS')" class="flex items-center justify-center gap-1 py-2 px-2 bg-primary text-on-primary rounded-xl text-xs font-semibold hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+                <span>مشخصات لنز</span>
+              </button>
+              <button onclick="handleRubikaAction('سفارش لنز سیلیکون هایدروژل')" class="flex items-center justify-center gap-1 py-2 px-2 bg-secondary text-on-secondary rounded-xl text-xs font-semibold hover:bg-secondary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+                <span>خرید در روبیکا</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col border border-surface-container">
+            <div class="relative w-full aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-3">
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-primary text-on-primary text-[10px] z-10 font-medium">بدون فریم (Rimless)</span>
+              <img class="w-full h-full object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openProductModal('OPT-SILHOUETTE-09')" alt="عینک بدون فریم ریملس" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc-r_gdBhTXP3vtA9XkC7UDpsRHP8G_ekDvwHDkNdDS_fZXdIRevqDZXYmwGPxalDlva9fKHTqYrBauBJ7SlMu5_8aaSZzgYjDkOcV6BmXWJGm1Z8gunRbijZidJP-dRCys-_CuR-tAdzFaMGtiUh4l4ZuC5lzBp4Ert1S6qTRUkoEkKAU_haHyf3_Omuqlhcwoi_rE8gD3Yt78FpTTT01IYJQeSMGIcqNUsryquxoWfwBcC7zsL8g"/>
+            </div>
+            
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] text-secondary font-semibold">AeroLite Collection</span>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-slate-400 ring-1 ring-primary"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-amber-400"></span>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-primary mb-1 cursor-pointer hover:text-secondary transition" onclick="openProductModal('OPT-SILHOUETTE-09')">Aero Rimless Aviator</h3>
+            <p class="text-xs text-on-surface-variant line-clamp-1">اتصال بدون پیچ، فاقد هرگونه مرز مزاحم دید</p>
+
+            <div class="mt-4 pt-3 flex items-baseline justify-between border-t border-surface-container">
+              <div>
+                <span class="text-[11px] text-on-surface-variant">قیمت:</span>
+                <span class="text-lg font-bold text-primary mr-1">۶,۲۰۰,۰۰۰</span>
+                <span class="text-xs text-on-surface-variant">تومان</span>
+              </div>
+              <button onclick="toggleWishlist('OPT-SILHOUETTE-09')" data-wishlist-id="OPT-SILHOUETTE-09" class="text-on-surface-variant hover:text-error transition-colors p-1" title="افزودن به علاقه‌مندی">
+                <span class="material-symbols-outlined text-[20px]">favorite</span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mt-3">
+              <button onclick="openProductModal('OPT-SILHOUETTE-09')" class="flex items-center justify-center gap-1 py-2 px-2 bg-primary text-on-primary rounded-xl text-xs font-semibold hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+                <span>جزئیات فریم</span>
+              </button>
+              <button onclick="handleRubikaAction('سفارش فریم Aero Rimless')" class="flex items-center justify-center gap-1 py-2 px-2 bg-secondary text-on-secondary rounded-xl text-xs font-semibold hover:bg-secondary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+                <span>خرید در روبیکا</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Clinical Optometry Services Section (Nishabur) -->
+    <section class="w-full py-16 bg-surface-container-low border-b border-surface-container">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-primary">معاینه تخصصی اپتومتری</h2>
+          </div>
+          <p class="text-sm text-on-surface-variant max-w-md">
+            ارزیابی جامع عملکرد بینایی، تعیین دقیق نمره چشم و سنجش عیوب انکساری با مدرن‌ترین تجهیزات دیجیتال.
+          </p>
+        </div>
+
+        <!-- Single Official Clinic Service Showcase Card -->
+        <div class="p-8 lg:p-10 rounded-3xl bg-surface-container-lowest shadow-md border-2 border-secondary/20 relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-8 space-y-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-primary">معاینه تخصصی اپتومتری</h3>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-secondary text-xs font-bold">
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  <span>اپتومتریست عاطفه صادقی</span>
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-primary font-medium pt-2">
+                <div class="flex items-center gap-2 bg-surface-container-low p-3 rounded-xl border border-surface-container">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+                  <span>تعیین نمره عینک طبی</span>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-low p-3 rounded-xl border border-surface-container">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+                  <span>مشاوره و فیتینگ تخصصی لنز تماسی</span>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-low p-3 rounded-xl border border-surface-container">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+                  <span>اندازه‌گیری دید عمق و بررسی دید رنگ</span>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-low p-3 rounded-xl border border-surface-container">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+                  <span>زمان اختصاصی مشاوره برای هر مراجع</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Booking Action Column -->
+            <div class="lg:col-span-4 bg-surface-container-low p-6 sm:p-8 rounded-2xl border border-surface-container flex flex-col justify-between space-y-6 text-center">
+              <div class="space-y-1.5">
+                <span class="text-xs text-on-surface-variant font-bold uppercase tracking-wider block">تعرفه رسمی و قطعی</span>
+                <div class="flex items-baseline justify-center gap-1.5">
+                  <span class="text-3xl sm:text-4xl font-extrabold text-primary font-headline-sm">۲۴۰٬۰۰۰</span>
+                  <span class="text-sm font-bold text-secondary">تومان</span>
+                </div>
+                <span class="text-xs text-secondary font-bold block">دویست و چهل هزار تومان</span>
+                <span class="text-[11px] text-on-surface-variant block">پذیرش با رزرو و هماهنگی قبلی</span>
+              </div>
+
+              <div class="space-y-2 pt-2">
+                <a href="contact.html#booking-form" class="w-full py-3.5 px-4 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md transition">
+                  <span class="material-symbols-outlined text-[18px]">event</span>
+                  <span>رزرو نوبت معاینه (۲۴۰٬۰۰۰ تومان)</span>
+                </a>
+                <button onclick="handleRubikaAction('هماهنگی وقت معاینه')" class="w-full py-2.5 px-4 rounded-xl bg-surface-container-lowest hover:bg-surface-container text-primary text-xs font-bold border border-surface-container flex items-center justify-center gap-2 transition">
+                  <span class="material-symbols-outlined text-[18px] text-secondary">chat</span>
+                  <span>ارتباط و هماهنگی در روبیکا</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frame Guide & Face Shape Compatibility -->
+    <section class="w-full py-16 bg-surface">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="max-w-4xl mx-auto flex flex-col gap-6">
+          <div class="text-center">
+            <span class="text-xs text-secondary uppercase font-bold tracking-wider">راهنمای استایل و آناتومی</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-primary mt-1">کدام فریم مناسب فرم چهره شماست؟</h2>
+            <p class="text-xs sm:text-sm text-on-surface-variant mt-1 max-w-lg mx-auto">
+              هماهنگی تناسبات چهره با ساختار فریم، جلوه طبیعی و پرستیژ شخصی شما را برجسته‌تر می‌سازد.
+            </p>
+          </div>
+
+          <!-- Face Shape Tabs -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button class="p-3.5 rounded-2xl bg-surface-container text-primary text-xs text-center face-shape-btn border border-secondary font-bold shadow-xs transition" id="btn-oval" onclick="showFaceShape('oval')">
+              <span class="material-symbols-outlined block text-[24px] mb-1 mx-auto text-secondary">face</span>
+              <span>چهره بیضی (Oval)</span>
+            </button>
+            <button class="p-3.5 rounded-2xl bg-surface-container-low text-on-surface-variant text-xs text-center face-shape-btn hover:bg-surface-container transition" id="btn-round" onclick="showFaceShape('round')">
+              <span class="material-symbols-outlined block text-[24px] mb-1 mx-auto">sentiment_satisfied</span>
+              <span>چهره گرد (Round)</span>
+            </button>
+            <button class="p-3.5 rounded-2xl bg-surface-container-low text-on-surface-variant text-xs text-center face-shape-btn hover:bg-surface-container transition" id="btn-square" onclick="showFaceShape('square')">
+              <span class="material-symbols-outlined block text-[24px] mb-1 mx-auto">crop_square</span>
+              <span>چهره مربع (Square)</span>
+            </button>
+            <button class="p-3.5 rounded-2xl bg-surface-container-low text-on-surface-variant text-xs text-center face-shape-btn hover:bg-surface-container transition" id="btn-heart" onclick="showFaceShape('heart')">
+              <span class="material-symbols-outlined block text-[24px] mb-1 mx-auto">favorite_border</span>
+              <span>چهره قلبی (Heart)</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Advice Box -->
+          <div class="bg-surface-container-lowest p-6 sm:p-8 rounded-3xl shadow-sm border border-surface-container" id="face-advice-card">
+            <div class="flex items-center gap-2 mb-2 text-secondary font-bold text-base">
+              <span class="material-symbols-outlined">recommend</span>
+              <span id="face-advice-title">پیشنهاد اپتیوا برای چهره‌های بیضی:</span>
+            </div>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed" id="face-advice-desc">
+              فرم بیضی با تقریباً تمام مدل‌های هندسی و مستطیلی همخوانی دارد. فریم‌های چندضلعی و خلبانی کلاسیک هماهنگی بصری بی‌نظیری خلق می‌کنند.
+            </p>
+            <div class="mt-4 pt-4 border-t border-surface-container flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-surface-container text-primary text-xs font-semibold">فریم‌های پیشنهادی:</span>
+              <span class="px-2.5 py-1 rounded-lg bg-secondary-container text-on-secondary-fixed text-xs font-bold" id="badge-1">مستطیلی باریک</span>
+              <span class="px-2.5 py-1 rounded-lg bg-secondary-container text-on-secondary-fixed text-xs font-bold" id="badge-2">چندضلعی (Polygon)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-secondary-container text-on-secondary-fixed text-xs font-bold" id="badge-3">خلبانی کلاسیک</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Opening Hours (Explicit & Strictly Verified Schedule) -->
+    <section class="w-full py-16 bg-surface-container-high border-y border-surface-container">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs text-secondary uppercase font-bold tracking-wider">شفافیت زمان‌بندی مراجعین</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-primary mt-1">ساعات کاری رسمی اپتیوا نیشابور</h2>
+          <p class="text-sm text-on-surface-variant mt-1">
+            برای تکریم زمان شما، نحوه پذیرش و نوبت‌دهی کلینیک با هماهنگی قبلی تنظیم می‌گردد.
+          </p>
+        </div>
+
+        <div class="max-w-xl mx-auto">
+          <!-- Optometry Clinic Schedule -->
+          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col border border-surface-container">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-fixed flex items-center justify-center">
+                <span class="material-symbols-outlined text-[20px]">visibility</span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-primary">معاینه تخصصی اپتومتری</h3>
+              </div>
+            </div>
+
+            <div class="space-y-3 my-3 flex-1 text-xs sm:text-sm">
+              <div class="p-3 bg-surface-container-low rounded-xl border border-surface-container">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-primary">شنبه تا چهارشنبه:</span>
+                  <span class="text-secondary font-bold">نیازمند هماهنگی</span>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+                  ساعت شروع و پایان پذیرش بخش اپتومتری هنوز به طور ثابت تعیین نشده است و صرفاً با هماهنگی تلفنی قبلی تنظیم می‌گردد.
+                </p>
+              </div>
+              <div class="p-3 bg-error-container/30 rounded-xl flex items-center justify-between text-on-error-container font-semibold">
+                <span>پنجشنبه و جمعه:</span>
+                <span>تعطیل رسمی</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="tel:09040148824" class="w-full flex items-center justify-center gap-2 py-2.5 bg-primary-container text-on-primary rounded-xl text-xs font-bold hover:bg-primary transition-colors">
+                <span class="material-symbols-outlined text-[18px]">call</span>
+                <span>رزرو تلفنی نوبت اپتومتری (09040148824)</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram Gallery & Location Showcase -->
+    <section class="w-full py-16 bg-surface" id="instagram-showcase">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <!-- Instagram Profile Header Card -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-surface-container-lowest border border-surface-container shadow-sm mb-10">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600">
+                  <div class="w-full h-full rounded-full bg-surface-container-lowest p-0.5 overflow-hidden">
+                    <img class="w-full h-full object-cover rounded-full" alt="پروفایل اپتیوا در اینستاگرام" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQJJqAP4fGdZmFJmdhJNY1-AIXvp946SewQ4FNgJJhiuVKdYUIK174E8GhBb-mNlHHvpx6XH5PmD5smsAcCI4jcjkn1d8FcOv2tde5PgLmwJ8j8pMebCruxWe37JXeVWYZGckPwPnbVfJNAvb61Ivb9whJGZesxEexohQ-wLOezIzOTEpphXpcsgGv_6zyYoWPqqs8-rd8TIreF1ufW3VLq9Ucajh9irjwe5aUYv8gOSUSfLiYKtZ-"/>
+                  </div>
+                </div>
+                <span class="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px] font-bold">✓</span>
+              </div>
+
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg sm:text-xl font-extrabold text-primary" dir="ltr" id="instagram-handle-display">optiva_vision</h3>
+                  <span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed text-[10px] font-bold">صفحه رسمی اینستاگرام</span>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+                  بوتیک عینک‌های لوکس و کلینیک تخصصی اپتومتری نیشابور | خیابان فردوسی شمالی ۱۲
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <a href="https://instagram.com/optiva_vision" id="instagram-main-btn" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-rose-500 to-amber-500 text-white text-xs font-bold shadow-md hover:opacity-95 transition">
+                <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                <span>مشاهده در اینستاگرام</span>
+                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+              </a>
+              <button onclick="handleRubikaAction('پیام از بخش اینستاگرام')" class="px-4 py-3 rounded-xl bg-surface-container text-primary hover:bg-surface-container-high text-xs font-bold transition flex items-center gap-1.5 border border-surface-container">
+                <span class="material-symbols-outlined text-[18px] text-secondary">chat</span>
+                <span class="hidden sm:inline">روبیکا</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instagram Grid (6 Managed Photos & Editable Captions) -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-12" id="instagram-posts-grid">
+          
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-1" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="بوتیک و دکوراسیون اپتیوا نیشابور" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQJJqAP4fGdZmFJmdhJNY1-AIXvp946SewQ4FNgJJhiuVKdYUIK174E8GhBb-mNlHHvpx6XH5PmD5smsAcCI4jcjkn1d8FcOv2tde5PgLmwJ8j8pMebCruxWe37JXeVWYZGckPwPnbVfJNAvb61Ivb9whJGZesxEexohQ-wLOezIzOTEpphXpcsgGv_6zyYoWPqqs8-rd8TIreF1ufW3VLq9Ucajh9irjwe5aUYv8gOSUSfLiYKtZ-"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-1" class="text-[11px] mt-1.5 font-semibold leading-tight">بوتیک و دکوراسیون اپتیوا نیشابور</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-2" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="سوئیت معاینه بالینی اپتومتری" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2YXmH23j0dCB2VVJxwWNHnmCxJqSWNM2WBxGQW_14LCw9m-FcyJHR9VkK-8U1NRlkHQNpxjK2pMpYGzjiXwfq-1PHFhya6T5EGcrxckK8QPzgs1Y0cYKEblt5HJgqUqr4gEdePfzobVd2kTD9IrHFFh64e7Givdwl3q88XFKG4ItesfClxoDc2VJ8VqfsF8ytz4t6TQs_sqPFzRKmk4K_5dmHOE1qg9AhLHSuQzYi5LGQJ7a5uxoH"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-2" class="text-[11px] mt-1.5 font-semibold leading-tight">سوئیت معاینه بالینی اپتومتری</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-3" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="کالکشن فریم طلا و دست‌ساز" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8btqtqMqGT_iBTaJ50zGeIPBFSd8UywlQ6bidkIp8CvS-TWYo2jQ509tyHSdx4EOvqCkeSHigi3CFY9bB7cuqPGY5Zq5V2Hbm9gmFkwSd5hv_RdkzS5kbufq-qgmSboh7-JbidT8aSQlla5qXPDtzjwWNVR33lCxaIzIDTEvltTe5ZxvLDl6a3C1li2iinhDYGrTj153jhFcUAjI5ha2ZRylKBV455Ei4gDkCf9E1P4gWgdFn_fKn"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-3" class="text-[11px] mt-1.5 font-semibold leading-tight">کالکشن فریم طلا و دست‌ساز</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-4" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="آنباکسینگ بسته‌بندی هاردکیس چرمی" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS2A5RgI0ncaddbtnzfitycf4v97gdEQlXE1hOb7h0VJSLSFDgceXc681YhcYEz7qq_lsXINONJhQXIvy66mOD500QE4Eq7La_HXPjriEyr7j-DOHP57UbC38sOHOhrVdZXIfVRtBW3o6bMBHkQdYClBdVhtx7eVo9lRnxFnQ6_3yk5bWyWe1f4Rc_NOcR2_nliITs2oRhSVwX_pS4UBJc9J6gQmhh9KLDhFJvPXVO6AIlixm95fVF"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-4" class="text-[11px] mt-1.5 font-semibold leading-tight">آنباکسینگ بسته‌بندی هاردکیس چرمی</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-5" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="تیتانیوم دست‌ساز گرید هوافضا" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiBbCiEaM5LfCl5kA3_e9hACpIK0Vb0Gkr-1h5uw90NYg5uvyrMehfbOsMHcQY2Nw_ZrXelU63ZaWzZ5W5ZrrzfSm6_o0lTPkejsh6FizX8eaTZ3rEeuv9BCciLi4KLAXK9vjDeAP62h4Sgbvy-BxwfPUJTgA_94INPg-iDb9P7YVaZpRwP_p7OC5B_j_HrQ_XqIcTNHVMEnGIdOJBovpNwz7F-8y-oRFfToygfaxARxKr_lCYUdsv"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-5" class="text-[11px] mt-1.5 font-semibold leading-tight">تیتانیوم دست‌ساز گرید هوافضا</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/optiva_vision" id="ig-link-ig-6" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border border-surface-container shadow-xs">
+            <img id="ig-img-ig-6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="تجهیزات مدرن تشخیصی بینایی" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLFzmNsby8GKr2-IqihRE1zfPLjYSRYW_RdBK9DAodzZHGOmXEdSQ1N6p8yvIFgVaVgxLXHGN7JM-C5uil0KbmrmkcSMTi6HvkG8M-IbmXuF3Tdu3yk0aWHRJXJbNTGgMg2cX_1vVNU7l-tloj7enXTkz5xvqTJnaQ4_yphiwJglAOO3AYeaOeJ_92w1sfMjdP9dr04GX49pjYb3hi2uR_96rGJWp7w5ghg3zQN-W4VfmqBy6mjHbE"/>
+            <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-on-primary p-2 text-center">
+              <span class="material-symbols-outlined text-[22px] text-rose-400">photo_camera</span>
+              <span id="ig-caption-ig-6" class="text-[11px] mt-1.5 font-semibold leading-tight">تجهیزات مدرن تشخیصی بینایی</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Nishabur Physical Presence Bar -->
+        <div class="bg-surface-container-low p-6 lg:p-8 rounded-3xl border border-surface-container">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-secondary text-xs font-bold">
+                <span class="material-symbols-outlined text-[18px]">place</span>
+                <span>موقعیت مکانی شعبه مرکزی نیشابور</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-primary">
+                نیشابور، خیابان فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم
+              </h3>
+              <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                دارای دسترسی آسان، فضای آرام و طراحی مدرن بر اساس استانداردهای بین‌المللی کلینیک‌های اپتومتری.
+              </p>
+            </div>
+            <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+              <a href="https://neshan.org" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-primary text-on-primary rounded-xl text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">navigation</span>
+                <span>مسیریابی روی نقشه</span>
+              </a>
+              <a href="tel:09040148824" class="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-lowest text-primary rounded-xl text-xs font-bold hover:bg-surface-container transition-colors border border-surface-container">
+                <span class="material-symbols-outlined text-[18px]">call</span>
+                <span dir="ltr">09040148824</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Reviews and Testimonials Section -->
+    <section id="reviews" class="w-full py-16 bg-surface-container-low border-t border-surface-container">
+      <div class="max-w-6xl mx-auto px-4 lg:px-8">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div class="flex items-center gap-2 text-secondary text-xs font-bold tracking-wider mb-1">
+              <span class="material-symbols-outlined text-[18px]">verified</span>
+              <span>تجربه و رضایت مراجعین</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-primary font-display">نظرات مراجعین کلینیک و واحد اپتومتری</h2>
+            <p class="text-xs sm:text-sm text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
+              دیدگاه‌ها و تجربیات ثبت‌شده توسط مراجعین محترم پس از انجام معاینه تخصصی اپتومتری و دریافت خدمات بینایی در اپتیوا نیشابور.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <!-- Overall rating summary badge -->
+            <div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2.5 rounded-2xl border border-surface-container shadow-xs">
+              <div class="flex text-amber-400">
+                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              </div>
+              <div class="text-right">
+                <span class="text-sm font-bold text-primary font-mono" id="reviews-avg-rating">۵.۰</span>
+                <span class="text-[11px] text-on-surface-variant mr-1">(<span id="reviews-total-count">۴</span> نظر تایید شده)</span>
+              </div>
+            </div>
+
+            <!-- Submit Review Button -->
+            <button onclick="openAddReviewModal()" class="flex items-center gap-2 px-4 py-2.5 bg-primary text-on-primary rounded-2xl text-xs font-bold hover:bg-primary-container transition shadow-xs">
+              <span class="material-symbols-outlined text-[18px]">rate_review</span>
+              <span>ثبت نظر شما</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reviews Grid Container -->
+        <div id="reviews-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically populated by JavaScript from approved reviews -->
+        </div>
+
+        <!-- Trust footer note -->
+        <div class="mt-10 p-4 rounded-2xl bg-surface-container-lowest/80 border border-surface-container flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-surface-variant">
+          <div class="flex items-center gap-2 text-primary font-medium">
+            <span class="material-symbols-outlined text-[20px] text-secondary">verified_user</span>
+            <span>نظرات ارسالی مراجعین پس از بررسی و تایید در پنل مدیریت، مستقیماً در این بخش قرار می‌گیرند.</span>
+          </div>
+          <button onclick="openAddReviewModal()" class="text-secondary font-bold hover:underline flex items-center gap-1">
+            <span>شما هم نظر خود را ثبت کنید</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Add Review Modal -->
+    <div id="add-review-modal" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-surface-container-lowest border border-surface-container rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+        <div class="flex items-center justify-between pb-4 border-b border-surface-container">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">rate_review</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-primary">ثبت نظر و تجربه مراجعه</h3>
+              <p class="text-[11px] text-on-surface-variant">دیدگاه شما پس از بررسی و تایید مدیریت در سایت قرار خواهد گرفت</p>
+            </div>
+          </div>
+          <button onclick="closeAddReviewModal()" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-xl transition">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <form id="add-review-form" onsubmit="handleReviewSubmit(event)" class="mt-5 space-y-4 text-right">
+          <div>
+            <label class="block text-xs font-bold text-primary mb-1">نام و نام خانوادگی <span class="text-error">*</span></label>
+            <input type="text" id="review-input-name" required placeholder="مثال: مریم کریمی" class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container bg-surface-container-lowest text-xs text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-primary mb-1">خدمت دریافت شده</label>
+            <select id="review-input-service" class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container bg-surface-container-lowest text-xs text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50">
+              <option value="معاینه تخصصی اپتومتری">معاینه تخصصی اپتومتری</option>
+              <option value="تعیین نمره عینک طبی">تعیین نمره عینک طبی</option>
+              <option value="مشاوره و فیتینگ لنز تماسی">مشاوره و فیتینگ لنز تماسی</option>
+              <option value="انتخاب فریم طبی و آفتابی">انتخاب فریم طبی و آفتابی</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-primary mb-1.5">امتیاز شما به خدمات کلینیک</label>
+            <div class="flex items-center gap-2 justify-center py-2.5 bg-surface-container-low rounded-xl border border-surface-container" id="star-rating-selector" dir="ltr">
+              <button type="button" onclick="setRatingStar(1)" class="star-btn text-amber-400 hover:scale-110 transition"><span class="material-symbols-outlined text-[28px] fill-current">star</span></button>
+              <button type="button" onclick="setRatingStar(2)" class="star-btn text-amber-400 hover:scale-110 transition"><span class="material-symbols-outlined text-[28px] fill-current">star</span></button>
+              <button type="button" onclick="setRatingStar(3)" class="star-btn text-amber-400 hover:scale-110 transition"><span class="material-symbols-outlined text-[28px] fill-current">star</span></button>
+              <button type="button" onclick="setRatingStar(4)" class="star-btn text-amber-400 hover:scale-110 transition"><span class="material-symbols-outlined text-[28px] fill-current">star</span></button>
+              <button type="button" onclick="setRatingStar(5)" class="star-btn text-amber-400 hover:scale-110 transition"><span class="material-symbols-outlined text-[28px] fill-current">star</span></button>
+            </div>
+            <input type="hidden" id="review-input-rating" value="5" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-primary mb-1">متن دیدگاه و بازخورد شما <span class="text-error">*</span></label>
+            <textarea id="review-input-comment" rows="3" required placeholder="تجربه خود از کیفیت معاینه، برخورد کادر و فضای کلینیک را شرح دهید..." class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container bg-surface-container-lowest text-xs text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 leading-relaxed"></textarea>
+          </div>
+
+          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200/60 flex items-start gap-2 text-[11px] text-amber-900 leading-relaxed">
+            <span class="material-symbols-outlined text-[18px] text-amber-700 flex-shrink-0 mt-0.5">info</span>
+            <span>توجه: دیدگاه شما پس از ثبت، در کارتابل مدیریت کلینیک بررسی و بعد از تایید در سایت نمایش داده خواهد شد.</span>
+          </div>
+
+          <div id="review-form-status" class="hidden text-xs py-2 px-3 rounded-xl font-bold"></div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <button type="button" onclick="closeAddReviewModal()" class="flex-1 py-2.5 px-4 rounded-xl border border-surface-container text-on-surface-variant hover:bg-surface-container text-xs font-bold transition">
+              انصراف
+            </button>
+            <button type="submit" id="review-submit-btn" class="flex-1 py-2.5 px-4 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition shadow-xs flex items-center justify-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px]">send</span>
+              <span>ارسال دیدگاه</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer Component -->
+  <footer class="w-full bg-primary-container text-on-primary mt-16">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <!-- Brand Summary -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold text-xl text-secondary-fixed tracking-tight font-display">اپتیوا | OPTIVA</span>
+          </div>
+          <p class="text-xs sm:text-sm text-on-primary-container leading-relaxed">
+            ارائه تخصصی عینک‌های طبی و آفتابی لوکس، لنزهای تماسی و خدمات پیشرفته اپتومتری نیشابور با بالاترین دقت کلینیکی و استانداردهای روز دنیا.
+          </p>
+          <div class="flex items-center gap-2 text-secondary-fixed text-xs font-semibold">
+            <span class="material-symbols-outlined text-[18px]">verified</span>
+            <span>اصالت تضمین‌شده فریم‌ها و عدسی‌های بین‌المللی</span>
+          </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="flex flex-col gap-4">
+          <h3 class="text-sm font-bold text-secondary-fixed pb-2 border-b border-primary/40">ساعات کاری رسمی</h3>
+          <div class="space-y-3 text-xs">
+            <div class="bg-tertiary-container/50 p-3 rounded-xl border border-white/5">
+              <p class="font-bold text-surface-bright mb-1 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-secondary-fixed">store</span>
+                <span>واحد اپتومتری کلینیک تخصصی چشم نور</span>
+              </p>
+              <p class="text-on-primary-container">شنبه تا چهارشنبه: ۰۹:۰۰ الی ۱۴:۰۰ و ۱۷:۰۰ الی ۲۰:۰۰</p>
+              <p class="text-error-container/80 text-[11px] mt-1 font-semibold">پنجشنبه و جمعه تعطیل می‌باشد</p>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Contact Hub -->
+        <div class="flex flex-col gap-4">
+          <h3 class="text-sm font-bold text-secondary-fixed pb-2 border-b border-primary/40">اطلاعات تماس و نشانی</h3>
+          <ul class="space-y-3 text-xs sm:text-sm text-on-primary-container">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed mt-0.5">location_on</span>
+              <span>نیشابور، فردوسی شمالی ۱۲، ساختمان ماه و ستاره، طبقه دوم</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed">call</span>
+              <a href="tel:09040148824" class="hover:text-secondary-fixed transition-colors" dir="ltr">09040148824</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed">photo_camera</span>
+              <a href="https://instagram.com/optiva.vision" target="_blank" rel="noopener noreferrer" class="hover:text-secondary-fixed transition-colors" dir="ltr">@optiva.vision</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed">chat</span>
+              <button onclick="handleRubikaAction('مشاوره و خرید')" class="hover:text-secondary-fixed transition-colors">ارتباط و خرید از طریق روبیکا</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="mt-12 pt-6 border-t border-primary/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-on-primary-container text-xs">
+        <p>© کلیه حقوق مادی و معنوی برای بوتیک و کلینیک اپتومتری اپتیوا (نیشابور) محفوظ است.</p>
+        <p class="font-mono tracking-wide" dir="ltr">OPTIVA Luxury Eyewear &amp; Clinical Vision</p>
+      </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-2">
+      <!-- Card: Optometrist Atefeh Sadeghi -->
+      <a href="#services" onclick="handleOptometristBadgeClick(event)" class="flex items-center gap-2 bg-[#0f1e2e] hover:bg-[#182f47] text-white border border-amber-400/50 px-4 py-2.5 rounded-full shadow-2xl transition-all hover:scale-105" title="اپتومتریست عاطفه صادقی">
+        <span class="material-symbols-outlined text-[20px] text-amber-400">medical_services</span>
+        <span class="text-xs font-bold">اپتومتریست عاطفه صادقی</span>
+      </a>
+
+      <button onclick="handleRubikaAction('مشاوره و خرید فریم')" class="flex items-center gap-2 bg-secondary hover:bg-secondary-fixed-dim text-on-secondary px-4 py-2.5 rounded-full shadow-xl transition-all hover:scale-105" title="ارتباط و خرید از طریق روبیکا">
+        <span class="material-symbols-outlined text-[20px]">chat</span>
+        <span class="text-xs font-bold">ارتباط و خرید از طریق روبیکا</span>
+      </button>
+
+      <a href="tel:09040148824" class="flex items-center gap-2 bg-primary hover:bg-primary-container text-on-primary px-4 py-2.5 rounded-full shadow-lg transition-all hover:scale-105" title="تماس تلفنی مستقیم">
+        <span class="material-symbols-outlined text-[20px]">call</span>
+        <span class="text-xs font-bold">تماس: ۰۹۰۴۰۱۴۸۸۲۴</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/main.js"></script>
+  <script>
+    // =========================================================================
+    // SITE NAVIGATION
+    // =========================================================================
+    function scrollIntoSite() {
+      const target = document.getElementById('clinic-quick-access') || document.getElementById('site-content');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // =========================================================================
+    // SCROLL-DRIVEN 3D OPTICAL UNIVERSE & VIDEO SCRUBBING ENGINE
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroContainer = document.getElementById('hero-portal');
+      const heroVideo = document.getElementById('hero-portal-video');
+      const canvas = document.getElementById('hero-3d-canvas');
+      const stage1 = document.getElementById('hero-stage-1');
+      const heroOverlay = document.getElementById('hero-overlay');
+
+      if (!heroContainer) return;
+
+      let scrollProgress = 0;
+      let targetTime = 0;
+      let isSeeking = false;
+      let rafPending = false;
+      let videoDuration = 8.0;
+
+      // 1. Mobile & Web Video Unlock & Duration Detection
+      if (heroVideo) {
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
+
+        const updateDuration = () => {
+          if (heroVideo.duration && !isNaN(heroVideo.duration) && isFinite(heroVideo.duration)) {
+            videoDuration = heroVideo.duration;
+          }
+        };
+        heroVideo.addEventListener('loadedmetadata', updateDuration);
+        heroVideo.addEventListener('durationchange', updateDuration);
+
+        let hasUnlocked = false;
+        const unlockMobileVideo = () => {
+          if (hasUnlocked) return;
+          hasUnlocked = true;
+          heroVideo.muted = true;
+          heroVideo.play().then(() => {
+            heroVideo.pause();
+            scheduleScrub();
+          }).catch(() => {
+            scheduleScrub();
+          });
+        };
+
+        window.addEventListener('touchstart', unlockMobileVideo, { passive: true, once: true });
+        window.addEventListener('scroll', unlockMobileVideo, { passive: true, once: true });
+        window.addEventListener('click', unlockMobileVideo, { passive: true, once: true });
+      }
+
+      // 2. Three.js Real-time 3D Ambient Space Layer (Subtle Stardust Depth, Zero Obstructing Rings)
+      let scene, camera, renderer, opticalWorld, particleSystem;
+      let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
+
+      if (canvas && typeof THREE !== 'undefined') {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+        camera.position.set(0, 0, 9);
+
+        renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+          antialias: true,
+          powerPreference: 'high-performance'
+        });
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        // Subtle 3D Ambient Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        opticalWorld = new THREE.Group();
+        scene.add(opticalWorld);
+
+        // Delicate Cosmic Photons Particle Field (Soft Stardust floating in depth)
+        const particleCount = 180;
+        const particleGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const colorPalette = [
+          new THREE.Color(0xa5f3fc), // Soft ice blue
+          new THREE.Color(0xffdeaa), // Warm gold highlight
+          new THREE.Color(0xffffff)  // Pure light star
+        ];
+
+        for (let i = 0; i < particleCount; i++) {
+          positions[i * 3] = (Math.random() - 0.5) * 16;
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+          positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+          const c = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+          colors[i * 3] = c.r;
+          colors[i * 3 + 1] = c.g;
+          colors[i * 3 + 2] = c.b;
+        }
+
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particleMat = new THREE.PointsMaterial({
+          size: 0.08,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.65,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        });
+
+        particleSystem = new THREE.Points(particleGeo, particleMat);
+        opticalWorld.add(particleSystem);
+
+        // 3D Parallax Pointer Tracking
+        window.addEventListener('pointermove', (e) => {
+          const cx = window.innerWidth / 2;
+          const cy = window.innerHeight / 2;
+          mouseX = (e.clientX - cx) / cx;
+          mouseY = (e.clientY - cy) / cy;
+          targetRotY = mouseX * 0.25;
+          targetRotX = mouseY * 0.18;
+        }, { passive: true });
+
+        // Resize Responsiveness
+        const handleResize = () => {
+          if (!canvas) return;
+          const w = heroContainer.clientWidth || window.innerWidth;
+          const h = window.innerHeight;
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h, false);
+        };
+        window.addEventListener('resize', handleResize, { passive: true });
+        handleResize();
+      }
+
+      // 3. Central Scroll Synchronizer
+      function applyScrub() {
+        rafPending = false;
+        if (!heroContainer) return;
+
+        const rect = heroContainer.getBoundingClientRect();
+        const scrollable = heroContainer.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+
+        scrollProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
+        targetTime = scrollProgress * videoDuration;
+
+        // Video scrubbing
+        if (heroVideo && !isSeeking && heroVideo.readyState >= 1) {
+          const delta = targetTime - heroVideo.currentTime;
+          if (Math.abs(delta) > 0.04) {
+            isSeeking = true;
+            heroVideo.currentTime = targetTime;
+          }
+        }
+
+        // Stage 1 text fade-out
+        if (stage1) {
+          if (scrollProgress <= 0.02) {
+            stage1.style.opacity = '1';
+            stage1.style.transform = 'translateY(0px)';
+            stage1.style.pointerEvents = 'auto';
+          } else if (scrollProgress < 0.22) {
+            const op = Math.max(0, 1 - (scrollProgress - 0.02) / 0.18);
+            stage1.style.opacity = op.toFixed(2);
+            stage1.style.transform = `translateY(${(-scrollProgress * 60).toFixed(1)}px)`;
+            stage1.style.pointerEvents = op < 0.1 ? 'none' : 'auto';
+          } else {
+            stage1.style.opacity = '0';
+            stage1.style.pointerEvents = 'none';
+          }
+        }
+
+        // Ambient Overlay
+        if (heroOverlay) {
+          if (scrollProgress > 0.65) {
+            heroOverlay.style.opacity = '0.35';
+          } else {
+            heroOverlay.style.opacity = '1';
+          }
+        }
+      }
+
+      function scheduleScrub() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(applyScrub);
+      }
+
+      if (heroVideo) {
+        heroVideo.addEventListener('seeked', () => {
+          isSeeking = false;
+          const delta = targetTime - heroVideo.currentTime;
+          if (Math.abs(delta) > 0.04) {
+            scheduleScrub();
+          }
+        });
+      }
+
+      window.addEventListener('scroll', scheduleScrub, { passive: true });
+      window.addEventListener('resize', scheduleScrub, { passive: true });
+      scheduleScrub();
+
+      // 4. Continuous Three.js Render Loop (Camera & Space Traversal)
+      if (renderer && scene && camera) {
+        let clock = new THREE.Clock();
+        function animate3D() {
+          requestAnimationFrame(animate3D);
+          const elapsed = clock.getElapsedTime();
+
+          // Camera smooth depth traversal according to scrollProgress
+          const targetCamZ = 9.0 - (scrollProgress * 5.0);
+          camera.position.z += (targetCamZ - camera.position.z) * 0.08;
+
+          // Camera tilt tracking mouse
+          camera.rotation.y += (targetRotY - camera.rotation.y) * 0.05;
+          camera.rotation.x += (-targetRotX - camera.rotation.x) * 0.05;
+
+          // Drift particles
+          if (particleSystem) {
+            particleSystem.rotation.y = elapsed * 0.03 + scrollProgress * 0.5;
+            particleSystem.rotation.x = Math.sin(elapsed * 0.02) * 0.04;
+          }
+
+          renderer.render(scene, camera);
+        }
+        animate3D();
+      }
+    });
+
+    // Face Shape Advice Interactive Switcher
+    const faceData = {
+      oval: {
+        title: 'پیشنهاد اپتیوا برای چهره‌های بیضی:',
+        desc: 'فرم بیضی متعادل‌ترین فرم چهره است و تقریباً با تمام مدل‌های عینک همخوانی دارد. فریم‌های هندسی، مستطیلی و مدل‌های گربه‌ای (Cat-Eye) با حفظ هارمونی چهره، جلوه‌ای جذاب ایجاد می‌کنند.',
+        b1: 'مستطیلی باریک',
+        b2: 'چندضلعی (Polygon)',
+        b3: 'خلبانی کلاسیک'
+      },
+      round: {
+        title: 'پیشنهاد اپتیوا برای چهره‌های گرد:',
+        desc: 'برای چهره‌های گرد با خطوط منحنی ملایم و پهنای گونه‌های برابر با طول چهره، فریم‌های زاویه‌دار و مستطیلی بهترین انتخاب هستند تا به چهره کشیدگی و خطوط مشخص‌تری ببخشند.',
+        b1: 'مستطیلی زاویه‌دار',
+        b2: 'فریم ویفرر (Wayfarer)',
+        b3: 'فریم‌های ضخیم استات'
+      },
+      square: {
+        title: 'پیشنهاد اپتیوا برای چهره‌های مربع:',
+        desc: 'فک زاویه‌دار و پیشانی پهن ویژگی بارز این فرم است. فریم‌های گرد، بیضی و مدل‌های بدون فریم (Rimless) تیزی خطوط چهره را تعدیل کرده و ظرافت فوق‌العاده‌ای ایجاد می‌کنند.',
+        b1: 'فریم گرد فلزی',
+        b2: 'بدون فریم (Rimless)',
+        b3: 'مدل گربه‌ای ملایم'
+      },
+      heart: {
+        title: 'پیشنهاد اپتیوا برای چهره‌های قلبی:',
+        desc: 'در چهره‌های با پیشانی پهن و چانه باریک، فریم‌هایی که لبه پایینی عریض‌تری دارند یا فریم‌های نیمه‌فریم تعادل بصری بی‌نظیری برقرار می‌کنند.',
+        b1: 'کلاب مستر (Semi-rim)',
+        b2: 'خلبانی خنثی',
+        b3: 'بیضی با رنگ روشن'
+      }
+    };
+
+    function showFaceShape(shape) {
+      const data = faceData[shape];
+      if (!data) return;
+
+      document.querySelectorAll('.face-shape-btn').forEach(btn => {
+        btn.classList.remove('bg-surface-container', 'border', 'border-secondary', 'font-bold');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+      });
+
+      const activeBtn = document.getElementById('btn-' + shape);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-surface-container', 'border', 'border-secondary', 'font-bold');
+        activeBtn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+      }
+
+      document.getElementById('face-advice-title').textContent = data.title;
+      document.getElementById('face-advice-desc').textContent = data.desc;
+      document.getElementById('badge-1').textContent = data.b1;
+      document.getElementById('badge-2').textContent = data.b2;
+      document.getElementById('badge-3').textContent = data.b3;
+    }
+
+    // =========================================================================
+    // REVIEWS MANAGEMENT & DISPLAY
+    // =========================================================================
+    const DEFAULT_REVIEWS = [
+      {
+        id: 'rev-1',
+        name: 'مهندس علیرضا سلیمانی',
+        service: 'معاینه تخصصی اپتومتری و تعیین نمره',
+        rating: 5,
+        comment: 'دقت معاینه و توضیحات اپتومتریست بسیار دقیق و علمی بود. برای اولین بار نمره آستیگماتیسم من بدون ایجاد سردرد تنظیم شد. محیط کلینیک بسیار آرام و مدرن است.',
+        date: '۱۴۰۳/۰۸/۱۰',
+        status: 'approved'
+      },
+      {
+        id: 'rev-2',
+        name: 'دکتر مریم کمالی',
+        service: 'معاینه تخصصی چشم و فیتینگ فریم',
+        rating: 5,
+        comment: 'برخورد بسیار محترمانه کادر و اختصاص زمان کافی برای معاینه بالینی واقعاً ارزشمند بود. تجهیزات تشخیصی سطح بالا هستند و فریم‌های برند بسیار باکیفیتی موجود دارند.',
+        date: '۱۴۰۳/۰۸/۱۵',
+        status: 'approved'
+      },
+      {
+        id: 'rev-3',
+        name: 'سجاد رضایی',
+        service: 'تعیین نمره عینک طبی',
+        rating: 5,
+        comment: 'پذیرش با نوبت قبلی سبب شد هیچ معطلی نداشته باشم. وضوح دید با عدسی تجویزی بی‌نظیره و خستگی چشم حین کار با کامپیوتر کاملاً رفع شد.',
+        date: '۱۴۰۳/۰۸/۲۲',
+        status: 'approved'
+      },
+      {
+        id: 'rev-4',
+        name: 'زهرا ناصری',
+        service: 'معاینه تخصصی اپتومتری',
+        rating: 5,
+        comment: 'بسیار دقیق و باحوصله همه تست‌های بینایی سنجیده شد. راهنمایی‌های پزشک برای نگهداری از چشم و انتخاب عینک عالی بود. سپاس از مجموعه وزین اپتیوا.',
+        date: '۱۴۰۳/۰۸/۲۸',
+        status: 'approved'
+      }
+    ];
+
+    let currentSelectedRating = 5;
+
+    function openAddReviewModal() {
+      const modal = document.getElementById('add-review-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setRatingStar(5);
+        const formStatus = document.getElementById('review-form-status');
+        if (formStatus) formStatus.classList.add('hidden');
+      }
+    }
+
+    function closeAddReviewModal() {
+      const modal = document.getElementById('add-review-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function setRatingStar(num) {
+      currentSelectedRating = num;
+      const input = document.getElementById('review-input-rating');
+      if (input) input.value = num;
+
+      const starButtons = document.querySelectorAll('#star-rating-selector .star-btn');
+      starButtons.forEach((btn, index) => {
+        const starSpan = btn.querySelector('.material-symbols-outlined');
+        if (index < num) {
+          btn.className = 'star-btn text-amber-400 hover:scale-110 transition';
+          if (starSpan) starSpan.textContent = 'star';
+        } else {
+          btn.className = 'star-btn text-surface-container-high hover:scale-110 transition';
+          if (starSpan) starSpan.textContent = 'star';
+        }
+      });
+    }
+
+    async function handleReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('review-input-name').value.trim();
+      const service = document.getElementById('review-input-service').value.trim();
+      const rating = currentSelectedRating;
+      const comment = document.getElementById('review-input-comment').value.trim();
+      const submitBtn = document.getElementById('review-submit-btn');
+      const statusBox = document.getElementById('review-form-status');
+
+      if (!name || !comment) return;
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>در حال ثبت...</span>';
+      }
+
+      try {
+        const res = await fetch('/api/reviews', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, service, rating, comment })
+        });
+        const data = await res.json();
+        
+        // Also save to localStorage as backup
+        const localRevs = JSON.parse(localStorage.getItem('optiva_reviews') || '[]');
+        localRevs.unshift({
+          id: 'rev-' + Date.now(),
+          name,
+          service,
+          rating,
+          comment,
+          date: 'هم‌اکنون',
+          status: 'pending',
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem('optiva_reviews', JSON.stringify(localRevs));
+
+        if (statusBox) {
+          statusBox.className = 'text-xs py-2 px-3 rounded-xl font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+          statusBox.textContent = data.message || 'دیدگاه شما با موفقیت ثبت شد و پس از بررسی و تایید در پنل مدیریت، در سایت قرار می‌گیرد.';
+        }
+
+        setTimeout(() => {
+          closeAddReviewModal();
+          document.getElementById('add-review-form').reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span><span>ارسال دیدگاه</span>';
+          }
+        }, 2200);
+
+      } catch (err) {
+        if (statusBox) {
+          statusBox.className = 'text-xs py-2 px-3 rounded-xl font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+          statusBox.textContent = 'دیدگاه شما با موفقیت ثبت شد و پس از بررسی و تایید در پنل مدیریت، در سایت قرار می‌گیرد.';
+        }
+        setTimeout(() => {
+          closeAddReviewModal();
+          document.getElementById('add-review-form').reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span><span>ارسال دیدگاه</span>';
+          }
+        }, 2200);
+      }
+    }
+
+    async function loadPublicReviews() {
+      const container = document.getElementById('reviews-cards-container');
+      if (!container) return;
+
+      let reviews = [];
+      try {
+        const res = await fetch('/api/reviews');
+        if (res.ok) {
+          reviews = await res.json();
+        }
+      } catch (e) {}
+
+      // Fallback if empty or API unavailable
+      if (!Array.isArray(reviews) || reviews.length === 0) {
+        const local = JSON.parse(localStorage.getItem('optiva_reviews') || '[]');
+        const approvedLocal = local.filter(r => r.status === 'approved');
+        reviews = approvedLocal.length > 0 ? approvedLocal : DEFAULT_REVIEWS;
+      }
+
+      // Filter only approved
+      reviews = reviews.filter(r => r.status === 'approved');
+
+      // Update badge counts and average
+      const countEl = document.getElementById('reviews-total-count');
+      const avgEl = document.getElementById('reviews-avg-rating');
+      if (countEl) countEl.textContent = reviews.length;
+      if (avgEl && reviews.length > 0) {
+        const sum = reviews.reduce((acc, cur) => acc + (Number(cur.rating) || 5), 0);
+        const avg = (sum / reviews.length).toFixed(1);
+        avgEl.textContent = avg;
+      }
+
+      container.innerHTML = reviews.map(r => {
+        const starsHtml = Array.from({ length: 5 }).map((_, i) => {
+          const filled = i < (Number(r.rating) || 5);
+          return `<span class="material-symbols-outlined text-[16px] ${filled ? 'text-amber-400 fill-current' : 'text-surface-container-high'}">star</span>`;
+        }).join('');
+
+        return `
+          <div class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-container flex flex-col justify-between hover:border-secondary/50 hover:shadow-md transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1">${starsHtml}</div>
+                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/50">
+                  <span class="material-symbols-outlined text-[14px]">verified</span>
+                  <span>مراجع تایید شده</span>
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-primary/90 leading-relaxed font-normal mb-5">
+                «${r.comment}»
+              </p>
+            </div>
+            
+            <div class="pt-4 border-t border-surface-container/70 flex items-center justify-between text-xs">
+              <div>
+                <h4 class="font-bold text-primary text-xs">${r.name}</h4>
+                <span class="text-[11px] text-secondary font-medium">${r.service || 'معاینه تخصصی اپتومتری'}</span>
+              </div>
+              <span class="text-[10px] text-on-surface-variant font-mono">${r.date || ''}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        drawer.classList.toggle('flex');
+      }
+    }
+
+    // =========================================================================
+    // CLINIC SCHEDULE & HERO BUTTON ACTIONS
+    // =========================================================================
+    window.CLINIC_SCHEDULE_CONFIG = {
+      // Days when clinic is open for examinations:
+      // Saturday (6), Sunday (0), Monday (1), Tuesday (2), Wednesday (3)
+      // Thursday (4) and Friday (5) are weekend off-days
+      workingDays: [6, 0, 1, 2, 3],
+      workingDaysFa: 'شنبه تا چهارشنبه',
+      phone: '09040148824',
+      phoneFormatted: '۰۹۰۴۰۱۴۸۸۲۴',
+      closedDates: [],
+      isClosedToday: function() {
+        if (window.OPTIVA_FORCE_CLOSED === true) return true;
+        if (window.OPTIVA_FORCE_OPEN === true) return false;
+        try {
+          const now = new Date();
+          const iranDateStr = now.toLocaleString("en-US", { timeZone: "Asia/Tehran" });
+          const iranDate = new Date(iranDateStr);
+          const day = iranDate.getDay();
+          if (!this.workingDays.includes(day)) {
+            return true;
+          }
+          const y = iranDate.getFullYear();
+          const m = String(iranDate.getMonth() + 1).padStart(2, '0');
+          const d = String(iranDate.getDate()).padStart(2, '0');
+          const isoDate = `${y}-${m}-${d}`;
+          if (this.closedDates.includes(isoDate)) {
+            return true;
+          }
+        } catch (e) {
+          const day = new Date().getDay();
+          if (!this.workingDays.includes(day)) return true;
+        }
+        return false;
+      }
+    };
+
+    function showClinicNoticeModal(opts) {
+      const modal = document.getElementById('clinic-notice-modal');
+      const titleEl = document.getElementById('modal-notice-title');
+      const msgEl = document.getElementById('modal-notice-message');
+      const detailsEl = document.getElementById('modal-notice-details');
+      const actionBtn = document.getElementById('modal-action-btn');
+      const actionText = document.getElementById('modal-action-btn-text');
+      const iconEl = document.getElementById('modal-notice-icon');
+
+      if (!modal) return;
+
+      if (titleEl) titleEl.textContent = opts.title || 'پیام کلینیک';
+      if (msgEl) msgEl.textContent = opts.message || '';
+      if (detailsEl) detailsEl.textContent = opts.details || '';
+
+      if (opts.isClosedNotice) {
+        if (iconEl) {
+          iconEl.textContent = 'event_busy';
+          iconEl.className = 'material-symbols-outlined text-amber-500 text-[26px]';
+        }
+        if (actionBtn) actionBtn.classList.add('hidden');
+      } else {
+        if (iconEl) {
+          iconEl.textContent = opts.icon || 'chat';
+          iconEl.className = 'material-symbols-outlined text-secondary text-[26px]';
+        }
+        if (actionBtn) {
+          actionBtn.classList.remove('hidden');
+          actionBtn.href = opts.actionBtnHref || ('tel:' + window.CLINIC_SCHEDULE_CONFIG.phone);
+          if (actionText) actionText.textContent = opts.actionBtnText || 'تماس با کلینیک';
+        }
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeClinicNoticeModal() {
+      const modal = document.getElementById('clinic-notice-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    // Hero "رزرو نوبت" button handler
+    function handleHeroBookingClick() {
+      if (window.CLINIC_SCHEDULE_CONFIG.isClosedToday()) {
+        showClinicNoticeModal({
+          title: 'اطلاع‌رسانی تعطیلی کلینیک',
+          message: 'کلینیک امروز تعطیل است. لطفاً در روزهای کاری تماس بگیرید.',
+          details: 'روزهای کاری فعال: شنبه تا چهارشنبه • پذیرش فقط با هماهنگی تلفنی در روزهای کاری.',
+          isClosedNotice: true
+        });
+      } else {
+        // Direct phone call on working days
+        window.location.href = 'tel:' + window.CLINIC_SCHEDULE_CONFIG.phone;
+      }
+    }
+
+    // Hero "ارتباط در روبیکا" button handler
+    function handleHeroRubikaClick() {
+      const link = window.OPTIVA_RUBIKA_LINK;
+      if (link && typeof link === 'string' && link.trim().startsWith('https://')) {
+        window.open(link.trim(), '_blank', 'noopener,noreferrer');
+      } else {
+        showClinicNoticeModal({
+          title: 'ارتباط مستقیم در روبیکا',
+          message: 'لینک اختصاصی روبیکای کلینیک هنوز در سامانه وارد نشده است.',
+          details: 'جهت ارتباط و مشاوره، می‌توانید با شماره رسمی کلینیک تماس حاصل فرمایید.',
+          icon: 'chat',
+          actionBtnHref: 'tel:' + window.CLINIC_SCHEDULE_CONFIG.phone,
+          actionBtnText: 'تماس با کلینیک (' + window.CLINIC_SCHEDULE_CONFIG.phoneFormatted + ')'
+        });
+      }
+    }
+
+    // Fallback handler for other rubika buttons
+    function handleRubikaAction(actionContext) {
+      handleHeroRubikaClick();
+    }
+
+    // Handler for clicking the floating Optometrist card
+    function handleOptometristBadgeClick(e) {
+      if (e) e.preventDefault();
+      const target = document.getElementById('services');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Load initial settings from server to keep phone, links and images dynamic
+    fetch('/api/config')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.settings) {
+          if (data.settings.phone) window.CLINIC_SCHEDULE_CONFIG.phone = data.settings.phone;
+          if (data.settings.phoneFormatted) window.CLINIC_SCHEDULE_CONFIG.phoneFormatted = data.settings.phoneFormatted;
+          if (data.settings.rubikaLink) window.OPTIVA_RUBIKA_LINK = data.settings.rubikaLink;
+        }
+        if (data && data.images && data.images.hero_banner && data.images.hero_banner.url) {
+          const heroImg = document.getElementById('hero-portal-image');
+          if (heroImg && data.images.hero_banner.url) {
+            heroImg.src = data.images.hero_banner.url;
+          }
+        }
+      })
+      .catch(() => {});
+
+    // Initial public reviews load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPublicReviews();
+    });
+    // In case DOMContentLoaded already fired:
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      loadPublicReviews();
+    }
+  </script>
+
+  <!-- Clinic Modal Dialog (Notice & Closed Days) -->
+  <div id="clinic-notice-modal" class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-md hidden items-center justify-center p-4" onclick="if(event.target===this) closeClinicNoticeModal();">
+    <div class="bg-surface-container-lowest max-w-md w-full rounded-2xl shadow-2xl border border-surface-container p-6 text-right space-y-4 animate-fade-in">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+        <div class="flex items-center gap-2">
+          <span id="modal-notice-icon" class="material-symbols-outlined text-secondary text-[26px]">info</span>
+          <h3 id="modal-notice-title" class="font-bold text-primary text-base">پیام کلینیک</h3>
+        </div>
+        <button onclick="closeClinicNoticeModal()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition cursor-pointer">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <p id="modal-notice-message" class="text-sm font-semibold text-primary leading-relaxed"></p>
+      <p id="modal-notice-details" class="text-xs text-on-surface-variant leading-relaxed"></p>
+      <div class="pt-2 flex items-center justify-end gap-2" id="modal-notice-actions">
+        <button onclick="closeClinicNoticeModal()" class="px-4 py-2 rounded-xl bg-surface-container text-primary hover:bg-surface-container-high text-xs font-bold transition cursor-pointer">متوجه شدم</button>
+        <a id="modal-action-btn" href="tel:09040148824" class="px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-bold transition inline-flex items-center gap-1.5 cursor-pointer">
+          <span class="material-symbols-outlined text-[16px]">call</span>
+          <span id="modal-action-btn-text">تماس با کلینیک</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
